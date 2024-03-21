@@ -1,0 +1,41 @@
+.mat-elevation-z8 {
+  width: 85%;
+}
+
+.toolbar-title{
+  flex: 1;
+  text-align: center;
+}
+.flex-container{
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.mat-column-id{
+  width: 5em;
+  border-right: 1px solid currentColor;
+  padding-right: 24px;
+  text-align: center;
+}
+.mat-column-nome{
+  width: 30%;
+}
+.mat-column-cpf{
+  text-align: center;
+  min-width: 2em;
+}
+.mat-column-email{
+  text-align: center;
+  min-width: 2em;
+}
+.mat-column-telefone{
+  text-align: center;
+  min-width: 2em;
+}
+.mat-column-acao{
+  text-align: center;
+  min-width: 10em;
+}
+#logo{
+  width: 47px;
+}

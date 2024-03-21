@@ -1,0 +1,14 @@
+#img-logo{
+  width: 64px;
+
+}
+.cabecalho{
+  align-items: center;
+  text-align: center;
+  margin-top: 1em;
+}
+
+.full-width-input{
+  align-items: center;
+  display: grid;
+}
