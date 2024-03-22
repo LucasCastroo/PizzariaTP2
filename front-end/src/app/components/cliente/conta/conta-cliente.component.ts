@@ -12,35 +12,34 @@ import {Cliente} from "../../../models/cliente";
 import {ClienteService} from "../../../services/cliente.service";
 import {MatDialog} from "@angular/material/dialog";
 import {DialogCreateClienteComponent} from "./dialog-create-cliente/dialog-create-cliente.component";
+import {MatDrawer, MatDrawerContainer} from "@angular/material/sidenav";
 
 @Component({
-  selector: 'app-cliente-account',
+  selector: 'app-conta-cliente',
   standalone: true,
   imports:
     [MatFormFieldModule,
-    MatInputModule,
-    FormsModule,
-    NgForOf,
-    MatTableModule,
-    MatToolbar,
-    MatFabButton,
-    RouterLink,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    RouterModule],
-  templateUrl: './account.component.html',
-  styleUrl: './account.component.css'
+      MatInputModule,
+      FormsModule,
+      NgForOf,
+      MatTableModule,
+      MatToolbar,
+      MatFabButton,
+      RouterLink,
+      MatToolbarModule,
+      MatIconModule,
+      MatButtonModule,
+      RouterModule, MatDrawer, MatDrawerContainer],
+  templateUrl: './conta-cliente.component.html',
+  styleUrl: './conta-cliente.component.css'
 })
 
-export class AccountComponent implements OnInit{
+export class ContaClienteComponent implements OnInit{
   displayedColumns: string[] = ['id', 'nome', 'cpf', 'nascimento','email', 'telefone', 'acao'];
   clientes: Cliente[] = [];
 
   constructor(private clienteService: ClienteService,
-              public dialog: MatDialog,
-              private router: Router,
-              private activatedRoute: ActivatedRoute) {
+              public dialog: MatDialog) {
   }
 
   ngOnInit() {
