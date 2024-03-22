@@ -63,6 +63,11 @@ public class FuncionarioServiceImpl implements FuncionarioService, UsuarioServic
     }
 
     @Override
+    public List<FuncionarioResponseDTO> findByAll() {
+        return repository.listAll().stream()
+                .map(FuncionarioResponseDTO::valueOf).toList();
+    }
+    @Override
     public FuncionarioResponseDTO findById(Long id) {
         return FuncionarioResponseDTO.valueOf(repository.findById(id));
     }
