@@ -1,0 +1,142 @@
+@startuml
+
+class Bebida {
+   ml: Integer
+}
+
+class Cupom {
+   codigo: String
+   desconto: Double
+}
+class Endereco {
+   cep: String
+   logradouro: String
+   bairro: String
+   cidade: String
+}
+class EnderecoPedido {
+   cep: String
+   logradouro: String
+   bairro: String
+   endereco: Endereco
+   cidade: String
+}
+enum FormaPagamento {
+   PIX,
+   CARTAO,
+   DINHEIRO
+}
+
+class Produto {
+   descricao: String
+   nome: String
+   nomeImagem: String
+   kCal: Integer
+}
+class ProdutoPedido {
+   preco: Double
+   quant: Integer
+   item: Produto
+   tamanho: String
+}
+enum NivelAcesso {
+   ADMIN,
+   GERENTE,
+   SUPERVISOR,
+   ATENDENTE
+}
+class Pedido {
+   status: List<StatusPedido>
+   items: List<ProdutoPedido>
+   cupom: Cupom
+   formaPagamento: FormaPagamento
+   cliente: Cliente
+   endereco: EnderecoPedido
+}
+class Pizza #d9d9d9{
+   nome: String
+   tamanhoPizza: TamanhoPizza
+   quantPorcoes: Integer
+   porcoes: List<PorcaoPizza>
+}
+
+class PizzaPronta extends Pizza{
+    preco: Double
+}
+
+class PorcaoPizza {
+   ingredientes: List<Ingrediente>
+}
+
+enum Status {
+   CANCELADO,
+   AGUARDANDO_PAGAMENTO,
+   EM_PREPARO,
+   ENTREGUE,
+   EM_ENTREGAPizza, Bebida, Pedido, e Ingrediente
+}
+class StatusPedido {
+   status: Status
+   horario: LocalDateTime
+}
+
+enum TamanhoPizza {
+   PEQUENA,
+   MEDIA,
+   GRANDE,
+   GIGA
+}
+class Usuario {
+   email: String
+   nascimento: LocalDate
+   senha: String
+   nome: String
+   cpf: String
+}
+
+class Cliente {
+   usuario: Usuario
+   telefone: String
+   enderecos: List<Endereco>
+}
+
+class Funcionario {
+   usuario: Usuario
+   tipoAcesso: NivelAcesso
+}
+
+class Ingrediente {
+     nome: String
+     categoria: CategoriaIngrediente
+     preco: Double
+}
+
+enum CategoriaIngrediente{
+    MASSA,
+    QUEIJO,
+    PROTEINA,
+    MOLHO
+}
+
+Usuario -- Cliente
+Funcionario -- Cliente
+Bebida          --^  Produto
+Cliente        "1" *--> "*" Endereco
+EnderecoPedido "*" *--> "1" Endereco
+Funcionario    "*" *--> "1" NivelAcesso
+ProdutoPedido     "*" *--> "1" Produto
+Pedido         "*" *--> "1" Cliente
+Pedido         "*" o--> "1" Cupom
+Pedido         "*" *--> "1" EnderecoPedido
+Pedido         "*" *--> "1" FormaPagamento
+Pedido         "1" *--> "*" ProdutoPedido
+Pedido         "1" *--> "*" StatusPedido
+Pizza           --^  Produto
+Pizza          "*" *--> "1" TamanhoPizza
+StatusPedido   "*" *--> "1" Status
+Ingrediente    "*" *--> "1" CategoriaIngrediente
+PorcaoPizza    "*" *--> "*" Ingrediente
+Pizza          "*" *--> "1" PorcaoPizza
+
+
+@enduml
