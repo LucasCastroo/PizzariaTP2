@@ -8,6 +8,7 @@ import br.unitins.tp1.pizzaria.service.ClienteService;
 import br.unitins.tp1.pizzaria.service.FuncionarioService;
 import br.unitins.tp1.pizzaria.service.HashService;
 import br.unitins.tp1.pizzaria.service.JwtService;
+import jakarta.annotation.security.PermitAll;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
@@ -21,6 +22,7 @@ import org.jboss.logging.Logger;
 @Path("/auth")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
+@PermitAll
 public class AuthResource {
     @Inject
     ClienteService clienteService;
@@ -63,7 +65,7 @@ public class AuthResource {
             }
             String token = jwtService.generateJwt(funcionario);
             LOG.infof("Login de %s feito com sucesso!", dto.email());
-            return Response.ok().header("Authorization", token).build();
+            return Response.ok().entity(new AuthorizationResponseDTO(token)).build();
         }catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Erro interno do servidor").build();
         }

@@ -48,7 +48,7 @@ public class ClienteResource {
     }
 
     @GET
-    @RolesAllowed({NivelAcesso.Role.SUPERVISOR, NivelAcesso.Role.GERENTE,NivelAcesso.Role.ADMIN})
+    @RolesAllowed({NivelAcesso.Role.GERENTE, NivelAcesso.Role.ADMIN})
     public Response findAll() {
         LOG.infof("Busca de todos os clientes");
         return Response.ok(service.findByAll()).build();

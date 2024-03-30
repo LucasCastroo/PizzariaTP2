@@ -5,7 +5,8 @@ import {MatError, MatFormField, MatFormFieldModule} from "@angular/material/form
 import {MatInput, MatInputModule} from "@angular/material/input";
 import {NgIf} from "@angular/common";
 import {MatButtonModule} from "@angular/material/button";
-import {LoginService} from "../../services/login.service";
+import {AuthService} from "../../services/auth.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-login-form',
@@ -25,10 +26,12 @@ export class LoginFormComponent {
     }
   )
 
-  constructor(private service: LoginService) {
+  constructor(private service: AuthService, private route: ActivatedRoute) {
   }
 
   login(){
-    this.service.loginCliente(this.formGroup.value)
+    this.route.url.subscribe(params =>{
+      this.service.login(this.formGroup.value, params[0].path == "login")
+    })
   }
 }

@@ -33,6 +33,12 @@ public class FuncionarioResource {
         return Response.status(201).entity(retorno).build();
     }
 
+    @GET
+    @RolesAllowed({NivelAcesso.Role.GERENTE, NivelAcesso.Role.ADMIN})
+    public Response findAll(){
+        return Response.ok(service.findAll()).build();
+    }
+
     @PUT
     @Path("/{id}")
     @RolesAllowed({Funcionario.ROLE})
