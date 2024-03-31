@@ -73,7 +73,7 @@ enum Status {
    AGUARDANDO_PAGAMENTO,
    EM_PREPARO,
    ENTREGUE,
-   EM_ENTREGAPizza, Bebida, Pedido, e Ingrediente
+   EM_ENTREGA
 }
 class StatusPedido {
    status: Status
@@ -119,7 +119,7 @@ enum CategoriaIngrediente{
 }
 
 Usuario -- Cliente
-Funcionario -- Cliente
+Usuario -- Funcionario
 Bebida          --^  Produto
 Cliente        "1" *--> "*" Endereco
 EnderecoPedido "*" *--> "1" Endereco
