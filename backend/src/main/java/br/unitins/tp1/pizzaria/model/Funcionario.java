@@ -1,23 +1,21 @@
 package br.unitins.tp1.pizzaria.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
 @Entity
-public class Funcionario extends Usuario {
+public class Funcionario extends BaseEntity{
     public static final String ROLE = "FUNCIONARIO";
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_usuario", referencedColumnName = "id")
+    private Usuario usuario;
+
     @Enumerated(EnumType.STRING)
     private NivelAcesso tipoAcesso;
 
-    public Funcionario(String nome, String cpf, String email, String senha, LocalDate nascimento, NivelAcesso tipoAcesso) {
-        this.setNome(nome);
-        this.setCpf(cpf);
-        this.setEmail(email);
-        this.setSenha(senha);
-        this.setNascimento(nascimento);
+    public Funcionario(Usuario usuario, NivelAcesso tipoAcesso) {
         this.tipoAcesso = tipoAcesso;
     }
 
@@ -31,5 +29,13 @@ public class Funcionario extends Usuario {
 
     public void setTipoAcesso(NivelAcesso tipoAcesso) {
         this.tipoAcesso = tipoAcesso;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

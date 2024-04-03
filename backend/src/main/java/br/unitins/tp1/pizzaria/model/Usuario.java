@@ -1,11 +1,12 @@
 package br.unitins.tp1.pizzaria.model;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.MappedSuperclass;
 
 import java.time.LocalDate;
 
-@MappedSuperclass
-public abstract class Usuario extends BaseEntity {
+@Entity
+public class Usuario extends BaseEntity {
     private String nome;
     private String cpf;
     private String email;

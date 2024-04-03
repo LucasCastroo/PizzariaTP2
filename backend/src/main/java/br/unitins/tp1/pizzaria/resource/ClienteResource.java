@@ -51,7 +51,7 @@ public class ClienteResource {
     @RolesAllowed({NivelAcesso.Role.GERENTE, NivelAcesso.Role.ADMIN})
     public Response findAll() {
         LOG.infof("Busca de todos os clientes");
-        return Response.ok(service.findByAll()).build();
+        return Response.ok(service.findAll()).build();
     }
 
     @GET
@@ -63,10 +63,10 @@ public class ClienteResource {
     }
 
     @GET
-    @Path("/search/nome/{nome}")
+    @Path("/search/usuario/{id}")
     @RolesAllowed({NivelAcesso.Role.SUPERVISOR, NivelAcesso.Role.GERENTE,NivelAcesso.Role.ADMIN})
-    public Response findByNome(@PathParam("nome") String nome) {
-        LOG.infof("Busca de um cliente por %s", nome);
-        return Response.ok(service.findByNome(nome)).build();
+    public Response findByNome(@PathParam("id") Long id) {
+        LOG.infof("Busca de cliente por usuario %l", id);
+        return Response.ok(service.findByUsuarioId(id)).build();
     }
 }

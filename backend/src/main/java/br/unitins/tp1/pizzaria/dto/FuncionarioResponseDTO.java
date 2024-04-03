@@ -7,20 +7,14 @@ import java.time.LocalDate;
 
 public record FuncionarioResponseDTO(
     Long id,
-    String nome,
-    String email,
-    String cpf,
-    LocalDate nascimento,
+    UsuarioResponseDTO usuario,
     NivelAcesso tipoAcesso
 ) {
     public static FuncionarioResponseDTO valueOf(Funcionario funcionario) {
         try {
             return new FuncionarioResponseDTO(
                     funcionario.getId(),
-                    funcionario.getNome(),
-                    funcionario.getEmail(),
-                    funcionario.getCpf(),
-                    funcionario.getNascimento(),
+                    UsuarioResponseDTO.valueOf(funcionario.getUsuario()),
                     funcionario.getTipoAcesso()
             );
         }catch (NullPointerException e){

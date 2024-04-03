@@ -30,4 +30,13 @@ public class HashServiceImpl implements HashService{
         }
 
     }
+
+    public static void main(String[] args) {
+        for (int i = 0; i < 9; i++) {
+            System.out.println(new HashServiceImpl().getHash("senha00" + (i + 1)));
+        }
+        System.out.println(new HashServiceImpl().getHash("senha010"));
+
+
+    }
 }

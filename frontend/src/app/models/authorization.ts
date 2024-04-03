@@ -1,3 +1,4 @@
-export class Authorization{
-  token?: string
+export interface Authorization{
+  token: string
+  expiry: string
 }

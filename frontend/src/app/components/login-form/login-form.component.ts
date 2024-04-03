@@ -34,7 +34,7 @@ export class LoginFormComponent {
 
   login(){
     this.route.url.subscribe(params =>{
-      this.service.login(this.formGroup.value, params[0].path == "login")
+      this.service.login(this.formGroup.value)
     })
   }
 }

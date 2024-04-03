@@ -1,5 +1,6 @@
 package br.unitins.tp1.pizzaria.repository;
 
+import br.unitins.tp1.pizzaria.model.Cliente;
 import br.unitins.tp1.pizzaria.model.Funcionario;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import io.quarkus.logging.Log;
@@ -10,15 +11,11 @@ import java.util.List;
 
 @ApplicationScoped
 public class FuncionarioRepository implements PanacheRepository<Funcionario> {
-    public List<Funcionario> findByNome(String nome) {
-        return find("UPPER(nome) LIKE UPPER(?1) ", "%"+nome+"%").list();
-    }
 
-    public Funcionario findByEmailSenha(String email, String senha) {
+    public Funcionario findByUsuarioId(Long id){
         try {
-            return find("email = ?1 AND senha = ?2", email, senha).singleResult();
+            return find("usuario.id = ?1", id).singleResult();
         }catch (NoResultException e){
-            Log.error(e);
             return null;
         }
     }

@@ -1,5 +1,6 @@
 package br.unitins.tp1.pizzaria.dto;
 
+import br.unitins.tp1.pizzaria.model.Usuario;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
@@ -9,7 +10,7 @@ import org.hibernate.validator.constraints.br.CPF;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public abstract class UsuarioDTO {
+public class UsuarioDTO {
     @NotBlank(message = "Campo nome não pode ser nulo!")
     private final String nome;
     @NotBlank(message = "Campo cpf não pode ser nulo!")
@@ -54,15 +55,9 @@ public abstract class UsuarioDTO {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ClienteDTO that = (ClienteDTO) o;
-        return Objects.equals(nome, that.getNome()) && Objects.equals(cpf, that.getCpf()) && Objects.equals(email, that.getEmail()) && Objects.equals(senha, that.getSenha()) && Objects.equals(nascimento, that.getNascimento());
-    }
-
-    @Override
     public int hashCode() {
         return Objects.hash(nome, cpf, email, senha, nascimento);
     }
+
+
 }

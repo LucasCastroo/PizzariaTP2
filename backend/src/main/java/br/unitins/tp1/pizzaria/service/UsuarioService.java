@@ -2,17 +2,15 @@ package br.unitins.tp1.pizzaria.service;
 
 import br.unitins.tp1.pizzaria.dto.*;
 
-public interface UsuarioService<DTO> {
+import java.util.List;
+
+public interface UsuarioService {
+    public UsuarioResponseDTO insert(UsuarioDTO dto);
+    public UsuarioResponseDTO update(UsuarioDTO dto, Long id);
+    public void delete(Long id);
+    public List<UsuarioResponseDTO> findAll();
+    public UsuarioResponseDTO findById(Long id);
+    public List<UsuarioResponseDTO> findByNome(String nome);
+    public UsuarioResponseDTO findByEmailSenha(String email, String senha);
     public Boolean alterarSenha(AlterarSenhaDTO dto, Long id);
-
-    public DTO alterarNome(NomeDTO nome, Long id);
-
-    public DTO alterarCpf(CPFDTO cpf, Long id);
-
-    public DTO alterarEmail(EmailDTO email, Long id);
-
-    public DTO alterarNascimento(NascimentoDTO nascimento, Long id);
-
-    public DTO findById(Long id);
-
 }

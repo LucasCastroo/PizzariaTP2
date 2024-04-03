@@ -8,7 +8,6 @@ import {CupomComponent} from "./components/cupom/cupom.component";
 
 export const routes: Routes = [
   { path: "login", component: LoginFormComponent, title: "Login"},
-  { path: "login-admin", component: LoginFormComponent, title: "Login"},
   { path: "cupons", component: CupomComponent, title: "Cupons"},
   { path: 'contas-cliente', component: ContaClienteComponent, title: 'Contas' },
   { path: 'contas-cliente/edit/:id', component: ContaClienteComponent, resolve: {cliente: clienteResolver}},

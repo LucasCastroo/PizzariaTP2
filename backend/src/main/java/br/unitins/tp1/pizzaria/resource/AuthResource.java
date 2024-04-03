@@ -1,13 +1,8 @@
 package br.unitins.tp1.pizzaria.resource;
 
-import br.unitins.tp1.pizzaria.dto.AuthorizationResponseDTO;
-import br.unitins.tp1.pizzaria.dto.ClienteResponseDTO;
-import br.unitins.tp1.pizzaria.dto.FuncionarioResponseDTO;
-import br.unitins.tp1.pizzaria.dto.LoginDTO;
-import br.unitins.tp1.pizzaria.service.ClienteService;
-import br.unitins.tp1.pizzaria.service.FuncionarioService;
-import br.unitins.tp1.pizzaria.service.HashService;
-import br.unitins.tp1.pizzaria.service.JwtService;
+import br.unitins.tp1.pizzaria.dto.*;
+import br.unitins.tp1.pizzaria.service.*;
+import io.quarkus.logging.Log;
 import jakarta.annotation.security.PermitAll;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
@@ -25,9 +20,8 @@ import org.jboss.logging.Logger;
 @PermitAll
 public class AuthResource {
     @Inject
-    ClienteService clienteService;
-    @Inject
-    FuncionarioService funcionarioService;
+    UsuarioService service;
+
     @Inject
     HashService hashService;
     @Inject
@@ -36,37 +30,18 @@ public class AuthResource {
     private static final Logger LOG = Logger.getLogger(AuthResource.class);
 
     @POST
-    @Path("/cliente")
-    public Response loginCliente(@Valid LoginDTO dto){
+    public Response login(@Valid LoginDTO dto){
         try {
             String hashed = hashService.getHash(dto.senha());
-            ClienteResponseDTO cliente = clienteService.findByEmailSenha(dto.email(), hashed);
-            if (cliente == null) {
+            UsuarioResponseDTO usuario = service.findByEmailSenha(dto.email(), hashed);
+            if (usuario == null) {
                 LOG.errorf("Login de %s mal sucedido!", dto.email());
                 return Response.status(Response.Status.UNAUTHORIZED).entity("Credenciais inválidas").build();
             }
-            String token = jwtService.generateJwt(cliente);
             LOG.infof("Login de %s feito com sucesso!", dto.email());
-            return Response.ok().entity(new AuthorizationResponseDTO(token)).build();
+            return Response.ok().entity(jwtService.generateJwt(usuario)).build();
         } catch (Exception e) {
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Erro interno do servidor").build();
-        }
-    }
-
-    @POST
-    @Path("/funcionario")
-    public Response loginFuncionario(@Valid LoginDTO dto){
-        try {
-            String hashed = hashService.getHash(dto.senha());
-            FuncionarioResponseDTO funcionario = funcionarioService.findByEmailSenha(dto.email(), hashed);
-                if (funcionario == null) {
-                    LOG.errorf("Login de %s mal sucedido!", dto.email());
-                    return Response.status(Response.Status.UNAUTHORIZED).entity("Credenciais inválidas").build();
-            }
-            String token = jwtService.generateJwt(funcionario);
-            LOG.infof("Login de %s feito com sucesso!", dto.email());
-            return Response.ok().entity(new AuthorizationResponseDTO(token)).build();
-        }catch (Exception e) {
+            Log.error(e);
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Erro interno do servidor").build();
         }
     }

@@ -11,7 +11,6 @@ public interface FuncionarioService {
     public void delete(Long id);
     public List<FuncionarioResponseDTO> findAll();
     public FuncionarioResponseDTO findById(Long id);
-    public List<FuncionarioResponseDTO> findByNome(String nome);
-    public FuncionarioResponseDTO findByEmailSenha(String email, String senha);
+    public FuncionarioResponseDTO findByUsuarioId(Long id);
 
 }

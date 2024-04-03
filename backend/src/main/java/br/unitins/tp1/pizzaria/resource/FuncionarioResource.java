@@ -29,7 +29,7 @@ public class FuncionarioResource {
     @RolesAllowed({NivelAcesso.Role.GERENTE, NivelAcesso.Role.ADMIN})
     public Response insert(@Valid FuncionarioDTO dto) {
         FuncionarioResponseDTO retorno = service.insert(dto);
-        LOG.infof("Novo funcionario %s cadastrado!", dto.getNome());
+        LOG.infof("Novo funcionario %s cadastrado!", retorno.id());
         return Response.status(201).entity(retorno).build();
     }
 
@@ -67,10 +67,10 @@ public class FuncionarioResource {
     }
 
     @GET
-    @Path("/search/nome/{nome}")
+    @Path("/search/usuario/{id}")
     @RolesAllowed({NivelAcesso.Role.SUPERVISOR, NivelAcesso.Role.GERENTE,NivelAcesso.Role.ADMIN})
-    public Response findByNome(@PathParam("nome") String nome) {
-        LOG.infof("Busca de um funcionario por %s", nome);
-        return Response.ok(service.findByNome(nome)).build();
+    public Response findByNome(@PathParam("id") Long id) {
+        LOG.infof("Busca de funcionario por usuario %l", id);
+        return Response.ok(service.findByUsuarioId(id)).build();
     }
 }

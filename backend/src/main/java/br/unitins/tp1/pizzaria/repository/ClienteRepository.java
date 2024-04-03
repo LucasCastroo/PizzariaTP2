@@ -6,18 +6,13 @@ import io.quarkus.logging.Log;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.NoResultException;
 
-import java.util.List;
 
 @ApplicationScoped
 public class ClienteRepository implements PanacheRepository<Cliente> {
-    public List<Cliente> findByNome(String nome) {
-        return find("UPPER(nome) LIKE UPPER(?1) ", "%"+nome+"%").list();
-    }
-    public Cliente findByEmailSenha(String email, String senha) {
-        try{
-            return find("email = ?1 AND senha = ?2", email, senha).singleResult();
+    public Cliente findByUsuarioId(Long id){
+        try {
+            return find("usuario.id = ?1", id).singleResult();
         }catch (NoResultException e){
-            Log.error(e);
             return null;
         }
     }

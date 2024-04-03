@@ -1,10 +1,24 @@
-INSERT INTO Cliente (cpf, email, nascimento, nome, senha, telefone)
+INSERT INTO Usuario (cpf, email, nascimento, nome, senha)
 VALUES
-    ('12345678901', 'cliente1@email.com', '1990-01-15', 'Cliente Um', 'SZFFPNIAlM/v9x99vgGIwCNQ77utvSHj2M0zEU+4FqyyLdjz4pJXq8f3h3MrwHqrECoQa6PjBzLS6JIH90ahzA==', '(11) 1234-5678'),
-    ('98765432109', 'cliente2@email.com', '1985-03-22', 'Cliente Dois', '7Z8JpAPdZ0m1IbUAme9skIRXWZfVqtr9NxsBAC60mswvwJeWoSs1D7PPVFMWEjijqwc/UunkXIWew4Q6JLyUlQ==', '(22) 9876-5432'),
-    ('55555555555', 'cliente3@email.com', '2000-07-10', 'Cliente Três', 'a2NoHy3mrmxKOny0aDsaOUzSRPq63yqb4oiDtW7jdqnb06UMyqfMAAMKAjUB2CZsGITmePlbCJVHmGx3R5Xffw==', '(33) 5555-5555'),
-    ('77777777777', 'cliente4@email.com', '1995-12-05', 'Cliente Quatro', 'cJiaaOsVab6pkwBAB3fqdqb0owoAO7emOXlNy7sLC0DhZCWOC36WaOlIBMHZzpJ8dUwskIXOHRIfSBPYD4ccSA==', '(44) 7777-7777'),
-    ('22222222222', 'cliente5@email.com', '1988-09-20', 'Cliente Cinco', 'GdwAYxZUVBmGS6IliQzPjRFyB5I+V+0qMeEQQQqP+Fgj0/N8XUTZcK81K3aZvvkzkUo2lYY+XCBHG1V4HoUzNQ==', '(55) 2222-2222');
+    ('123.456.789-00', 'joao.silva@email.com', '1990-05-15', 'João da Silva', 'q+D+cDAwxEy2a3n2y7I9Sf5DT3ZgV+MYgvPEcoZVe3MsbN2MtxsoRvjvLz5pKTQQDZN0QGhCDkkS0eJLRa06/w=='),            -- senha001
+    ('987.654.321-00', 'maria.oliveira@email.com', '1985-09-22', 'Maria Oliveira', 'iNRuQR7wu06aIXBBG75G1hLuq+7rxfgqyZMrC74XPfsQM/lyKb49TZQ+U7IVO67oQUsR6BuTN2nukBG0kR41hg=='),       -- senha002
+    ('111.222.333-44', 'pedro.santos@email.com', '1978-03-10', 'Pedro Santos', 'peei/QAgQ3M9+x6SVNktDpmI5IfOpu9NVSbFzng7pYJJDBXeQpp90v05In4nIcgSmyCXuQbbrcZkGTfRpCrkug=='),           -- senha003
+    ('444.555.666-77', 'ana.pereira@email.com', '1982-11-28', 'Ana Pereira', 'AeKu9/YgvXRAuWQwH9MLOVkKGzJfuHGT1QwYfTlBc8O85rbDAqsHgI0FaIPRf0gc3qowJzEi87+X8PSFXzBYSA=='),             -- senha004
+    ('777.888.999-00', 'lucas.costa@email.com', '1995-07-19', 'Lucas Costa', 'EM+jvGuU03VpGk6SG1+9RRUkdJ2+qeBjMNJy605KZ+NFCaLtXZaBDHxxWAcw3FOruqy3vm26fC3NDYSUsT8afA=='),             -- senha005
+    ('222.333.444-55', 'mariana.souza@email.com', '1972-01-03', 'Mariana Souza', 'Rk+ivvXH+HIM7urg0CGPtQPxnjZKklOO7h9vjmyySB0BIeI5zb4Fe9gLTFbaQkOsPMF8bcFShgmFO3m1srMyWA=='),         -- senha006
+    ('666.777.888-99', 'rafaela.oliveira@email.com', '1988-08-12', 'Rafaela Oliveira', 'OkeG9VHPGw6fwZ7wDNM7cyqccVd9NJMNbN9XRRmrZ5Gdr9/bMRW5acoQ2sVx/Hf7PzXdFoRYbuRoaJnx36EJeA=='),   -- senha007
+    ('999.000.111-22', 'fernando.santos@email.com', '1998-04-25', 'Fernando Santos', '9yPWeH7sJnThq9W+JaeUOmPVYcBMEMaqsPk5z8qJWA3dSWGxp9qOi5iW4OSttKT/A8j5r0biaXeAdh3ooQfrNg=='),     -- senha008
+    ('333.444.555-66', 'carla.silva@email.com', '1980-06-30', 'Carla Silva', 'as/fRQszzfpnpBUhtW/08YpktTt8BO2G6nvgVXojQ6FDOsLSI+uHfJY87kAmc0hkllo0ASLeZuLf6dvKcfPM9Q=='),             -- senha009
+    ('555.666.777-88', 'paulo.pereira@email.com', '1975-10-17', 'Paulo Pereira', 'LiQ+yqmq8o2TpUUc9HjvePYzYSG2cnK4veVHOjw9MYjr+RYI4A7NsOV5eNM3+vcyKg1kgE43abrXTlGzkb2nVw==');        -- senha010
+
+
+INSERT INTO Cliente (id_usuario, telefone)
+VALUES
+    (1, '(11) 1234-5678'),
+    (2, '(22) 9876-5432'),
+    (3, '(33) 5555-5555'),
+    (5, '(44) 7777-7777'),
+    (6, '(55) 2222-2222');
 
 
 INSERT INTO Cupom (codigo, desconto)
@@ -31,13 +45,13 @@ VALUES
     (4, 4),
     (5, 5);
 
-INSERT INTO Funcionario (cpf, email, nascimento, nome, senha, tipoAcesso)
+INSERT INTO Funcionario (id_usuario, tipoAcesso)
 VALUES
-    ('123.456.789-01', 'funcionario1@email.com', '1990-01-15', 'Funcionário Um', 'pa1V0iDad2Ng0n8nZCS57MN8JSclhUZEibB0nBqYifc+eBvubU1QmeXi6+0wqVKwxnlfo7YTusgLEUV+5Cisaw==', 'GERENTE'),
-    ('987.654.321-09', 'funcionario2@email.com', '1985-03-22', 'Funcionário Dois', 'nkhKu5cT14ipd3SlevMxXdooTXdVgcBk7S6RiFPf4bDdLuATtx3LrFV+IKnxv2GTbPJ4A7f0bhDJIwj9PaZ4/A==', 'SUPERVISOR'),
-    ('555.555.555-55', 'funcionario3@email.com', '2000-07-10', 'Funcionário Três', '05kmKRH3cltqSZp0G8y/6L2X+5d9n55cuOkG4SUW23e61kGhmdOXnnub/qKJBvcKyxxAF5gfcik+or1svRkxzA==', 'ATENDENTE'),
-    ('777.777.777-77', 'funcionario4@email.com', '1995-12-05', 'Funcionário Quatro', 'rfXQvShKmWvZoaZQkyySBlZgN3tNvsd19Q2BT+YuXmt7Fv2tw1XDg2DR1wsSoehhOnzeRA134d+uuymV1f/IAw==', 'GERENTE'),
-    ('222.222.222-22', 'funcionario5@email.com', '1988-09-20', 'Funcionário Cinco', 'smHl1KSe31Cv5ACzrpQzXqEWy1PnHFDFlZ8IrR4k231tNNQJRfg57Gt67iX1HFzi7kkP5Tiy+z/nMXNAvJ5GSA==', 'ADMIN');
+    (6, 'GERENTE'),
+    (7, 'SUPERVISOR'),
+    (8, 'ATENDENTE'),
+    (9, 'GERENTE'),
+    (10, 'ADMIN');
 
 INSERT INTO Item (tipo, descricao, kCal, nome, preco, ml, ingredientes, tamanhoPizza, tempoDePreparo)
 VALUES ('PIZZA', 'Pizza de Calabresa', 1200, 'Pizza Calabresa', 25.50, null, 'Calabresa, queijo, molho de tomate', 'MEDIA', 20),
