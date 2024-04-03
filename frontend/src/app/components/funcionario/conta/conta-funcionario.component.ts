@@ -9,7 +9,7 @@ import {
   MatRow, MatRowDef, MatTableModule
 } from "@angular/material/table";
 import {MatButton, MatButtonModule, MatFabButton, MatIconButton} from "@angular/material/button";
-import {MatIcon, MatIconModule} from "@angular/material/icon";
+import {MatIconModule} from "@angular/material/icon";
 import {MatToolbar} from "@angular/material/toolbar";
 import {RouterLink} from "@angular/router";
 import {FuncionarioService} from "../../../services/funcionario.service";
@@ -46,7 +46,6 @@ import {NgOptimizedImage} from "@angular/common";
   styleUrl: './conta-funcionario.component.css'
 })
 export class ContaFuncionarioComponent implements OnInit{
-  showFiller = false;
   displayedColumns: string[] = ['id', 'nome', 'cpf', 'nascimento','email', 'tipoAcesso', 'acao'];
   funcionarios: Funcionario[] = [];
 

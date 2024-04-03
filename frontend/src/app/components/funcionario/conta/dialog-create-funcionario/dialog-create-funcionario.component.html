@@ -25,15 +25,16 @@
             O cpf é obrigatorio.
           </mat-error>
         </mat-form-field>
-        <mat-form-field appearance="fill" class="full-width-input">
+
+        <mat-form-field>
           <mat-label>Tipo de Acesso</mat-label>
-          <input matInput type="text" formControlName="tipoAcesso">
-          <mat-error *ngIf="formGroup.get('tipoAcesso')
-                                   && formGroup.get('tipoAcesso')?.invalid
-                                   && formGroup.get('tipoAcesso')?.touched">
-            O tipo de acesso é obrigatorio.
-          </mat-error>
+          <mat-select>
+            @for (nivelDeAcesso of Object.values(NivelAcesso); track nivelDeAcesso) {
+              <mat-option [value]="nivelDeAcesso">{{nivelDeAcesso}}</mat-option>
+            }
+          </mat-select>
         </mat-form-field>
+
         <mat-form-field appearance="fill" class="full-width-input">
           <mat-label>Email</mat-label>
           <input matInput type="text" formControlName="email">

@@ -1,12 +1,9 @@
-import {Component, Inject} from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
-import {MatButton, MatButtonModule} from "@angular/material/button";
+import {MatButton} from "@angular/material/button";
 import {
   MAT_DIALOG_DATA,
-  MatDialogActions, MatDialogClose,
-  MatDialogContent,
   MatDialogRef,
-  MatDialogTitle
 } from "@angular/material/dialog";
 import {MatError, MatFormField, MatFormFieldModule, MatLabel} from "@angular/material/form-field";
 import {MatInput, MatInputModule} from "@angular/material/input";
@@ -15,6 +12,8 @@ import { FuncionarioService } from "../../../../services/funcionario.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatCard, MatCardActions, MatCardContent, MatCardModule} from "@angular/material/card";
 import {NgIf, NgOptimizedImage} from "@angular/common";
+import {MatSelectModule} from "@angular/material/select";
+import {NivelAcesso} from "../../../../models/nivel-acesso";
 
 @Component({
   selector: 'app-dialog-create',
@@ -31,7 +30,8 @@ import {NgIf, NgOptimizedImage} from "@angular/common";
     MatLabel,
     NgIf,
     ReactiveFormsModule,
-    NgOptimizedImage
+    NgOptimizedImage,
+    MatSelectModule
   ],
   templateUrl: './dialog-create-funcionario.component.html',
   styleUrl: './dialog-create-funcionario.component.css'
@@ -86,4 +86,6 @@ export class DialogCreateFuncionarioComponent {
       }
     }
   }
+  protected readonly NivelAcesso = NivelAcesso;
+  protected readonly Object = Object;
 }

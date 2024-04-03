@@ -49,16 +49,19 @@
           <mat-error *ngIf="formGroup.get('senha')
                                    && formGroup.get('senha')?.invalid
                                    && formGroup.get('senha')?.touched">
-            A senha é obrigatorio.
+            A senha é obrigatoria.
           </mat-error>
         </mat-form-field>
-        <mat-form-field appearance="fill" class="full-width-input">
-          <mat-label>Nascimento</mat-label>
-          <input matInput type="text" formControlName="nascimento">
+        <mat-form-field>
+          <mat-label>Data de Nascimento</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="nascimento">
+          <mat-hint>DD/MM/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
           <mat-error *ngIf="formGroup.get('nascimento')
                                    && formGroup.get('nascimento')?.invalid
                                    && formGroup.get('nascimento')?.touched">
-            A data de nascimento é obrigatorio.
+            A data de nascimento é obrigatoria.
           </mat-error>
         </mat-form-field>
       </form>
@@ -74,7 +77,6 @@
               (click)="dialogRef.close()">
         Cancelar
       </button>
-
     </mat-card-actions>
   </mat-card>
 </div>
