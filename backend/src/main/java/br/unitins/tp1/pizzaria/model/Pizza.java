@@ -1,18 +1,25 @@
 package br.unitins.tp1.pizzaria.model;
 
-import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
+import jakarta.persistence.*;
+
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Entity
 @DiscriminatorValue("PIZZA")
 public class Pizza extends Produto {
+    private String nome;
+
     @Enumerated(EnumType.STRING)
     private TamanhoPizza tamanhoPizza;
-    private String ingredientes;
-    private Integer tempoDePreparo;
+
+    private Integer quantPorcoes;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<PorcaoPizza> porcoes = new HashSet<>();
+
+    private Boolean pizzaPronta;
 
     public TamanhoPizza getTamanhoPizza() {
         return tamanhoPizza;
@@ -22,19 +29,37 @@ public class Pizza extends Produto {
         this.tamanhoPizza = tamanhoPizza;
     }
 
-    public String getIngredientes() {
-        return ingredientes;
+    @Override
+    public String getNome() {
+        return nome;
     }
 
-    public void setIngredientes(String ingredientes) {
-        this.ingredientes = ingredientes;
+    @Override
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public Integer getTempoDePreparo() {
-        return tempoDePreparo;
+    public Integer getQuantPorcoes() {
+        return quantPorcoes;
     }
 
-    public void setTempoDePreparo(Integer tempoDePreparo) {
-        this.tempoDePreparo = tempoDePreparo;
+    public void setQuantPorcoes(Integer quantPorcoes) {
+        this.quantPorcoes = quantPorcoes;
+    }
+
+    public Set<PorcaoPizza> getPorcoes() {
+        return porcoes;
+    }
+
+    public void setPorcoes(Set<PorcaoPizza> porcoes) {
+        this.porcoes = porcoes;
+    }
+
+    public Boolean getPizzaPronta() {
+        return pizzaPronta;
+    }
+
+    public void setPizzaPronta(Boolean pizzaPronta) {
+        this.pizzaPronta = pizzaPronta;
     }
 }

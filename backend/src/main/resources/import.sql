@@ -53,12 +53,74 @@ VALUES
     (9, 'GERENTE'),
     (10, 'ADMIN');
 
-INSERT INTO Produto (tipo, descricao, kCal, nome, preco, ml, ingredientes, tamanhoPizza, tempoDePreparo)
-VALUES ('PIZZA', 'Pizza de Calabresa', 1200, 'Pizza Calabresa', 25.50, null, 'Calabresa, queijo, molho de tomate', 'MEDIA', 20),
+INSERT INTO Ingrediente (preco, categoria, nome)
+VALUES
+    (2.50, 'MASSA', 'Massa fina'),
+    (3.00, 'MASSA', 'Massa integral'),
+    (2.00, 'MASSA', 'Massa tradicional'),
+    (1.50, 'QUEIJO', 'Mozzarella'),
+    (1.80, 'QUEIJO', 'Provolone'),
+    (2.00, 'QUEIJO', 'Gorgonzola'),
+    (1.70, 'QUEIJO', 'Parmesão'),
+    (1.90, 'QUEIJO', 'Cheddar'),
+    (2.20, 'QUEIJO', 'Requeijão'),
+    (2.50, 'QUEIJO', 'Emmental'),
+    (1.60, 'QUEIJO', 'Ricota'),
+    (2.10, 'QUEIJO', 'Brie'),
+    (2.30, 'QUEIJO', 'Camembert'),
+    (3.50, 'PROTEINA', 'Pepperoni'),
+    (2.80, 'PROTEINA', 'Frango'),
+    (2.00, 'PROTEINA', 'Carne moída'),
+    (1.20, 'MOLHO', 'Molho de tomate'),
+    (1.50, 'MOLHO', 'Molho branco'),
+    (1.80, 'MOLHO', 'Molho pesto'),
+    (0.80, 'OUTRO', 'Cebola'),
+    (0.70, 'OUTRO', 'Tomate'),
+    (0.90, 'OUTRO', 'Azeitona'),
+    (0.60, 'OUTRO', 'Pimentão'),
+    (0.75, 'OUTRO', 'Cogumelo'),
+    (1.00, 'OUTRO', 'Presunto'),
+    (1.20, 'OUTRO', 'Manjericão'),
+    (1.00, 'OUTRO', 'Orégano');
+
+INSERT INTO PorcaoPizza SELECT * FROM generate_series(1, 3);
+
+INSERT INTO porcao_ingrediente (id_porcao, id_ingrediente)
+VALUES
+    (1, 3),
+    (1, 4),
+    (1, 16),
+
+
+    (2, 1),
+    (2, 14),
+    (2, 8),
+    (2, 26),
+    (2, 21),
+
+
+    (3, 1),
+    (3, 4),
+    (3, 25),
+    (3, 20);
+
+
+
+
+
+
+
+INSERT INTO Produto (tipo, descricao, kCal, nome, preco, ml, tamanhoPizza, quantporcoes, pizzapronta)
+VALUES ('PIZZA', 'Pizza de Calabresa', 1200, 'Pizza Calabresa', 25.50, null, 'MEDIA', 1, true),
        ('BEBIDA', 'Refrigerante de Limão', 180, 'Sprite', 4.50, 350, null, null, null),
        ('BEBIDA', 'Refrigerante de Cola', 200, 'Coca-Cola', 5.50, 1000, null, null, null),
-       ('PIZZA', 'Pizza de Frango', 1300, 'Pizza Frango', 23.75, null, 'Frango, queijo, molho de tomate', 'PEQUENA', 18),
-       ('PIZZA', 'Pizza de Margherita', 1100, 'Pizza Margherita', 22.00, null, 'Queijo, molho de tomate, manjericão', 'GRANDE', 25);
+       ('PIZZA', 'Pizza de Frango', 1300, 'Pizza Frango', 23.75, null, 'MEDIA', 1, true),
+       ('PIZZA', 'Pizza de Margherita', 1100, 'Pizza Margherita', 22.00, null, 'MEDIA', 1, true);
+
+INSERT INTO produto_porcaopizza (pizza_id, porcoes_id)
+VALUES (1, 1),
+       (4, 2),
+       (5, 3);
 
 INSERT INTO EnderecoPedido (id_endereco, bairro, cep, cidade, logradouro)
 VALUES (1, 'Centro', '12345-678', 'Cidade A', 'Rua Principal, 123'),

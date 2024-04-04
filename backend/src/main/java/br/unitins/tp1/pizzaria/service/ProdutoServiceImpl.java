@@ -2,47 +2,67 @@ package br.unitins.tp1.pizzaria.service;
 
 import br.unitins.tp1.pizzaria.dto.ProdutoDTO;
 import br.unitins.tp1.pizzaria.dto.ProdutoResponseDTO;
-import br.unitins.tp1.pizzaria.model.Bebida;
-import br.unitins.tp1.pizzaria.model.Produto;
-import br.unitins.tp1.pizzaria.model.Pizza;
-import br.unitins.tp1.pizzaria.model.TipoProduto;
+import br.unitins.tp1.pizzaria.model.*;
+import br.unitins.tp1.pizzaria.repository.BebidaRepository;
+import br.unitins.tp1.pizzaria.repository.IngredienteRepository;
+import br.unitins.tp1.pizzaria.repository.PizzaRepository;
 import br.unitins.tp1.pizzaria.repository.ProdutoRepository;
+import io.quarkus.hibernate.orm.panache.PanacheQuery;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @ApplicationScoped
 public class ProdutoServiceImpl implements ProdutoService {
 
     @Inject
     ProdutoRepository repository;
+    @Inject
+    IngredienteRepository ingredienteRepository;
+    @Inject
+    PizzaRepository pizzaRepository;
+    @Inject
+    BebidaRepository bebidaRepository;
 
     @Override
     @Transactional
     public ProdutoResponseDTO create(ProdutoDTO dto) {
-        if(dto.tipo == TipoProduto.PIZZA){
+        if(dto.tipo() == TipoProduto.PIZZA){
             Pizza pizza = new Pizza();
-            pizza.setTamanhoPizza(dto.getTamanhoPizza());
-            pizza.setIngredientes(dto.getIngredientes());
-            pizza.setNome(dto.getNome());
-            pizza.setDescricao(dto.getDescricao());
-            pizza.setkCal(dto.getkCal());
-            pizza.setTempoDePreparo(dto.getTempoDePreparo());
-            pizza.setPreco(dto.getPreco());
-
+            pizza.setTamanhoPizza(dto.tamanhoPizza());
+            pizza.setNome(dto.nome());
+            pizza.setDescricao(dto.descricao());
+            pizza.setkCal(dto.kCal());
+            pizza.setPreco(dto.preco());
+            pizza.setPizzaPronta(dto.pizzaPronta());
+            pizza.setQuantPorcoes(dto.quantPorcoes());
+            Set<PorcaoPizza> porcoes = new HashSet<>();
+            dto.porcoes().forEach(porcaoDTO -> {
+                PorcaoPizza porcao = new PorcaoPizza();
+                Set<Ingrediente> ingredientes = new HashSet<>();
+                porcaoDTO.idIngredientes().forEach(id ->{
+                    Ingrediente ingrediente = ingredienteRepository.findById(id);
+                    if(ingrediente != null) ingredientes.add(ingrediente);
+                });
+                porcao.setIngredientes(ingredientes);
+                porcoes.add(porcao);
+            });
+            pizza.setPorcoes(porcoes);
             repository.persist(pizza);
 
             return ProdutoResponseDTO.valueOf(pizza);
 
-        } else if (dto.tipo == TipoProduto.BEBIDA) {
+        } else if (dto.tipo() == TipoProduto.BEBIDA) {
             Bebida bebida = new Bebida();
-            bebida.setNome(dto.getNome());
-            bebida.setDescricao(dto.getDescricao());
-            bebida.setkCal(dto.getkCal());
-            bebida.setMl(dto.getMl());
-            bebida.setPreco(dto.getPreco());
+            bebida.setNome(dto.nome());
+            bebida.setDescricao(dto.descricao());
+            bebida.setkCal(dto.kCal());
+            bebida.setMl(dto.ml());
+            bebida.setPreco(dto.preco());
 
             repository.persist(bebida);
 
@@ -55,16 +75,14 @@ public class ProdutoServiceImpl implements ProdutoService {
     @Transactional
     public ProdutoResponseDTO update(Long id, ProdutoDTO dto) {
         Produto produto = repository.findById(id);
-        if (dto.getDescricao() != null) produto.setDescricao(dto.getDescricao());
-        if (dto.getkCal() != null) produto.setkCal(dto.getkCal());
-        if (dto.getNome() != null) produto.setNome(dto.getNome());
-        if (dto.getPreco() != null) produto.setPreco(dto.getPreco());
-        if(dto.tipo == TipoProduto.PIZZA){
-            if (dto.getIngredientes() != null) ((Pizza) produto).setIngredientes(dto.getIngredientes());
-            if (dto.getTamanhoPizza() != null) ((Pizza) produto).setTamanhoPizza(dto.getTamanhoPizza());
-            if (dto.getTempoDePreparo() != null) ((Pizza) produto).setTempoDePreparo(dto.getTempoDePreparo());
-        }else if(dto.tipo == TipoProduto.BEBIDA) {
-            if (dto.getMl() != null) ((Bebida) produto).setMl(dto.getMl());
+        if (dto.descricao() != null) produto.setDescricao(dto.descricao());
+        if (dto.kCal() != null) produto.setkCal(dto.kCal());
+        if (dto.nome() != null) produto.setNome(dto.nome());
+        if (dto.preco() != null) produto.setPreco(dto.preco());
+        if(dto.tipo() == TipoProduto.PIZZA){
+            if (dto.tamanhoPizza() != null) ((Pizza) produto).setTamanhoPizza(dto.tamanhoPizza());
+        }else if(dto.tipo() == TipoProduto.BEBIDA) {
+            if (dto.ml() != null) ((Bebida) produto).setMl(dto.ml());
         }else{
             throw new RuntimeException("Tipo de item desconhecido");
         }
@@ -93,7 +111,13 @@ public class ProdutoServiceImpl implements ProdutoService {
     }
 
     @Override
-    public List<ProdutoResponseDTO> findAll() {
-        return repository.findAll().stream().map(ProdutoResponseDTO::valueOf).toList();
+    @Transactional // não funciona sem isso, não me pergunte o porquê
+    public List<ProdutoResponseDTO> findAll(int page, int pageSize, String tipo) {
+        PanacheQuery<? extends Produto> query = switch (tipo){
+            case "PIZZA" -> pizzaRepository.findAll();
+            case "BEBIDA" -> bebidaRepository.findAll();
+            default -> repository.findAll();
+        };
+        return query.page(page, pageSize).stream().map(ProdutoResponseDTO::valueOf).toList();
     }
 }

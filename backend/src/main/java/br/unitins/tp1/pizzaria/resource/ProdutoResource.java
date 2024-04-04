@@ -4,6 +4,7 @@ import br.unitins.tp1.pizzaria.application.Error;
 import br.unitins.tp1.pizzaria.dto.ProdutoDTO;
 import br.unitins.tp1.pizzaria.form.ProdutoImageForm;
 import br.unitins.tp1.pizzaria.model.NivelAcesso;
+import br.unitins.tp1.pizzaria.model.TipoProduto;
 import br.unitins.tp1.pizzaria.service.ProdutoFileService;
 import br.unitins.tp1.pizzaria.service.ProdutoService;
 import jakarta.annotation.security.PermitAll;
@@ -37,7 +38,7 @@ public class ProdutoResource {
     @Path("/create/")
     @RolesAllowed({NivelAcesso.Role.GERENTE, NivelAcesso.Role.ADMIN})
     public Response create(ProdutoDTO dto) {
-        LOG.infof("Item %s cadastrado", dto.nome);
+        LOG.infof("Item %s cadastrado", dto.nome());
         return Response.status(Response.Status.CREATED).entity(service.create(dto)).build();
     }
 
@@ -45,7 +46,7 @@ public class ProdutoResource {
     @Path("/update/{id}")
     @RolesAllowed({NivelAcesso.Role.GERENTE, NivelAcesso.Role.ADMIN})
     public Response update(ProdutoDTO dto, @PathParam("id") Long id) {
-        LOG.infof("Item %s autualizado", dto.nome);
+        LOG.infof("Item %s autualizado", dto.nome());
         return Response.status(Response.Status.ACCEPTED).entity(service.update(id, dto)).build();
     }
 
@@ -85,7 +86,12 @@ public class ProdutoResource {
 
     @GET
     @PermitAll
-    public Response listAll(){
-        return Response.ok(service.findAll()).build();
+    public Response listAll(
+            @QueryParam("page") @DefaultValue("0") int page,
+            @QueryParam("pageSize") @DefaultValue("20") int pageSize,
+            @QueryParam("tipo") @DefaultValue("") String tipo
+    ){
+
+        return Response.ok(service.findAll(page, pageSize, tipo)).build();
     }
 }

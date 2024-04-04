@@ -2,6 +2,7 @@ package br.unitins.tp1.pizzaria.service;
 
 import br.unitins.tp1.pizzaria.dto.ProdutoDTO;
 import br.unitins.tp1.pizzaria.dto.ProdutoResponseDTO;
+import br.unitins.tp1.pizzaria.model.TipoProduto;
 
 import java.util.List;
 
@@ -17,6 +18,6 @@ public interface ProdutoService {
 
     ProdutoResponseDTO findById(Long id);
 
-    List<ProdutoResponseDTO> findAll();
+    List<ProdutoResponseDTO> findAll(int page, int pageSize, String tipo);
 
 }

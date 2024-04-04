@@ -5,6 +5,7 @@ import {ContaFuncionarioComponent} from "./components/funcionario/conta/conta-fu
 import {clienteResolver} from "./components/cliente/conta/resolver/cliente-resolver";
 import {ContaClienteComponent} from "./components/cliente/conta/conta-cliente.component";
 import {CupomComponent} from "./components/cupom/cupom.component";
+import {PizzaComponent} from "./components/pizza/pizza.component";
 
 export const routes: Routes = [
   { path: "login", component: LoginComponent, title: "Login"},
@@ -17,4 +18,6 @@ export const routes: Routes = [
 
   { path: 'contas-funcionario', component: ContaFuncionarioComponent, title: 'Contas' },
   { path: 'contas-funcionario/edit/:id', component: ContaFuncionarioComponent, resolve: {cliente: funcionarioResolver}},
+
+  {path: "pizza", component: PizzaComponent, title: "Pizza"}
 ];
