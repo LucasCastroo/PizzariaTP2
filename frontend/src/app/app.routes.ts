@@ -3,7 +3,8 @@ import {LoginComponent} from "./components/login/login.component";
 import {ContaFuncionarioComponent} from "./components/funcionario/conta/conta-funcionario.component";
 import {ContaClienteComponent} from "./components/cliente/conta/conta-cliente.component";
 import {CupomComponent} from "./components/cupom/cupom.component";
-import {PizzaComponent} from "./components/pizza/pizza.component";
+import {PizzaListComponent} from "./components/pizza/pizza-list.component";
+import {IngredienteListComponent} from "./components/ingrediente/ingrediente-list.component";
 
 export const routes: Routes = [
   { path: "login", component: LoginComponent, title: "Login"},
@@ -14,5 +15,6 @@ export const routes: Routes = [
 
   { path: 'contas-funcionario', component: ContaFuncionarioComponent, title: 'Contas' },
 
-  {path: "pizza", component: PizzaComponent, title: "Pizza"}
+  {path: "pizza", component: PizzaListComponent, title: "Pizzas"},
+  {path: "ingrediente", component: IngredienteListComponent, title: "Ingredientes"}
 ];

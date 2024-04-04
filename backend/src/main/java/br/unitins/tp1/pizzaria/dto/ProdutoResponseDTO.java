@@ -1,6 +1,7 @@
 package br.unitins.tp1.pizzaria.dto;
 
 import br.unitins.tp1.pizzaria.model.*;
+import io.quarkus.logging.Log;
 
 import java.util.HashSet;
 import java.util.Set;

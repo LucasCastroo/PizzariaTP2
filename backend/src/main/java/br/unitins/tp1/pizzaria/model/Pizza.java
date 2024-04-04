@@ -9,7 +9,6 @@ import java.util.Set;
 @Entity
 @DiscriminatorValue("PIZZA")
 public class Pizza extends Produto {
-    private String nome;
 
     @Enumerated(EnumType.STRING)
     private TamanhoPizza tamanhoPizza;
@@ -27,16 +26,6 @@ public class Pizza extends Produto {
 
     public void setTamanhoPizza(TamanhoPizza tamanhoPizza) {
         this.tamanhoPizza = tamanhoPizza;
-    }
-
-    @Override
-    public String getNome() {
-        return nome;
-    }
-
-    @Override
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public Integer getQuantPorcoes() {
