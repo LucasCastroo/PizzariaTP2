@@ -1,13 +1,12 @@
 package br.unitins.tp1.pizzaria.dto;
 
-import br.unitins.tp1.pizzaria.model.Item;
 import br.unitins.tp1.pizzaria.model.TamanhoPizza;
-import br.unitins.tp1.pizzaria.model.TipoItem;
+import br.unitins.tp1.pizzaria.model.TipoProduto;
 import jakarta.annotation.Nullable;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 
-public abstract class ItemDTO {
+public abstract class ProdutoDTO {
     @NotBlank
     public final String nome;
     @NotBlank
@@ -17,7 +16,7 @@ public abstract class ItemDTO {
     @Positive
     public final Integer kCal;
     @NotBlank
-    public final TipoItem tipo;
+    public final TipoProduto tipo;
     @Nullable
     public final Integer ml;
     @Nullable
@@ -28,7 +27,7 @@ public abstract class ItemDTO {
     public final Integer tempoDePreparo;
 
 
-    public ItemDTO(String nome, String descricao, Double preco, Integer kCal, TipoItem tipo, @Nullable Integer ml, @Nullable TamanhoPizza tamanhoPizza, @Nullable String ingredientes, @Nullable Integer tempoDePreparo) {
+    public ProdutoDTO(String nome, String descricao, Double preco, Integer kCal, TipoProduto tipo, @Nullable Integer ml, @Nullable TamanhoPizza tamanhoPizza, @Nullable String ingredientes, @Nullable Integer tempoDePreparo) {
         this.nome = nome;
         this.descricao = descricao;
         this.preco = preco;
@@ -56,7 +55,7 @@ public abstract class ItemDTO {
         return kCal;
     }
 
-    public TipoItem getTipo() {
+    public TipoProduto getTipo() {
         return tipo;
     }
 

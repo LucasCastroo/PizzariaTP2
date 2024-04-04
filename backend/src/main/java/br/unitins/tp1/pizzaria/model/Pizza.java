@@ -8,7 +8,7 @@ import jakarta.persistence.Enumerated;
 
 @Entity
 @DiscriminatorValue("PIZZA")
-public class Pizza extends Item {
+public class Pizza extends Produto {
     @Enumerated(EnumType.STRING)
     private TamanhoPizza tamanhoPizza;
     private String ingredientes;

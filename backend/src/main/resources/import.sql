@@ -53,7 +53,7 @@ VALUES
     (9, 'GERENTE'),
     (10, 'ADMIN');
 
-INSERT INTO Item (tipo, descricao, kCal, nome, preco, ml, ingredientes, tamanhoPizza, tempoDePreparo)
+INSERT INTO Produto (tipo, descricao, kCal, nome, preco, ml, ingredientes, tamanhoPizza, tempoDePreparo)
 VALUES ('PIZZA', 'Pizza de Calabresa', 1200, 'Pizza Calabresa', 25.50, null, 'Calabresa, queijo, molho de tomate', 'MEDIA', 20),
        ('BEBIDA', 'Refrigerante de Limão', 180, 'Sprite', 4.50, 350, null, null, null),
        ('BEBIDA', 'Refrigerante de Cola', 200, 'Coca-Cola', 5.50, 1000, null, null, null),
@@ -94,7 +94,7 @@ VALUES
     ('2023-10-05 12:11:00', 'AGUARDANDO_PAGAMENTO', 5),
     ('2023-10-05 14:30:00', 'CANCELADO', 5);
 
-INSERT INTO ItemPedido (preco, quant, id_item, id_pedido, tamanho)
+INSERT INTO ProdutoPedido (preco, quant, id_produto, id_pedido, tamanho)
 VALUES (25.50, 2, 1, 1, 'MEDIA'),
        (25.50, 1, 2, 2, '350ML'),
        (25.50, 1, 3, 2, '1000ML'),

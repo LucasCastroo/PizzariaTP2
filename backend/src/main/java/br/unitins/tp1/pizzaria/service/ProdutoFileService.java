@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 @ApplicationScoped
-public class ItemFileService implements FileService{
+public class ProdutoFileService implements FileService{
 
     private static final int MAX_FILE_SIZE = 1024 * 1024 * 10;
 

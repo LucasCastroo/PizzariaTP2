@@ -1,6 +1,6 @@
 package br.unitins.tp1.pizzaria.model;
 
-public enum TipoItem {
+public enum TipoProduto {
     PIZZA,
     BEBIDA;
 

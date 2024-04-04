@@ -22,7 +22,7 @@ public class Pedido extends BaseEntity {
             fetch = FetchType.EAGER
     )
     @JoinColumn(name = "id_pedido")
-    private List<ItemPedido> items;
+    private List<ProdutoPedido> items;
 
     @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "id_cupom")
@@ -50,11 +50,11 @@ public class Pedido extends BaseEntity {
         this.cliente = cliente;
     }
 
-    public List<ItemPedido> getItems() {
+    public List<ProdutoPedido> getItems() {
         return items;
     }
 
-    public void setItems(List<ItemPedido> items) {
+    public void setItems(List<ProdutoPedido> items) {
         this.items = items;
     }
 

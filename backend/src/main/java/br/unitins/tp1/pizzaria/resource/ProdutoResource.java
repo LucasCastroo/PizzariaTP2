@@ -1,11 +1,11 @@
 package br.unitins.tp1.pizzaria.resource;
 
 import br.unitins.tp1.pizzaria.application.Error;
-import br.unitins.tp1.pizzaria.dto.ItemDTO;
-import br.unitins.tp1.pizzaria.form.ItemImageForm;
+import br.unitins.tp1.pizzaria.dto.ProdutoDTO;
+import br.unitins.tp1.pizzaria.form.ProdutoImageForm;
 import br.unitins.tp1.pizzaria.model.NivelAcesso;
-import br.unitins.tp1.pizzaria.service.ItemFileService;
-import br.unitins.tp1.pizzaria.service.ItemService;
+import br.unitins.tp1.pizzaria.service.ProdutoFileService;
+import br.unitins.tp1.pizzaria.service.ProdutoService;
 import jakarta.annotation.security.PermitAll;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -19,23 +19,24 @@ import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 
 import java.io.IOException;
 
+import static io.quarkus.arc.ComponentsProvider.LOG;
+
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 @ApplicationScoped
-@Path("/item")
-public class ItemResource {
+@Path("/produto")
+public class ProdutoResource {
     @Inject
-    ItemService service;
+    ProdutoService service;
 
     @Inject
-    ItemFileService fileService;
+    ProdutoFileService fileService;
 
-    private static final Logger LOG = Logger.getLogger(AuthResource.class);
 
     @POST
     @Path("/create/")
     @RolesAllowed({NivelAcesso.Role.GERENTE, NivelAcesso.Role.ADMIN})
-    public Response create(ItemDTO dto) {
+    public Response create(ProdutoDTO dto) {
         LOG.infof("Item %s cadastrado", dto.nome);
         return Response.status(Response.Status.CREATED).entity(service.create(dto)).build();
     }
@@ -43,7 +44,7 @@ public class ItemResource {
     @PUT
     @Path("/update/{id}")
     @RolesAllowed({NivelAcesso.Role.GERENTE, NivelAcesso.Role.ADMIN})
-    public Response update(ItemDTO dto, @PathParam("id") Long id) {
+    public Response update(ProdutoDTO dto, @PathParam("id") Long id) {
         LOG.infof("Item %s autualizado", dto.nome);
         return Response.status(Response.Status.ACCEPTED).entity(service.update(id, dto)).build();
     }
@@ -68,7 +69,7 @@ public class ItemResource {
     @Path("/set-image/{id}")
     @RolesAllowed({NivelAcesso.Role.GERENTE, NivelAcesso.Role.ADMIN})
     @Consumes(MediaType.MULTIPART_FORM_DATA)
-    public Response salvarImagem(@MultipartForm ItemImageForm form, @PathParam("id") Long id) {
+    public Response salvarImagem(@MultipartForm ProdutoImageForm form, @PathParam("id") Long id) {
         String nomeImagem;
         LOG.infof("Imagem do item %d autualizada", id);
         try {

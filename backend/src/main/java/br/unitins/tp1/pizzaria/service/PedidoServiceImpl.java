@@ -23,7 +23,7 @@ public class PedidoServiceImpl implements PedidoService{
     @Inject
     EnderecoRepository enderecoRepository;
     @Inject
-    ItemRepository itemRepository;
+    ProdutoRepository produtoRepository;
 
 
     @Override
@@ -55,16 +55,16 @@ public class PedidoServiceImpl implements PedidoService{
             if (dto.items() != null) {
                 pedido.getItems().addAll(
                         dto.items().stream().map(i -> {
-                            ItemPedido itemPedido = new ItemPedido();
-                            itemPedido.setQuant(i.quantidade());
-                            Item item = itemRepository.findById(i.idItem());
-                            itemPedido.setItem(item);
-                            itemPedido.setPreco(item.getPreco() * i.quantidade());
-                            switch (item.getTipo()){
-                                case PIZZA -> itemPedido.setTamanho(((Pizza) item).getTamanhoPizza().name());
-                                case BEBIDA -> itemPedido.setTamanho(((Bebida) item).getMl().toString());
+                            ProdutoPedido produtoPedido = new ProdutoPedido();
+                            produtoPedido.setQuant(i.quantidade());
+                            Produto produto = produtoRepository.findById(i.idProduto());
+                            produtoPedido.setItem(produto);
+                            produtoPedido.setPreco(produto.getPreco() * i.quantidade());
+                            switch (produto.getTipo()){
+                                case PIZZA -> produtoPedido.setTamanho(((Pizza) produto).getTamanhoPizza().name());
+                                case BEBIDA -> produtoPedido.setTamanho(((Bebida) produto).getMl().toString());
                             }
-                            return itemPedido;
+                            return produtoPedido;
                         }).toList()
                 );
             }

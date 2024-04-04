@@ -2,7 +2,7 @@ package br.unitins.tp1.pizzaria.dto;
 
 import br.unitins.tp1.pizzaria.model.Cupom;
 import br.unitins.tp1.pizzaria.model.FormaPagamento;
-import br.unitins.tp1.pizzaria.model.ItemPedido;
+import br.unitins.tp1.pizzaria.model.ProdutoPedido;
 import br.unitins.tp1.pizzaria.model.Pedido;
 
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.List;
 public record PedidoResponseDTO(
         Long id,
         ClienteResponseDTO cliente,
-        List<ItemPedido> items,
+        List<ProdutoPedido> items,
         FormaPagamento formaPagamento,
         Cupom cupom,
         Double total,

@@ -3,7 +3,7 @@ package br.unitins.tp1.pizzaria.form;
 import jakarta.ws.rs.FormParam;
 import org.jboss.resteasy.annotations.providers.multipart.PartType;
 
-public class ItemImageForm {
+public class ProdutoImageForm {
 
     @FormParam("nomeImagem")
     private String nomeImagem;
