@@ -36,6 +36,5 @@ export class LoginComponent {
     this.route.url.subscribe(params =>{
       this.service.login(this.formGroup.value)
     })
-    this.router.navigateByUrl('/contas-funcionario');
   }
 }
