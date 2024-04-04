@@ -45,15 +45,15 @@ import {MAT_DATE_LOCALE, provideNativeDateAdapter} from "@angular/material/core"
     MatSelectModule,
     MatDatepickerModule
   ],
-  templateUrl: './dialog-create-cliente.component.html',
-  styleUrl: './dialog-create-cliente.component.css'
+  templateUrl: './dialog-cliente.component.html',
+  styleUrl: './dialog-cliente.component.css'
 })
-export class DialogCreateClienteComponent {
+export class DialogClienteComponent {
   formGroup: FormGroup;
   constructor(private formBuilder: FormBuilder,
               private service: ClienteService,
               @Inject(MAT_DIALOG_DATA) data: Cliente,
-              protected dialogRef: MatDialogRef<DialogCreateClienteComponent>,
+              protected dialogRef: MatDialogRef<DialogClienteComponent>,
               protected snackBar: MatSnackBar) {
 
     this.formGroup = formBuilder.group({

@@ -8,9 +8,9 @@ import {MatDialog} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Cupom} from "../../models/cupom";
 import {CupomService} from "../../services/cupom.service";
-import {DialogCreateCupomComponent} from "./dialog-create-cupom/dialog-create-cupom.component";
+import {DialogCupomComponent} from "./dialog-cupom/dialog-cupom.component";
 import {MatDrawer, MatDrawerContainer} from "@angular/material/sidenav";
-import {DialogCreateClienteComponent} from "../cliente/conta/dialog-create-cliente/dialog-create-cliente.component";
+import {DialogClienteComponent} from "../cliente/conta/dialog-cliente/dialog-cliente.component";
 import {RouterLink} from "@angular/router";
 
 
@@ -45,6 +45,5 @@ export class CupomComponent implements OnInit{
     })
   }
 
-  protected readonly DialogCreateCupomComponent = DialogCreateCupomComponent;
-  protected readonly DialogCreateClienteComponent = DialogCreateClienteComponent;
+  protected readonly DialogCupomComponent = DialogCupomComponent;
 }

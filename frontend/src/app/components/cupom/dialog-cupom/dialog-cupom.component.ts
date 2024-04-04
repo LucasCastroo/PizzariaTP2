@@ -26,19 +26,19 @@ import {CupomService} from "../../../services/cupom.service";
     NgIf,
     ReactiveFormsModule
   ],
-  templateUrl: './dialog-create-cupom.component.html',
-  styleUrl: './dialog-create-cupom.component.css'
+  templateUrl: './dialog-cupom.component.html',
+  styleUrl: './dialog-cupom.component.css'
 })
-export class DialogCreateCupomComponent {
+export class DialogCupomComponent {
   formGroup: FormGroup;
   constructor(private formBuilder: FormBuilder,
               private service: CupomService,
               @Inject(MAT_DIALOG_DATA) data: Cupom,
-              protected dialogRef: MatDialogRef<DialogCreateCupomComponent>,
+              protected dialogRef: MatDialogRef<DialogCupomComponent>,
               protected snackBar: MatSnackBar) {
 
     this.formGroup = formBuilder.group({
-      id: [(data && data.id) ? data.id : null],
+      id: [(data && data.id) ? data.id : ''],
       codigo: [(data && data.codigo) ? data.codigo : '', Validators.required],
       desconto: [(data && data.desconto) ? data.desconto : '', Validators.required]
     });
@@ -71,7 +71,6 @@ export class DialogCreateCupomComponent {
           error: (err) => {
             console.log('Erro ao Editar' + JSON.stringify(err));
             this.snackBar.open("Erro ao Editar");
-
           }
         });
       }
