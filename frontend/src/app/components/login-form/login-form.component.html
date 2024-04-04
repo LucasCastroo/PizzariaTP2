@@ -24,7 +24,6 @@
           <mat-label>Senha</mat-label>
           <input
             required
-            type="password"
             formControlName="senha"
             matInput [type]="hide ? 'password' : 'text'">
           <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
