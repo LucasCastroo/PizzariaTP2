@@ -1,10 +1,10 @@
-<div id="cabecalho">
+<div id="cabecalho" xmlns="http://www.w3.org/1999/html">
   <img src="assets/logo.png" id="logo" alt="Logo">
   <h1>Login</h1>
 </div>
 
 <div class="form-container">
-  <mat-card>
+  <mat-card id="card">
     <mat-card-content>
       <form [formGroup]="formGroup" class="flex-container">
         <mat-form-field>
@@ -26,12 +26,10 @@
             required
             formControlName="senha"
             matInput [type]="hide ? 'password' : 'text'">
-          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <button mat-icon-button matSuffix (click)="hide = !hide">
             <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
           </button>
-          <mat-error *ngIf="formGroup.get('senha')
-                                   && formGroup.get('senha')?.invalid
-                                   && formGroup.get('senha')?.touched">
+          <mat-error *ngIf="formGroup.get('senha')?.invalid && (formGroup.get('senha')?.dirty || formGroup.get('senha')?.touched)">
             Senha inválida.
           </mat-error>
         </mat-form-field>
@@ -39,7 +37,7 @@
 
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="login()">Entrar</button>
+      <button id="btn-entrar" mat-raised-button color="warn" (click)="login()">Entrar</button>
     </mat-card-actions>
   </mat-card>
 </div>

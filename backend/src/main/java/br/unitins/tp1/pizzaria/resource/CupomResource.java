@@ -16,7 +16,6 @@ import org.jboss.logging.Logger;
 @Path("/cupom")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
-@PermitAll
 public class CupomResource {
     @Inject
     CupomService service;
@@ -24,7 +23,7 @@ public class CupomResource {
     private static final Logger LOG = Logger.getLogger(AuthResource.class);
 
     @POST
-    //@RolesAllowed({NivelAcesso.Role.GERENTE,NivelAcesso.Role.ADMIN})
+    @RolesAllowed({NivelAcesso.Role.GERENTE,NivelAcesso.Role.ADMIN})
     public Response create(@Valid CupomDTO dto){
         LOG.infof("Novo cupom %s adicionado!", dto.codigo());
         return Response.status(Response.Status.CREATED).entity(service.create(dto)).build();
@@ -32,7 +31,7 @@ public class CupomResource {
 
     @PUT
     @Path("/{id}")
-    //@RolesAllowed({NivelAcesso.Role.GERENTE,NivelAcesso.Role.ADMIN})
+    @RolesAllowed({NivelAcesso.Role.GERENTE,NivelAcesso.Role.ADMIN})
     public Response update(CupomDTO dto, @PathParam("id") Long id){
         service.update(dto, id);
         LOG.infof("Cupom atualizado!");
@@ -41,7 +40,7 @@ public class CupomResource {
 
     @DELETE
     @Path("/{id}")
-    //@RolesAllowed({NivelAcesso.Role.GERENTE,NivelAcesso.Role.ADMIN})
+    @RolesAllowed({NivelAcesso.Role.GERENTE,NivelAcesso.Role.ADMIN})
     public Response delete(@PathParam("id") Long id){
         service.delete(id);
         LOG.infof("Cupom id=%d deletado!", id);
@@ -50,7 +49,7 @@ public class CupomResource {
 
     @GET
     @Path("/{id}")
-    //@RolesAllowed({NivelAcesso.Role.GERENTE,NivelAcesso.Role.ADMIN})
+    @RolesAllowed({NivelAcesso.Role.GERENTE,NivelAcesso.Role.ADMIN})
     public Response findById(@PathParam("id") Long id){
         LOG.infof("Busca de cupom por %d!", id);
         return Response.ok().entity(service.findById(id)).build();
@@ -58,7 +57,7 @@ public class CupomResource {
 
     @GET
     @Path("/busca/{codigo}")
-    //@RolesAllowed({NivelAcesso.Role.GERENTE,NivelAcesso.Role.ADMIN})
+    @RolesAllowed({NivelAcesso.Role.GERENTE,NivelAcesso.Role.ADMIN})
     public Response findByCodigo(@PathParam("codigo") String codigo){
         CupomResponseDTO cupom = service.findByCodigo(codigo);
         if(cupom != null) {
@@ -68,7 +67,7 @@ public class CupomResource {
             return Response.status(404).build();
     }
     @GET
-    //@RolesAllowed({NivelAcesso.Role.GERENTE,NivelAcesso.Role.ADMIN})
+    @RolesAllowed({NivelAcesso.Role.GERENTE,NivelAcesso.Role.ADMIN})
     public Response findAll(){
         return Response.ok(service.findAll()).build();
     }

@@ -43,4 +43,9 @@ mat-card-actions {
 
 .flex-container{
   color: white;
+  width: 400px;
+}
+
+#btn-entrar{
+  width: 97%;
 }

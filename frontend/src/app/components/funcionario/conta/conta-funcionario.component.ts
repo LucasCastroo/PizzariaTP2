@@ -11,7 +11,7 @@ import {
 import {MatButton, MatButtonModule, MatFabButton, MatIconButton} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {MatToolbar} from "@angular/material/toolbar";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {FuncionarioService} from "../../../services/funcionario.service";
 import {MatDialog} from "@angular/material/dialog";
 import {Funcionario} from "../../../models/funcionario";
@@ -50,13 +50,17 @@ export class ContaFuncionarioComponent implements OnInit{
   funcionarios: Funcionario[] = [];
 
   constructor(private funcionarioService: FuncionarioService,
-              public dialog: MatDialog) {
+              public dialog: MatDialog, private router: Router) {
   }
 
   ngOnInit() {
     this.funcionarioService.findAll().subscribe(data => {
       this.funcionarios = data;
     })
+  }
+
+  logout() {
+    this.router.navigateByUrl('/login');
   }
 
   protected readonly DialogFuncionarioComponent = DialogFuncionarioComponent;

@@ -19,6 +19,7 @@ export class AuthService {
       next: (auth: Authorization)=>{
         localStorage.setItem("token", auth.token);
         localStorage.setItem("expiry", auth.expiry);
+        this.router.navigateByUrl('/contas-funcionario');
       }
     });
   }
