@@ -1,6 +1,6 @@
 <div class="cabecalho">
   <img src="assets/logo.png" id="img-logo" alt="Logo Pizzaria" height="64" width="64">
-  <h2 class="titulo">Adicionar Colaborador</h2>
+  <h2 class="titulo">Colaborador</h2>
 </div>
 
 <div class="form-container">
@@ -29,10 +29,15 @@
         <mat-form-field>
           <mat-label>Tipo de Acesso</mat-label>
           <mat-select>
-            @for (nivelDeAcesso of Object.values(NivelAcesso); track nivelDeAcesso) {
-              <mat-option [value]="nivelDeAcesso">{{nivelDeAcesso}}</mat-option>
+            @for (tipoAcesso of Object.values(NivelAcesso); track tipoAcesso) {
+              <mat-option [value]="tipoAcesso">{{tipoAcesso}}</mat-option>
             }
           </mat-select>
+          <mat-error *ngIf="formGroup.get('tipoAcesso')
+                                   && formGroup.get('tipoAcesso')?.invalid
+                                   && formGroup.get('tipoAcesso')?.touched">
+            O tipo de acesso é obrigatorio.
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill" class="full-width-input">
@@ -53,13 +58,16 @@
             A senha é obrigatorio.
           </mat-error>
         </mat-form-field>
-        <mat-form-field appearance="fill" class="full-width-input">
-          <mat-label>Nascimento</mat-label>
-          <input matInput type="text" formControlName="nascimento">
+        <mat-form-field>
+          <mat-label>Data de Nascimento</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="nascimento">
+          <mat-hint>DD/MM/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
           <mat-error *ngIf="formGroup.get('nascimento')
                                    && formGroup.get('nascimento')?.invalid
                                    && formGroup.get('nascimento')?.touched">
-            A data de nascimento é obrigatorio.
+            A data de nascimento é obrigatoria.
           </mat-error>
         </mat-form-field>
       </form>

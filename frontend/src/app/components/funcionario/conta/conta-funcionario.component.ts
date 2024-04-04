@@ -59,5 +59,5 @@ export class ContaFuncionarioComponent implements OnInit{
     })
   }
 
-  protected readonly DialogCreateComponent = DialogFuncionarioComponent;
+  protected readonly DialogFuncionarioComponent = DialogFuncionarioComponent;
 }

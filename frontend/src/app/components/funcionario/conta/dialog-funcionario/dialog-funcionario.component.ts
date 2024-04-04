@@ -14,6 +14,7 @@ import {MatCard, MatCardActions, MatCardContent, MatCardModule} from "@angular/m
 import {NgIf, NgOptimizedImage} from "@angular/common";
 import {MatSelectModule} from "@angular/material/select";
 import {NivelAcesso} from "../../../../models/nivel-acesso";
+import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from "@angular/material/datepicker";
 
 @Component({
   selector: 'app-dialog-create',
@@ -31,7 +32,10 @@ import {NivelAcesso} from "../../../../models/nivel-acesso";
     NgIf,
     ReactiveFormsModule,
     NgOptimizedImage,
-    MatSelectModule
+    MatSelectModule,
+    MatDatepicker,
+    MatDatepickerInput,
+    MatDatepickerToggle
   ],
   templateUrl: './dialog-funcionario.component.html',
   styleUrl: './dialog-funcionario.component.css'
@@ -46,10 +50,11 @@ export class DialogFuncionarioComponent {
 
     this.formGroup = formBuilder.group({
       id: [(data && data.id) ? data.id : null],
-      nome: [(data && data.nome) ? data.nome : '', Validators.required],
-      email: [(data && data.email) ? data.email : '', Validators.required],
-      cpf: [(data && data.cpf) ? data.cpf : '', Validators.required],
-      nascimento: [(data && data.nascimento) ? data.nascimento : '', Validators.required],
+      nome: [(data && data.usuario.nome) ? data.usuario.nome : '', Validators.required],
+      email: [(data && data.usuario.email) ? data.usuario.email : '', Validators.required],
+      cpf: [(data && data.usuario.cpf) ? data.usuario.cpf : '', Validators.required],
+      senha: [(data && data.usuario.senha) ? data.usuario.senha: '', Validators.required],
+      nascimento: [(data && data.usuario.nascimento) ? data.usuario.nascimento : '', Validators.required],
       tipoAcesso: [(data && data.tipoAcesso) ? data.tipoAcesso : '', Validators.required]
     });
   }
