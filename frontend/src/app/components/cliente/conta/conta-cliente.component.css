@@ -56,7 +56,10 @@
 }
 
 .example-sidenav a{
+  margin-top: 75px;
   color: white;
   text-decoration: none;
   text-align: center;
+  justify-content: center;
+  display: grid;
 }

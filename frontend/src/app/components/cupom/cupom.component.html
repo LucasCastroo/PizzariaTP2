@@ -43,10 +43,10 @@
     <ng-container matColumnDef="acao">
       <th mat-header-cell *matHeaderCellDef> Ação </th>
       <td mat-cell *matCellDef="let element">
-        <button mat-icon-button color="primary" (click)="dialog.open(DialogCupomComponent, {width: '350px'})" routerLink="/cupons/edit/{{element.id}}">
+        <button mat-icon-button color="primary" (click)="dialog.open(DialogCupomComponent, {width: '350px', data: element})">
           <mat-icon>edit</mat-icon>
         </button>
-        <button mat-icon-button color="warn" >
+        <button mat-icon-button color="warn" (click)="dialog.open(DialogDeleteComponent, {data: element.id})">
           <mat-icon>delete</mat-icon>
         </button>
       </td>

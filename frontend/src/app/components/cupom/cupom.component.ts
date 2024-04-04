@@ -12,6 +12,7 @@ import {DialogCupomComponent} from "./dialog-cupom/dialog-cupom.component";
 import {MatDrawer, MatDrawerContainer} from "@angular/material/sidenav";
 import {DialogClienteComponent} from "../cliente/conta/dialog-cliente/dialog-cliente.component";
 import {RouterLink} from "@angular/router";
+import {DialogDeleteComponent} from "./dialog-delete/dialog-delete.component";
 
 
 @Component({
@@ -33,17 +34,14 @@ export class CupomComponent implements OnInit{
     })
   }
 
-  delete(id: string){
-    this.service.delete(id).subscribe({
-      next: () =>{
-        window.location.reload();
-      },
-      error: (err) =>{
-        console.log('Erro ao Deletar' + JSON.stringify(err));
-        this.snackBar.open("Erro ao Deletar");
-      }
-    })
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialog.open(DialogDeleteComponent, {
+      width: '250px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
   }
 
   protected readonly DialogCupomComponent = DialogCupomComponent;
+  protected readonly DialogDeleteComponent = DialogDeleteComponent;
 }

@@ -48,6 +48,6 @@ export class ContaClienteComponent implements OnInit{
     })
   }
 
-  protected readonly DialogCreateClienteComponent = DialogClienteComponent;
+  protected readonly DialogClienteComponent = DialogClienteComponent;
 }
 

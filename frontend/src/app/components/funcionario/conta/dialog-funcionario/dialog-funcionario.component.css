@@ -15,3 +15,9 @@
   color: white;
   font-family: Bahnschrift;
 }
+mat-card-actions{
+  justify-content: center;
+}
+mat-hint{
+  color: white;
+}
