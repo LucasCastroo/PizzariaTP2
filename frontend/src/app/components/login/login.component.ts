@@ -17,10 +17,10 @@ import {MatIconModule} from "@angular/material/icon";
     MatInputModule, MatButtonModule, MatCardModule,
     MatIconModule
   ],
-  templateUrl: './login-form.component.html',
-  styleUrl: './login-form.component.css'
+  templateUrl: './login.component.html',
+  styleUrl: './login.component.css'
 })
-export class LoginFormComponent {
+export class LoginComponent {
   hide = true;
   formGroup: FormGroup = new FormGroup(
     {
