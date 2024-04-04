@@ -9,6 +9,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Cupom} from "../../../models/cupom";
 import {CupomService} from "../../../services/cupom.service";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-dialog-create-cupom',
@@ -30,15 +31,17 @@ import {CupomService} from "../../../services/cupom.service";
   styleUrl: './dialog-cupom.component.css'
 })
 export class DialogCupomComponent {
+  durationInSecond = 5;
   formGroup: FormGroup;
   constructor(private formBuilder: FormBuilder,
               private service: CupomService,
               @Inject(MAT_DIALOG_DATA) data: Cupom,
               protected dialogRef: MatDialogRef<DialogCupomComponent>,
-              protected snackBar: MatSnackBar) {
+              protected snackBar: MatSnackBar,
+              private activatedRoute: ActivatedRoute) {
 
     this.formGroup = formBuilder.group({
-      id: [(data && data.id) ? data.id : ''],
+      id: [(data && data.id) ? data.id : null],
       codigo: [(data && data.codigo) ? data.codigo : '', Validators.required],
       desconto: [(data && data.desconto) ? data.desconto : '', Validators.required]
     });
@@ -71,6 +74,7 @@ export class DialogCupomComponent {
           error: (err) => {
             console.log('Erro ao Editar' + JSON.stringify(err));
             this.snackBar.open("Erro ao Editar");
+
           }
         });
       }

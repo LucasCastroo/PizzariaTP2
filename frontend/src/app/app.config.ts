@@ -4,7 +4,8 @@ import { routes } from './app.routes';
 import {HttpClientModule} from "@angular/common/http";
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {authInterceptorProvider} from "./services/auth.interceptor";
+import {provideNativeDateAdapter} from "@angular/material/core";
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes),authInterceptorProvider,  importProvidersFrom(HttpClientModule), provideAnimationsAsync()]
+  providers: [provideRouter(routes),authInterceptorProvider,  importProvidersFrom(HttpClientModule), provideAnimationsAsync(), provideNativeDateAdapter()]
 };
