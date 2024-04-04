@@ -16,9 +16,12 @@
 
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side">
-    <a href="http://localhost:4200/contas-cliente">Cliente</a>
+    <a id="txt-cliente" href="http://localhost:4200/contas-cliente">Cliente</a>
     <a href="http://localhost:4200/contas-funcionario"> Colaboradores</a>
     <a href="http://localhost:4200/cupons"> Cupons</a>
+    <button mat-icon-button color="white" id="btn-logout" (click)="logout()">
+      <mat-icon>logout</mat-icon>
+    </button>
   </mat-drawer>
 
 <table mat-table [dataSource]="clientes" class="mat-elevation-z8">

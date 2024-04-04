@@ -11,7 +11,7 @@ import {CupomService} from "../../services/cupom.service";
 import {DialogCupomComponent} from "./dialog-cupom/dialog-cupom.component";
 import {MatDrawer, MatDrawerContainer} from "@angular/material/sidenav";
 import {DialogClienteComponent} from "../cliente/conta/dialog-cliente/dialog-cliente.component";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {DialogDeleteComponent} from "./dialog-delete/dialog-delete.component";
 
 
@@ -26,7 +26,7 @@ export class CupomComponent implements OnInit{
   displayedColumns = ["id", "codigo", "desconto", "acao"];
   cupons: Cupom[] = []
 
-  constructor(private service: CupomService, public dialog: MatDialog, protected snackBar: MatSnackBar){}
+  constructor(private service: CupomService, public dialog: MatDialog, protected snackBar: MatSnackBar, private router: Router){}
 
   ngOnInit() {
     this.service.findAll().subscribe(data =>{
@@ -40,6 +40,10 @@ export class CupomComponent implements OnInit{
       enterAnimationDuration,
       exitAnimationDuration,
     });
+  }
+
+  logout() {
+    this.router.navigateByUrl('/login');
   }
 
   protected readonly DialogCupomComponent = DialogCupomComponent;

@@ -14,5 +14,5 @@ export const routes: Routes = [
 
   { path: 'contas-funcionario', component: ContaFuncionarioComponent, title: 'Contas' },
 
-  {path: "pizza", component: PizzaComponent, title: "Pizza"}
+  { path: "pizza", component: PizzaComponent, title: "Pizza" }
 ];

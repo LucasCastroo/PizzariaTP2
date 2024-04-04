@@ -6,7 +6,7 @@ import {MatInputModule} from "@angular/material/input";
 import {NgIf} from "@angular/common";
 import {MatButtonModule} from "@angular/material/button";
 import {AuthService} from "../../services/auth.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {MatIconModule} from "@angular/material/icon";
 
 @Component({
@@ -29,12 +29,13 @@ export class LoginComponent {
     }
   )
 
-  constructor(private service: AuthService, private route: ActivatedRoute) {
+  constructor(private service: AuthService, private route: ActivatedRoute, private router: Router) {
   }
 
   login(){
     this.route.url.subscribe(params =>{
       this.service.login(this.formGroup.value)
     })
+    this.router.navigateByUrl('/contas-funcionario');
   }
 }

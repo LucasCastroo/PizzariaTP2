@@ -39,13 +39,17 @@ export class ContaClienteComponent implements OnInit{
   clientes: Cliente[] = [];
 
   constructor(private clienteService: ClienteService,
-              public dialog: MatDialog) {
+              public dialog: MatDialog, private router: Router) {
   }
 
   ngOnInit() {
     this.clienteService.findAll().subscribe(data => {
       this.clientes = data;
     })
+  }
+
+  logout() {
+    this.router.navigateByUrl('/login');
   }
 
   protected readonly DialogClienteComponent = DialogClienteComponent;
