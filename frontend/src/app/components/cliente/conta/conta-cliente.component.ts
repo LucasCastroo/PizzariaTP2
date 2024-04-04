@@ -11,7 +11,7 @@ import {MatToolbar, MatToolbarModule} from "@angular/material/toolbar";
 import {Cliente} from "../../../models/cliente";
 import {ClienteService} from "../../../services/cliente.service";
 import {MatDialog} from "@angular/material/dialog";
-import {DialogCreateClienteComponent} from "./dialog-create-cliente/dialog-create-cliente.component";
+import {DialogClienteComponent} from "./dialog-cliente/dialog-cliente.component";
 import {MatDrawer, MatDrawerContainer} from "@angular/material/sidenav";
 
 @Component({
@@ -48,6 +48,6 @@ export class ContaClienteComponent implements OnInit{
     })
   }
 
-  protected readonly DialogCreateClienteComponent = DialogCreateClienteComponent;
+  protected readonly DialogCreateClienteComponent = DialogClienteComponent;
 }
 

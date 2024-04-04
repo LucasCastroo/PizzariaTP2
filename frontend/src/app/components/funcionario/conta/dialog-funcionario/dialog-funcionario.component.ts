@@ -33,15 +33,15 @@ import {NivelAcesso} from "../../../../models/nivel-acesso";
     NgOptimizedImage,
     MatSelectModule
   ],
-  templateUrl: './dialog-create-funcionario.component.html',
-  styleUrl: './dialog-create-funcionario.component.css'
+  templateUrl: './dialog-funcionario.component.html',
+  styleUrl: './dialog-funcionario.component.css'
 })
-export class DialogCreateFuncionarioComponent {
+export class DialogFuncionarioComponent {
   formGroup: FormGroup;
   constructor(private formBuilder: FormBuilder,
               private service: FuncionarioService,
               @Inject(MAT_DIALOG_DATA) data: Funcionario,
-              protected dialogRef: MatDialogRef<DialogCreateFuncionarioComponent>,
+              protected dialogRef: MatDialogRef<DialogFuncionarioComponent>,
               protected snackBar: MatSnackBar) {
 
     this.formGroup = formBuilder.group({

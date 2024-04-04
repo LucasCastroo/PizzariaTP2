@@ -1,6 +1,6 @@
 <div class="cabecalho">
   <img src="assets/logo.png" id="img-logo" alt="Logo">
-  <h2 class="titulo">Adicionar Cupom</h2>
+  <h2 class="titulo">Cupom</h2>
 </div>
 
 <div class="form-container">
@@ -9,19 +9,19 @@
       <form [formGroup]="formGroup">
         <mat-form-field appearance="fill" class="full-width-input">
           <mat-label>Código</mat-label>
-          <input matInput type="text" formControlName="nome">
-          <mat-error *ngIf="formGroup.get('nome')
-                                   && formGroup.get('nome')?.invalid
-                                   && formGroup.get('nome')?.touched">
+          <input matInput type="text" formControlName="codigo">
+          <mat-error *ngIf="formGroup.get('codigo')
+                                   && formGroup.get('codigo')?.invalid
+                                   && formGroup.get('codigo')?.touched">
             O código é obrigatorio.
           </mat-error>
         </mat-form-field>
         <mat-form-field appearance="fill" class="full-width-input">
           <mat-label>Desconto</mat-label>
-          <input matInput type="text" formControlName="cpf">
-          <mat-error *ngIf="formGroup.get('cpf')
-                                   && formGroup.get('cpf')?.invalid
-                                   && formGroup.get('cpf')?.touched">
+          <input matInput type="text" formControlName="desconto">
+          <mat-error *ngIf="formGroup.get('desconto')
+                                   && formGroup.get('desconto')?.invalid
+                                   && formGroup.get('desconto')?.touched">
             O desconto é obrigatorio.
           </mat-error>
         </mat-form-field>

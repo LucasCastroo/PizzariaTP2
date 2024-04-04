@@ -15,7 +15,7 @@ import {RouterLink} from "@angular/router";
 import {FuncionarioService} from "../../../services/funcionario.service";
 import {MatDialog} from "@angular/material/dialog";
 import {Funcionario} from "../../../models/funcionario";
-import {DialogCreateFuncionarioComponent} from "./dialog-create-funcionario/dialog-create-funcionario.component";
+import {DialogFuncionarioComponent} from "./dialog-funcionario/dialog-funcionario.component";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {NgOptimizedImage} from "@angular/common";
 
@@ -59,5 +59,5 @@ export class ContaFuncionarioComponent implements OnInit{
     })
   }
 
-  protected readonly DialogCreateComponent = DialogCreateFuncionarioComponent;
+  protected readonly DialogCreateComponent = DialogFuncionarioComponent;
 }
