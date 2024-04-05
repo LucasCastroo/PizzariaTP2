@@ -25,6 +25,9 @@ export class BebidaService {
     return this.httpClient.get<Bebida[]>(this.baseUrl, {params});
   }
 
+  delete(id: number){
+    return this.httpClient.delete(`${this.baseUrl}/delete/${id}`)
+  }
 
   countBebidas(){
     return this.httpClient.get<number>(`${this.baseUrl}/count/bebida`)
