@@ -62,5 +62,4 @@ export class PizzaListComponent implements OnInit{
   }
 
   protected readonly PizzaDialogComponent = PizzaDialogComponent;
-    protected readonly DialogCupomComponent = CupomDialogComponent;
 }

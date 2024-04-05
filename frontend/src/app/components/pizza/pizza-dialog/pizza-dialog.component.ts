@@ -5,16 +5,14 @@ import {MatError, MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {AsyncPipe, NgIf} from "@angular/common";
 import {MatOption, MatSelect} from "@angular/material/select";
-import {NivelAcesso} from "../../../models/nivel-acesso";
 import {TamanhoPizza} from "../../../models/tamanho-pizza";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {Funcionario} from "../../../models/funcionario";
 import {Pizza} from "../../../models/pizza";
 import {MatButton} from "@angular/material/button";
 import {
   MatAccordion,
   MatExpansionPanel,
-  MatExpansionPanelDescription, MatExpansionPanelHeader,
+  MatExpansionPanelHeader,
   MatExpansionPanelTitle
 } from "@angular/material/expansion";
 import {PorcaoPizza} from "../../../models/porcao-pizza";
@@ -104,7 +102,6 @@ export class PizzaDialogComponent {
 
   add(porcao: PorcaoPizza, event: MatChipInputEvent){
     const value = (event.value || '').trim();
-
   }
 
   selected(porcao: PorcaoPizza, event: MatAutocompleteSelectedEvent){
