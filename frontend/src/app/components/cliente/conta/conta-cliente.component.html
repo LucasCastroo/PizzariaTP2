@@ -6,7 +6,7 @@
     <img src="assets/logo.png" id="logo" alt="Logo">
     <span class="toolbar-title">Clientes</span>
     <button mat-fab color="accent" (click)="dialog.open(DialogClienteComponent, {
-      height: '690px',
+      height: '600px',
       width: '450px',
     })">
       <mat-icon>add</mat-icon>
@@ -17,8 +17,10 @@
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side">
     <a id="txt-cliente" href="http://localhost:4200/contas-cliente">Cliente</a>
-    <a href="http://localhost:4200/contas-funcionario"> Colaboradores</a>
-    <a href="http://localhost:4200/cupons"> Cupons</a>
+    <a href="http://localhost:4200/contas-funcionario">Colaboradores</a>
+    <a href="http://localhost:4200/cupons">Cupons</a>
+    <a href="http://localhost:4200/pizza">Pizzas</a>
+    <a href="http://localhost:4200/ingrediente">Ingredientes</a>
     <button mat-icon-button color="white" id="btn-logout" (click)="logout()">
       <mat-icon>logout</mat-icon>
     </button>
@@ -66,7 +68,11 @@
   <ng-container matColumnDef="acao">
     <th mat-header-cell *matHeaderCellDef> Ação </th>
     <td mat-cell *matCellDef="let element">
-      <button mat-icon-button color="primary" routerLink="/cliente/edit/{{element.id}}">
+      <button mat-icon-button color="primary" (click)="dialog.open(DialogClienteComponent, {
+      height: '600px',
+      width: '450px',
+      data: element
+    })">
         <mat-icon>edit</mat-icon>
       </button>
       <button mat-icon-button color="warn">

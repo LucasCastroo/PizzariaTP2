@@ -10,7 +10,6 @@ import {Cupom} from "../../models/cupom";
 import {CupomService} from "../../services/cupom.service";
 import {DialogCupomComponent} from "./dialog-cupom/dialog-cupom.component";
 import {MatDrawer, MatDrawerContainer} from "@angular/material/sidenav";
-import {DialogClienteComponent} from "../cliente/conta/dialog-cliente/dialog-cliente.component";
 import {Router, RouterLink} from "@angular/router";
 import {DialogDeleteComponent} from "./dialog-delete/dialog-delete.component";
 
@@ -32,14 +31,6 @@ export class CupomComponent implements OnInit{
     this.service.findAll().subscribe(data =>{
       this.cupons = data.sort((a, b) => a.id - b.id);
     })
-  }
-
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(DialogDeleteComponent, {
-      width: '250px',
-      enterAnimationDuration,
-      exitAnimationDuration,
-    });
   }
 
   logout() {

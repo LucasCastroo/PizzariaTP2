@@ -3,7 +3,8 @@ import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/
 import {MatButton} from "@angular/material/button";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatCellDef} from "@angular/material/table";
-import {ClienteService} from "../../../../services/cliente.service";
+import {FuncionarioService} from "../../../../services/funcionario.service";
+import {Funcionario} from "../../../../models/funcionario";
 
 
 @Component({
@@ -14,10 +15,11 @@ import {ClienteService} from "../../../../services/cliente.service";
   styleUrl: './dialog-delete.component.css'
 })
 export class DialogDeleteComponent {
-  constructor(public dialogRef: MatDialogRef<DialogDeleteComponent>, private service: ClienteService, protected snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) protected data: string) {}
+  constructor(public dialogRef: MatDialogRef<DialogDeleteComponent>, private service: FuncionarioService,
+              protected snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) protected funcionario: Funcionario) {}
 
   delete(){
-    this.service.delete(this.data).subscribe({
+    this.service.delete(this.funcionario).subscribe({
       next: () =>{
         window.location.reload();
       },

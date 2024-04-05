@@ -18,6 +18,7 @@ import {Funcionario} from "../../../models/funcionario";
 import {DialogFuncionarioComponent} from "./dialog-funcionario/dialog-funcionario.component";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {NgOptimizedImage} from "@angular/common";
+import {DialogDeleteComponent} from "./dialog-delete/dialog-delete.component";
 
 @Component({
   selector: 'app-conta-funcionario',
@@ -64,4 +65,5 @@ export class ContaFuncionarioComponent implements OnInit{
   }
 
   protected readonly DialogFuncionarioComponent = DialogFuncionarioComponent;
+  protected readonly DialogDeleteComponent = DialogDeleteComponent;
 }

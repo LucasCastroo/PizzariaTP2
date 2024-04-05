@@ -4,7 +4,6 @@ import {MatButton} from "@angular/material/button";
 import {CupomService} from "../../../services/cupom.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatCellDef} from "@angular/material/table";
-import {Cupom} from "../../../models/cupom";
 
 
 @Component({

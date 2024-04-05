@@ -7,7 +7,7 @@
   <mat-card id="card">
     <mat-card-content>
       <form [formGroup]="formGroup" class="flex-container">
-        <mat-form-field>
+        <mat-form-field appearance="outline" color="accent">
           <mat-label>Email</mat-label>
           <input matInput
                  placeholder="exemplo@email.com"
@@ -20,15 +20,12 @@
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field appearance="outline" color="accent">
           <mat-label>Senha</mat-label>
           <input
             required
             formControlName="senha"
             matInput [type]="hide ? 'password' : 'text'">
-          <button mat-icon-button matSuffix (click)="hide = !hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-          </button>
           <mat-error *ngIf="formGroup.get('senha')?.invalid && (formGroup.get('senha')?.dirty || formGroup.get('senha')?.touched)">
             Senha inválida.
           </mat-error>
