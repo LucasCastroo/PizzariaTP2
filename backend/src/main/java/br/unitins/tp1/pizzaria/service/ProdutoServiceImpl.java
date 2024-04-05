@@ -120,4 +120,14 @@ public class ProdutoServiceImpl implements ProdutoService {
         };
         return query.page(page, pageSize).stream().map(ProdutoResponseDTO::valueOf).toList();
     }
+
+    @Override
+    public Long count(TipoProduto tipo) {
+        return switch (tipo){
+            case PIZZA -> pizzaRepository.count();
+            case BEBIDA -> bebidaRepository.count();
+        };
+    }
+
+
 }

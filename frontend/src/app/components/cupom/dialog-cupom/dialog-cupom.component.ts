@@ -66,7 +66,7 @@ export class DialogCupomComponent {
           }
         });
       } else {
-        this.service.update(cupom.id,cupom).subscribe({
+        this.service.update(cupom.id, cupom).subscribe({
           next: (cupomAlterado) => {
             this.dialogRef.close();
             window.location.reload();

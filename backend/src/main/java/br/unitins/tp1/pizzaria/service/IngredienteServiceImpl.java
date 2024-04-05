@@ -46,6 +46,8 @@ public class IngredienteServiceImpl implements IngredienteService{
         }
     }
 
+
+
     @Override
     public IngredienteResponseDTO findById(Long id) {
         return IngredienteResponseDTO.valueOf(repository.findById(id));
@@ -59,5 +61,10 @@ public class IngredienteServiceImpl implements IngredienteService{
     @Override
     public Long count(){
         return repository.count();
+    }
+
+    @Override
+    public List<IngredienteResponseDTO> findByName(String nome) {
+        return repository.findByNome(nome).stream().map(IngredienteResponseDTO::valueOf).toList();
     }
 }

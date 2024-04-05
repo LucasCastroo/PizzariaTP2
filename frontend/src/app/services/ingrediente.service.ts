@@ -27,4 +27,23 @@ export class IngredienteService {
   count(){
     return this.httpClient.get<number>(`${this.baseUrl}/count`)
   }
+
+  search(nome: string){
+    let params = {q: nome}
+    return this.httpClient.get<Ingrediente[]>(`${this.baseUrl}/search`, {params})
+  }
+
+  create(ingrediente: Ingrediente){
+    return this.httpClient.post<Ingrediente>(`${this.baseUrl}`, ingrediente);
+  }
+
+  update(ingrediente: Ingrediente){
+    return this.httpClient.put<Ingrediente>(`${this.baseUrl}/update/${ingrediente.id}`, ingrediente);
+  }
+
+  delete(id: number){
+    this.httpClient.delete(`${this.baseUrl}/delete/${id}`).subscribe({
+      next: value => console.log("apagado")
+    });
+  }
 }

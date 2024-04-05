@@ -12,4 +12,5 @@ public interface IngredienteService {
     IngredienteResponseDTO findById(Long id);
     List<IngredienteResponseDTO> findAll(int page, int pageSize);
     Long count();
+    List<IngredienteResponseDTO> findByName(String nome);
 }

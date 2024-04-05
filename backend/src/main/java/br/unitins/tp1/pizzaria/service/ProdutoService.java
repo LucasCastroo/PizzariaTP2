@@ -20,4 +20,6 @@ public interface ProdutoService {
 
     List<ProdutoResponseDTO> findAll(int page, int pageSize, String tipo);
 
+    Long count(TipoProduto tipo);
+
 }

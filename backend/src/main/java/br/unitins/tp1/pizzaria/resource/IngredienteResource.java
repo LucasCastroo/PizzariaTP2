@@ -60,4 +60,10 @@ public class IngredienteResource {
         return service.count();
     }
 
+    @GET
+    @Path("/search")
+    public Response search(@QueryParam("q") String nome){
+        return Response.ok(service.findByName(nome)).build();
+    }
+
 }

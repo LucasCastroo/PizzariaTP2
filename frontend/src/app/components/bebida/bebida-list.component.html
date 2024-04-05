@@ -1,4 +1,4 @@
-<table mat-table [dataSource]="pizzas" class="mat-elevation-z8">
+<table mat-table [dataSource]="bebidas" class="mat-elevation-z8">
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef> Id </th>
     <td mat-cell *matCellDef="let element"> {{element.id}} </td>
@@ -12,28 +12,24 @@
     <td mat-cell *matCellDef="let element"> {{element.descricao}} </td>
   </ng-container>
   <ng-container matColumnDef="kCal">
-    <th mat-header-cell *matHeaderCellDef> kCal </th>
-    <td mat-cell *matCellDef="let element"> {{element.kCal}} </td>
+    <th mat-header-cell *matHeaderCellDef> Calorias </th>
+    <td mat-cell *matCellDef="let element"> {{element.kCal}} kCal </td>
   </ng-container>
-  <ng-container matColumnDef="quantPorcoes">
-    <th mat-header-cell *matHeaderCellDef> Quant. Porções </th>
-    <td mat-cell *matCellDef="let element"> {{element.quantPorcoes}} </td>
+  <ng-container matColumnDef="ml">
+    <th mat-header-cell *matHeaderCellDef> Tamanho </th>
+    <td mat-cell *matCellDef="let element"> {{element.ml}} mL </td>
   </ng-container>
   <ng-container matColumnDef="preco">
     <th mat-header-cell *matHeaderCellDef> Preço </th>
-    <td mat-cell *matCellDef="let element"> {{element.preco}} </td>
-  </ng-container>
-  <ng-container matColumnDef="tamanhoPizza">
-    <th mat-header-cell *matHeaderCellDef> Tamanho </th>
-    <td mat-cell *matCellDef="let element"> {{element.tamanhoPizza}} </td>
+    <td mat-cell *matCellDef="let element"> R${{parseFloat(element.preco).toFixed(2)}} </td>
   </ng-container>
   <ng-container matColumnDef="acao">
     <th mat-header-cell *matHeaderCellDef> Ação </th>
     <td mat-cell *matCellDef="let element">
-      <button mat-icon-button color="primary" (click)="dialog.open(PizzaDialogComponent, {data: element, width: '800px',height: '500px',})">
+      <button mat-icon-button color="primary" (click)="dialog.open(BebidaDialogComponent, {data: element, width: '800px'})">
         <mat-icon>edit</mat-icon>
       </button>
-      <button mat-icon-button color="warn">
+      <button mat-icon-button color="warn" (click)="produtoService.delete(element.id); window.location.reload()">
         <mat-icon>delete</mat-icon>
       </button>
     </td>
@@ -41,3 +37,9 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+<mat-paginator
+  [pageSizeOptions]="[10, 20, 40, 80, 100]"
+  [pageSize]="pageSize"
+  [length]="totalRecords"
+  (page)="paginar($event)">
+</mat-paginator>

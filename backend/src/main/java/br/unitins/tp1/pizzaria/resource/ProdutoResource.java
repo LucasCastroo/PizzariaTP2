@@ -94,4 +94,28 @@ public class ProdutoResource {
 
         return Response.ok(service.findAll(page, pageSize, tipo)).build();
     }
+
+    @GET
+    @Path("/count/pizza")
+    @PermitAll
+    public Long countPizzas(){
+        return service.count(TipoProduto.PIZZA);
+    }
+
+    @GET
+    @Path("/count/bebida")
+    @PermitAll
+    public Long countBebida(){
+        return service.count(TipoProduto.BEBIDA);
+    }
+
+    @DELETE
+    @Path("/delete/{id}")
+    @RolesAllowed({NivelAcesso.Role.GERENTE, NivelAcesso.Role.ADMIN})
+    public Response delete(@PathParam("id") Long id){
+        service.delete(id);
+        return Response.accepted().build();
+    }
+
+
 }

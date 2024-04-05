@@ -5,55 +5,55 @@ import {
   MatColumnDef,
   MatHeaderCell, MatHeaderCellDef,
   MatHeaderRow,
-  MatHeaderRowDef, MatRow, MatRowDef,
-  MatTable
+  MatHeaderRowDef,
+  MatRow, MatRowDef, MatTable
 } from "@angular/material/table";
 import {MatIcon} from "@angular/material/icon";
 import {MatIconButton} from "@angular/material/button";
-import {Ingrediente} from "../../models/ingrediente";
-import {IngredienteService} from "../../services/ingrediente.service";
+import {Bebida} from "../../models/bebida";
+import {BebidaService} from "../../services/bebida.service";
 import {MatPaginator, PageEvent} from "@angular/material/paginator";
-import {PizzaDialogComponent} from "../pizza/pizza-dialog/pizza-dialog.component";
-import {IngredienteDialogComponent} from "./ingrediente-dialog/ingrediente-dialog.component";
+import {DecimalPipe} from "@angular/common";
+import {BebidaDialogComponent} from "./bebida-dialog/bebida-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
+import {ProdutoService} from "../../services/produto.service";
 
 @Component({
-  selector: 'app-ingrediente-list',
+  selector: 'app-bebida-list',
   standalone: true,
   imports: [
     MatCell,
     MatCellDef,
     MatColumnDef,
     MatHeaderCell,
-    MatTable,
     MatHeaderRow,
     MatHeaderRowDef,
     MatIcon,
     MatIconButton,
     MatRow,
     MatRowDef,
+    MatTable,
+    MatPaginator,
     MatHeaderCellDef,
-    MatPaginator
+    DecimalPipe
   ],
-  templateUrl: './ingrediente-list.component.html',
-  styleUrl: './ingrediente-list.component.css'
+  templateUrl: './bebida-list.component.html',
+  styleUrl: './bebida-list.component.css'
 })
-export class IngredienteListComponent implements OnInit{
-  ingredientes: Ingrediente[] = []
-  displayedColumns = ["id", "nome", "categoria", "preco", "acao"]
+export class BebidaListComponent implements OnInit {
+  displayedColumns = ["id", "nome", "descricao", "kCal", "preco", "ml", "acao"]
+  bebidas: Bebida[] = []
   pageSize = 20
   totalRecords = 0;
   page = 0;
-  constructor(protected service: IngredienteService, public dialog: MatDialog) {
+  constructor(private service: BebidaService, protected dialog: MatDialog, protected produtoService: ProdutoService) {
   }
 
   ngOnInit() {
     this.service.findAll(this.page, this.pageSize).subscribe({
-      next: value => {
-        this.ingredientes = value
-      }
+      next: value => this.bebidas = value
     });
-    this.service.count().subscribe({
+    this.service.countBebidas().subscribe({
       next: value => {
         this.totalRecords = value;
       }
@@ -66,7 +66,7 @@ export class IngredienteListComponent implements OnInit{
     this.ngOnInit();
   }
 
-  protected readonly PizzaDialogComponent = PizzaDialogComponent;
-  protected readonly IngredienteDialogComponent = IngredienteDialogComponent;
+  protected readonly parseFloat = parseFloat;
+  protected readonly BebidaDialogComponent = BebidaDialogComponent;
   protected readonly window = window;
 }

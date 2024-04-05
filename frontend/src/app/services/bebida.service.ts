@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Pizza} from "../models/pizza";
+import {Bebida} from "../models/bebida";
 
 @Injectable({
   providedIn: 'root'
 })
-export class PizzaService {
+export class BebidaService {
   private baseUrl = "http://localhost:8080/produto";
   constructor(private httpClient: HttpClient) {
 
   }
 
-  findAll(page?: number, pageSize?: number): Observable<Pizza[]> {
+  findAll(page?: number, pageSize?: number): Observable<Bebida[]> {
     let params = {
-      tipo: "PIZZA",
+      tipo: "BEBIDA",
       page: "0",
       pageSize: "20"
     };
@@ -22,10 +22,13 @@ export class PizzaService {
       params.page = page.toString();
       params.pageSize = pageSize.toString();
     }
-    return this.httpClient.get<Pizza[]>(this.baseUrl, {params});
+    return this.httpClient.get<Bebida[]>(this.baseUrl, {params});
   }
 
-  countPizzas(){
-    return this.httpClient.get<number>(`${this.baseUrl}/count/pizza`)
+
+  countBebidas(){
+    return this.httpClient.get<number>(`${this.baseUrl}/count/bebida`)
   }
+
+
 }

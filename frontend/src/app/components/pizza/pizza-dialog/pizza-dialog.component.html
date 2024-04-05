@@ -1,0 +1,92 @@
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="formGroup">
+      <mat-form-field appearance="fill" class="full-width-input">
+        <mat-label>Nome</mat-label>
+        <input formControlName="nome" matInput type="text">
+        <mat-error *ngIf="formGroup.get('nome')
+                                   && formGroup.get('nome')?.invalid
+                                   && formGroup.get('nome')?.touched">
+          O nome é obrigatório.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="full-width-input">
+        <mat-label>Descrição</mat-label>
+        <input formControlName="descricao" matInput type="text">
+        <mat-error *ngIf="formGroup.get('descricao')
+                                   && formGroup.get('descricao')?.invalid
+                                   && formGroup.get('descricao')?.touched">
+          A descrição é obrigatória.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="full-width-input">
+        <mat-label>Preço</mat-label>
+        <input formControlName="preco" matInput type="text">
+        <mat-error *ngIf="formGroup.get('preco')
+                                   && formGroup.get('preco')?.invalid
+                                   && formGroup.get('preco')?.touched">
+          O preço é obrigatório.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="full-width-input">
+        <mat-label>Quilocalorias</mat-label>
+        <input formControlName="kCal" matInput type="text">
+        <mat-error *ngIf="formGroup.get('kCal')
+                                   && formGroup.get('kCal')?.invalid
+                                   && formGroup.get('kCal')?.touched">
+          A quilocaloria é obrigatória.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="full-width-input">
+        <mat-label>Tamanho</mat-label>
+        <mat-select formControlName="tamanhoPizza">
+          @for (tamanhoPizza of tamanhosPizza; track tamanhoPizza) {
+            <mat-option [value]="tamanhoPizza">{{ tamanhoPizza }}</mat-option>
+          }
+        </mat-select>
+        <mat-error *ngIf="formGroup.get('tamanhoPizza')
+                                   && formGroup.get('tamanhoPizza')?.invalid
+                                   && formGroup.get('tamanhoPizza')?.touched">
+          A quilocaloria é obrigatória.
+        </mat-error>
+      </mat-form-field>
+      <mat-label>Porções</mat-label>
+      <mat-accordion multi="false">
+        @for (porcao of porcoes; track porcao; let idx = $index) {
+          <mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Porção {{ idx + 1 }}
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-form-field appearance="fill" class="full-width-input">
+              <mat-label>
+                Ingredientes
+              </mat-label>
+              <mat-chip-grid #ingredientesGrid>
+                @for (ingrediente of porcao.ingredientes; track ingrediente) {
+                  <mat-chip-row (removed)="remove(porcao, ingrediente)">
+                    {{ ingrediente.nome }}
+                    <button matChipRemove>
+                      <mat-icon>cancel</mat-icon>
+                    </button>
+                  </mat-chip-row>
+                }
+              </mat-chip-grid>
+              <input placeholder="Adicionar ingrediente..." #ingredienteInput [formControl]="ingredienteCtrl"
+                     [matChipInputFor]="ingredientesGrid"
+                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="add(porcao, $event)" [matAutocomplete]="auto">
+              <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected(porcao, $event)">
+                @for (ingrediente of filteredIngredientes | async; track ingrediente){
+                  <mat-option [value]="ingrediente.id">{{ingrediente.nome}}</mat-option>
+                }
+              </mat-autocomplete>
+            </mat-form-field>
+          </mat-expansion-panel>
+        }
+      </mat-accordion>
+    </form>
+  </mat-card-content>
+  <mat-card-actions></mat-card-actions>
+</mat-card>
+
