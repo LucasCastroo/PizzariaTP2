@@ -8,10 +8,10 @@ import {MatDialog} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Cupom} from "../../models/cupom";
 import {CupomService} from "../../services/cupom.service";
-import {DialogCupomComponent} from "./dialog-cupom/dialog-cupom.component";
+import {CupomDialogComponent} from "./cupom-dialog/cupom-dialog.component";
 import {MatDrawer, MatDrawerContainer} from "@angular/material/sidenav";
 import {Router, RouterLink} from "@angular/router";
-import {DialogDeleteComponent} from "./dialog-delete/dialog-delete.component";
+import {CupomDialogDeleteComponent} from "./cupom-dialog-delete/cupom-dialog-delete.component";
 
 
 @Component({
@@ -37,6 +37,6 @@ export class CupomComponent implements OnInit{
     this.router.navigateByUrl('/login');
   }
 
-  protected readonly DialogCupomComponent = DialogCupomComponent;
-  protected readonly DialogDeleteComponent = DialogDeleteComponent;
+  protected readonly DialogCupomComponent = CupomDialogComponent;
+  protected readonly DialogDeleteComponent = CupomDialogDeleteComponent;
 }

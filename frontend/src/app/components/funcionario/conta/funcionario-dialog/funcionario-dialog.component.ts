@@ -37,15 +37,15 @@ import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from "@angular/m
     MatDatepickerInput,
     MatDatepickerToggle
   ],
-  templateUrl: './dialog-funcionario.component.html',
-  styleUrl: './dialog-funcionario.component.css'
+  templateUrl: './funcionario-dialog.component.html',
+  styleUrl: './funcionario-dialog.component.css'
 })
-export class DialogFuncionarioComponent {
+export class FuncionarioDialogComponent {
   formGroup: FormGroup;
   constructor(private formBuilder: FormBuilder,
               private service: FuncionarioService,
               @Inject(MAT_DIALOG_DATA) data: Funcionario,
-              protected dialogRef: MatDialogRef<DialogFuncionarioComponent>,
+              protected dialogRef: MatDialogRef<FuncionarioDialogComponent>,
               protected snackBar: MatSnackBar) {
 
     this.formGroup = formBuilder.group({

@@ -11,11 +11,11 @@ import {Funcionario} from "../../../../models/funcionario";
   selector: 'app-dialog-delete',
   standalone: true,
   imports: [MatDialogModule, MatButton, MatCellDef],
-  templateUrl: './dialog-delete.component.html',
-  styleUrl: './dialog-delete.component.css'
+  templateUrl: './funcionario-dialog-delete.component.html',
+  styleUrl: './funcionario-dialog-delete.component.css'
 })
-export class DialogDeleteComponent {
-  constructor(public dialogRef: MatDialogRef<DialogDeleteComponent>, private service: FuncionarioService,
+export class FuncionarioDialogDeleteComponent {
+  constructor(public dialogRef: MatDialogRef<FuncionarioDialogDeleteComponent>, private service: FuncionarioService,
               protected snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) protected funcionario: Funcionario) {}
 
   delete(){

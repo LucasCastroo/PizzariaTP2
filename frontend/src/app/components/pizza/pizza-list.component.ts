@@ -10,8 +10,8 @@ import {
   MatTable
 } from "@angular/material/table";
 import {Pizza} from "../../models/pizza";
-import {DialogCupomComponent} from "../cupom/dialog-cupom/dialog-cupom.component";
-import {DialogDeleteComponent} from "../cupom/dialog-delete/dialog-delete.component";
+import {CupomDialogComponent} from "../cupom/cupom-dialog/cupom-dialog.component";
+import {CupomDialogDeleteComponent} from "../cupom/cupom-dialog-delete/cupom-dialog-delete.component";
 import {MatIcon} from "@angular/material/icon";
 import {MatIconButton} from "@angular/material/button";
 

@@ -10,11 +10,11 @@ import {MatCellDef} from "@angular/material/table";
   selector: 'app-dialog-delete',
   standalone: true,
   imports: [MatDialogModule, MatButton, MatCellDef],
-  templateUrl: './dialog-delete.component.html',
-  styleUrl: './dialog-delete.component.css'
+  templateUrl: './cupom-dialog-delete.component.html',
+  styleUrl: './cupom-dialog-delete.component.css'
 })
-export class DialogDeleteComponent {
-  constructor(public dialogRef: MatDialogRef<DialogDeleteComponent>, private service: CupomService, protected snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) protected data: string) {}
+export class CupomDialogDeleteComponent {
+  constructor(public dialogRef: MatDialogRef<CupomDialogDeleteComponent>, private service: CupomService, protected snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) protected data: string) {}
 
   delete(){
     this.service.delete(this.data).subscribe({
