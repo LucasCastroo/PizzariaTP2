@@ -3,10 +3,7 @@ package br.unitins.tp1.pizzaria.service;
 import br.unitins.tp1.pizzaria.dto.ProdutoDTO;
 import br.unitins.tp1.pizzaria.dto.ProdutoResponseDTO;
 import br.unitins.tp1.pizzaria.model.*;
-import br.unitins.tp1.pizzaria.repository.BebidaRepository;
-import br.unitins.tp1.pizzaria.repository.IngredienteRepository;
-import br.unitins.tp1.pizzaria.repository.PizzaRepository;
-import br.unitins.tp1.pizzaria.repository.ProdutoRepository;
+import br.unitins.tp1.pizzaria.repository.*;
 import io.quarkus.hibernate.orm.panache.PanacheQuery;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -39,7 +36,7 @@ public class ProdutoServiceImpl implements ProdutoService {
             pizza.setkCal(dto.kCal());
             pizza.setPreco(dto.preco());
             pizza.setPizzaPronta(dto.pizzaPronta());
-            pizza.setQuantPorcoes(dto.quantPorcoes());
+            pizza.setQuantPorcoes(dto.porcoes().size());
             Set<PorcaoPizza> porcoes = new HashSet<>();
             dto.porcoes().forEach(porcaoDTO -> {
                 PorcaoPizza porcao = new PorcaoPizza();
@@ -79,14 +76,35 @@ public class ProdutoServiceImpl implements ProdutoService {
         if (dto.kCal() != null) produto.setkCal(dto.kCal());
         if (dto.nome() != null) produto.setNome(dto.nome());
         if (dto.preco() != null) produto.setPreco(dto.preco());
+        repository.persistAndFlush(produto);
+
         if(dto.tipo() == TipoProduto.PIZZA){
-            if (dto.tamanhoPizza() != null) ((Pizza) produto).setTamanhoPizza(dto.tamanhoPizza());
+            Pizza pizza = pizzaRepository.findById(id);
+            if (dto.tamanhoPizza() != null) pizza.setTamanhoPizza(dto.tamanhoPizza());
+            if (dto.porcoes() != null){
+                pizza.getPorcoes().clear();
+                Set<PorcaoPizza> porcoes = new HashSet<>();
+                dto.porcoes().forEach(porcaoDTO -> {
+                    PorcaoPizza porcao = new PorcaoPizza();
+                    Set<Ingrediente> ingredientes = new HashSet<>();
+                    porcaoDTO.idIngredientes().forEach(idIgr ->{
+                        Ingrediente ingrediente = ingredienteRepository.findById(idIgr);
+                        if(ingrediente != null) ingredientes.add(ingrediente);
+                    });
+                    porcao.setIngredientes(ingredientes);
+                    porcoes.add(porcao);
+                });
+                pizza.setPorcoes(porcoes);
+                pizza.setQuantPorcoes(porcoes.size());
+            }
+            pizzaRepository.persistAndFlush(pizza);
         }else if(dto.tipo() == TipoProduto.BEBIDA) {
             if (dto.ml() != null) ((Bebida) produto).setMl(dto.ml());
+            repository.persistAndFlush(produto);
         }else{
             throw new RuntimeException("Tipo de item desconhecido");
         }
-        repository.persistAndFlush(produto);
+
         return ProdutoResponseDTO.valueOf(produto);
     }
 

@@ -74,7 +74,8 @@ export class BebidaDialogComponent {
   save(){
     if(this.formGroup.valid){
       const bebida = this.formGroup.value
-      bebida["tipo"] = "PIZZA"
+      bebida["tipo"] = "BEBIDA"
+
       if(bebida.id == null){
         this.produtoService.create(bebida).subscribe({
           next: value => {
