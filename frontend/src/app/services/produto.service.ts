@@ -21,6 +21,6 @@ export class ProdutoService {
   }
 
   delete(id: number){
-    this.httpClient.delete(`${this.baseUrl}/delete/${id}`)
+    return this.httpClient.delete<void>(`${this.baseUrl}/delete/${id}`)
   }
 }

@@ -66,6 +66,14 @@ export class BebidaListComponent implements OnInit {
     this.ngOnInit();
   }
 
+  delete(id: number){
+    this.produtoService.delete(id).subscribe({
+      next: value => {
+        window.location.reload();
+      }
+    });
+  }
+
   protected readonly parseFloat = parseFloat;
   protected readonly BebidaDialogComponent = BebidaDialogComponent;
   protected readonly window = window;

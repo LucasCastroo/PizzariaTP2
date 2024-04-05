@@ -47,7 +47,7 @@
       <button mat-icon-button color="primary" (click)="dialog.open(IngredienteDialogComponent, {data: element, width: '350px',})">
         <mat-icon>edit</mat-icon>
       </button>
-      <button mat-icon-button color="warn" (click)="service.delete(element.id); window.location.reload();">
+      <button mat-icon-button color="warn" (click)="delete(element.id)">
         <mat-icon>delete</mat-icon>
       </button>
     </td>

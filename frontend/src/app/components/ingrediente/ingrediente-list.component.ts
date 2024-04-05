@@ -77,7 +77,13 @@ export class IngredienteListComponent implements OnInit{
     this.pageSize = event.pageSize;
     this.ngOnInit();
   }
-
+  delete(id: number){
+    this.service.delete(id).subscribe({
+      next: value => {
+        window.location.reload();
+      }
+    });
+  }
   protected readonly PizzaDialogComponent = PizzaDialogComponent;
   protected readonly IngredienteDialogComponent = IngredienteDialogComponent;
   protected readonly window = window;

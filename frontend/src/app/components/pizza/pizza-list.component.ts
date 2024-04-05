@@ -18,6 +18,7 @@ import {CupomDialogComponent} from "../cupom/cupom-dialog/cupom-dialog.component
 import {MatToolbar} from "@angular/material/toolbar";
 import {MatDrawer, MatDrawerContainer} from "@angular/material/sidenav";
 import {Router} from "@angular/router";
+import {ProdutoService} from "../../services/produto.service";
 
 @Component({
   selector: 'app-pizza',
@@ -47,7 +48,7 @@ import {Router} from "@angular/router";
 export class PizzaListComponent implements OnInit{
   displayedColumns = ["id", "nome", "descricao", "kCal", "quantPorcoes", "preco", "tamanhoPizza", "acao"]
   pizzas: Pizza[] = []
-  constructor(private service: PizzaService, public dialog: MatDialog, private router: Router) {
+  constructor(private service: PizzaService, private produtoService: ProdutoService, public dialog: MatDialog, private router: Router) {
   }
   ngOnInit(): void {
     this.service.findAll(0, 20).subscribe({
@@ -59,6 +60,14 @@ export class PizzaListComponent implements OnInit{
 
   logout() {
     this.router.navigateByUrl('/login');
+  }
+
+  delete(id: number){
+    this.produtoService.delete(id).subscribe({
+      next: value => {
+        window.location.reload();
+      }
+    });
   }
 
   protected readonly PizzaDialogComponent = PizzaDialogComponent;

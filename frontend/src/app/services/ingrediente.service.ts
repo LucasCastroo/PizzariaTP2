@@ -42,8 +42,6 @@ export class IngredienteService {
   }
 
   delete(id: number){
-    this.httpClient.delete(`${this.baseUrl}/delete/${id}`).subscribe({
-      next: value => console.log("apagado")
-    });
+    return this.httpClient.delete<void>(`${this.baseUrl}/delete/${id}`);
   }
 }
