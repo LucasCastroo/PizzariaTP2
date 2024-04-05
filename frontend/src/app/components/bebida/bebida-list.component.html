@@ -1,3 +1,31 @@
+<mat-toolbar color="warn">
+  <div class="flex-container">
+    <button mat-icon-button (click)="drawer.toggle()">
+      <mat-icon fontIcon="list"></mat-icon>
+    </button>
+    <img src="../../../assets/logo.png" id="logo" alt="Logo">
+    <span class="toolbar-title">Bebidas</span>
+    <button mat-fab color="accent" (click)="dialog.open(BebidaDialogComponent, {
+      width: '350px'})">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <a id="txt-usuario" href="http://localhost:4200/usuario">Usuários</a>
+    <a href="http://localhost:4200/contas-cliente">Clientes</a>
+    <a href="http://localhost:4200/contas-funcionario">Colaboradores</a>
+    <a href="http://localhost:4200/cupons">Cupons</a>
+    <a href="http://localhost:4200/pizza">Pizzas</a>
+    <a href="http://localhost:4200/bebida">Bebidas</a>
+    <a href="http://localhost:4200/ingrediente">Ingredientes</a>
+    <button mat-icon-button color="white" id="btn-logout" (click)="logout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </mat-drawer>
+
 <table mat-table [dataSource]="bebidas" class="mat-elevation-z8">
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef> Id </th>
@@ -43,3 +71,4 @@
   [length]="totalRecords"
   (page)="paginar($event)">
 </mat-paginator>
+</mat-drawer-container>á

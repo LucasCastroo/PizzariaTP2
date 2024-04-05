@@ -1,5 +1,6 @@
 #img-logo{
   width: 64px;
+
 }
 .cabecalho{
   align-items: center;
@@ -16,4 +17,7 @@
 }
 mat-card-actions{
   justify-content: center;
+}
+mat-hint{
+  color: white;
 }

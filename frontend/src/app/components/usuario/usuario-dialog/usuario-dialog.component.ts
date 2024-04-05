@@ -7,14 +7,13 @@ import {
 } from "@angular/material/dialog";
 import {MatError, MatFormField, MatFormFieldModule, MatLabel} from "@angular/material/form-field";
 import {MatInput, MatInputModule} from "@angular/material/input";
-import {Funcionario} from "../../../../models/funcionario";
-import { FuncionarioService } from "../../../../services/funcionario.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatCard, MatCardActions, MatCardContent, MatCardModule} from "@angular/material/card";
 import {NgIf, NgOptimizedImage} from "@angular/common";
 import {MatSelectModule} from "@angular/material/select";
-import {NivelAcesso} from "../../../../models/nivel-acesso";
 import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from "@angular/material/datepicker";
+import {UsuarioService} from "../../../services/usuario.service";
+import {Usuario} from "../../../models/usuario";
 
 @Component({
   selector: 'app-dialog-create',
@@ -37,21 +36,24 @@ import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from "@angular/m
     MatDatepickerInput,
     MatDatepickerToggle
   ],
-  templateUrl: './funcionario-dialog.component.html',
-  styleUrl: './funcionario-dialog.component.css'
+  templateUrl: './usuario-dialog.component.html',
+  styleUrl: './usuario-dialog.component.css'
 })
-export class FuncionarioDialogComponent {
+export class UsuarioDialogComponent {
   formGroup: FormGroup;
   constructor(private formBuilder: FormBuilder,
-              private service: FuncionarioService,
-              @Inject(MAT_DIALOG_DATA) data: Funcionario,
-              protected dialogRef: MatDialogRef<FuncionarioDialogComponent>,
+              private service: UsuarioService,
+              @Inject(MAT_DIALOG_DATA) data: Usuario,
+              protected dialogRef: MatDialogRef<UsuarioDialogComponent>,
               protected snackBar: MatSnackBar) {
 
     this.formGroup = formBuilder.group({
       id: [(data && data.id) ? data.id : null],
-      idUsuario: [(data && data.usuario.id) ? data.usuario.id : ''],
-      tipoAcesso: [(data && data.tipoAcesso) ? data.tipoAcesso : '', Validators.required]
+      nome: [(data && data.nome) ? data.nome : '', Validators.required],
+      email: [(data && data.email) ? data.email : '', Validators.required],
+      cpf: [(data && data.cpf) ? data.cpf : '', Validators.required],
+      senha: [(data && data.senha) ? data.senha: '', Validators.required],
+      nascimento: [(data && data.nascimento) ? data.nascimento : '', Validators.required]
     });
   }
 
@@ -61,10 +63,10 @@ export class FuncionarioDialogComponent {
 
   save(){
     if(this.formGroup.valid){
-      const funcionario = this.formGroup.value;
-      if (funcionario.id ==null) {
-        this.service.insert(funcionario).subscribe({
-          next: (funcionarioCadastrado) => {
+      const usuario = this.formGroup.value;
+      if (usuario.id ==null) {
+        this.service.insert(usuario).subscribe({
+          next: (usuarioCadastrado) => {
             this.dialogRef.close();
             window.location.reload();
           },
@@ -74,8 +76,8 @@ export class FuncionarioDialogComponent {
           }
         });
       } else {
-        this.service.update(funcionario).subscribe({
-          next: (funcionarioAlterado) => {
+        this.service.update(usuario).subscribe({
+          next: (usuarioAlterado) => {
             this.dialogRef.close();
             window.location.reload();
           },
@@ -87,6 +89,5 @@ export class FuncionarioDialogComponent {
       }
     }
   }
-  protected readonly NivelAcesso = NivelAcesso;
   protected readonly Object = Object;
 }

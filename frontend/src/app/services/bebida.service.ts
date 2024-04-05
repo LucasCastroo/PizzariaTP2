@@ -33,5 +33,4 @@ export class BebidaService {
     return this.httpClient.get<number>(`${this.baseUrl}/count/bebida`)
   }
 
-
 }

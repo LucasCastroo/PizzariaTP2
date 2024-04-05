@@ -24,6 +24,8 @@ import {COMMA, ENTER} from "@angular/cdk/keycodes";
 import {debounceTime, distinctUntilChanged, Observable, startWith, switchMap} from "rxjs";
 import {IngredienteService} from "../../../services/ingrediente.service";
 import {PorcaoPizzaService} from "../../../services/porcao-pizza.service";
+import {PizzaService} from "../../../services/pizza.service";
+import {ProdutoService} from "../../../services/produto.service";
 
 @Component({
   selector: 'app-pizza-dialog',
@@ -71,16 +73,16 @@ export class PizzaDialogComponent {
               @Inject(MAT_DIALOG_DATA) data: Pizza,
               private ingredienteService: IngredienteService,
               protected dialogRef: MatDialogRef<PizzaDialogComponent>,
-              private porcaoPizzaService: PorcaoPizzaService) {
+              private produtoService: ProdutoService) {
     this.tamanhosPizza = Object.keys(TamanhoPizza).filter(x => isNaN(parseInt(x)))
     this.porcoes = data.porcoes;
     this.formGroup = formBuilder.group({
+      id: [(data && data.id) ? data.id : null],
       nome: [(data && data.nome) ? data.nome : '', Validators.required],
       descricao: [(data && data.descricao) ? data.descricao : '', Validators.required],
       preco: [(data && data.preco) ? data.preco : '', Validators.required],
       kCal: [(data && data.kCal) ? data.kCal : '', Validators.required],
       tamanhoPizza: [(data && data.tamanhoPizza) ? data.tamanhoPizza : '', Validators.required],
-
     });
     this.filteredIngredientes = this.ingredienteCtrl.valueChanges.pipe(
       startWith(""),
@@ -100,16 +102,36 @@ export class PizzaDialogComponent {
     console.log(ingrediente.id)
   }
 
-  add(porcao: PorcaoPizza, event: MatChipInputEvent){
-    const value = (event.value || '').trim();
-  }
-
   selected(porcao: PorcaoPizza, event: MatAutocompleteSelectedEvent){
-    console.log("opa")
-    this.porcaoPizzaService.addIngrediente(porcao.id.toString(), event.option.value).subscribe(
-
-    );
+    porcao.ingredientes.push(event.option.value);
     this.ingredienteInput ? this.ingredienteInput.nativeElement.value = '' : undefined;
     this.ingredienteCtrl.setValue(null);
+  }
+
+  save(){
+    if(this.formGroup.valid){
+      const pizza = this.formGroup.value
+      pizza["tipo"] = "PIZZA"
+      pizza.porcoes = []
+      this.porcoes.forEach(p =>{
+        pizza.porcoes.push({idIngredientes: p.ingredientes.map(i => i.id)})
+      })
+      console.log(pizza)
+      if(pizza.id == null){
+        this.produtoService.create(pizza).subscribe({
+          next: value => {
+            this.dialogRef.close();
+            window.location.reload()
+            }
+        });
+      }else {
+        this.produtoService.update(pizza).subscribe({
+          next: value => {
+            this.dialogRef.close();
+            window.location.reload()
+          }
+        });
+      }
+    }
   }
 }

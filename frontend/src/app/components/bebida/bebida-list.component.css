@@ -1,0 +1,76 @@
+.mat-elevation-z8 {
+  width: 85%;
+}
+.toolbar-title{
+  flex: 1;
+  text-align: center;
+}
+.flex-container{
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.mat-column-id{
+  width: 5em;
+  border-right: 1px solid currentColor;
+  padding-right: 24px;
+  text-align: center;
+}
+.mat-column-nome{
+  width: 30%;
+}
+.mat-column-cpf{
+  text-align: center;
+  min-width: 2em;
+}
+.mat-column-email{
+  text-align: center;
+  min-width: 2em;
+}
+.mat-column-telefone{
+  text-align: center;
+  min-width: 2em;
+}
+.mat-column-acao{
+  text-align: center;
+  min-width: 10em;
+}
+#logo{
+  width: 47px;
+  margin-left: 15px;
+}
+
+.example-sidenav-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-container{
+  height: 100%;
+}
+
+.example-sidenav {
+  width: 190px;
+  background-color: #F44336;
+  display: grid;
+  text-align: center;
+  justify-content: center;
+}
+
+.example-sidenav a{
+  margin-top: 55px;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  justify-content: center;
+  display: grid;
+}
+
+#txt-usuario{
+  margin-top: 3rem;
+}
+
+#btn-logout{
+  margin-top: 55px;
+}

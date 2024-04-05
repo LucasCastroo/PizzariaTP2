@@ -6,7 +6,7 @@
     <img src="assets/logo.png" id="logo" alt="Logo">
     <span class="toolbar-title">Clientes</span>
     <button mat-fab color="accent" (click)="dialog.open(DialogClienteComponent, {
-      height: '600px',
+      height: '380px',
       width: '450px',
     })">
       <mat-icon>add</mat-icon>
@@ -16,10 +16,12 @@
 
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side">
-    <a id="txt-cliente" href="http://localhost:4200/contas-cliente">Cliente</a>
+    <a id="txt-usuario" href="http://localhost:4200/usuario">Usuários</a>
+    <a href="http://localhost:4200/contas-cliente">Clientes</a>
     <a href="http://localhost:4200/contas-funcionario">Colaboradores</a>
     <a href="http://localhost:4200/cupons">Cupons</a>
     <a href="http://localhost:4200/pizza">Pizzas</a>
+    <a href="http://localhost:4200/bebida">Bebidas</a>
     <a href="http://localhost:4200/ingrediente">Ingredientes</a>
     <button mat-icon-button color="white" id="btn-logout" (click)="logout()">
       <mat-icon>logout</mat-icon>

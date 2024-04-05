@@ -9,7 +9,7 @@ import {
   MatRow, MatRowDef, MatTable
 } from "@angular/material/table";
 import {MatIcon} from "@angular/material/icon";
-import {MatIconButton} from "@angular/material/button";
+import {MatFabButton, MatIconButton} from "@angular/material/button";
 import {Bebida} from "../../models/bebida";
 import {BebidaService} from "../../services/bebida.service";
 import {MatPaginator, PageEvent} from "@angular/material/paginator";
@@ -17,6 +17,10 @@ import {DecimalPipe} from "@angular/common";
 import {BebidaDialogComponent} from "./bebida-dialog/bebida-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
 import {ProdutoService} from "../../services/produto.service";
+import {CupomDialogComponent} from "../cupom/cupom-dialog/cupom-dialog.component";
+import {MatToolbar} from "@angular/material/toolbar";
+import {MatDrawer, MatDrawerContainer} from "@angular/material/sidenav";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-bebida-list',
@@ -35,7 +39,11 @@ import {ProdutoService} from "../../services/produto.service";
     MatTable,
     MatPaginator,
     MatHeaderCellDef,
-    DecimalPipe
+    DecimalPipe,
+    MatFabButton,
+    MatToolbar,
+    MatDrawer,
+    MatDrawerContainer
   ],
   templateUrl: './bebida-list.component.html',
   styleUrl: './bebida-list.component.css'
@@ -46,7 +54,7 @@ export class BebidaListComponent implements OnInit {
   pageSize = 20
   totalRecords = 0;
   page = 0;
-  constructor(private service: BebidaService, protected dialog: MatDialog, protected produtoService: ProdutoService) {
+  constructor(private service: BebidaService, protected dialog: MatDialog, protected produtoService: ProdutoService, private router: Router) {
   }
 
   ngOnInit() {
@@ -59,6 +67,11 @@ export class BebidaListComponent implements OnInit {
       }
     })
   }
+
+  logout() {
+    this.router.navigateByUrl('/login');
+  }
+
 
   paginar(event: PageEvent): void {
     this.page = event.pageIndex;
@@ -77,4 +90,5 @@ export class BebidaListComponent implements OnInit {
   protected readonly parseFloat = parseFloat;
   protected readonly BebidaDialogComponent = BebidaDialogComponent;
   protected readonly window = window;
+  protected readonly DialogCupomComponent = CupomDialogComponent;
 }

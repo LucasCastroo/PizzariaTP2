@@ -57,12 +57,8 @@ export class ClienteDialogComponent {
               protected snackBar: MatSnackBar) {
 
     this.formGroup = formBuilder.group({
-      id: [(data && data.id) ? data.id : null],
-      nome: [(data && data.usuario.nome) ? data.usuario.nome : '', Validators.required],
-      cpf: [(data && data.usuario.cpf) ? data.usuario.cpf : '', Validators.required],
-      email: [(data && data.usuario.email) ? data.usuario.email : '', Validators.required],
-      senha: [(data && data.usuario.senha) ? data.usuario.senha : '', Validators.required],
-      nascimento: [(data && data.usuario.nascimento) ? data.usuario.nascimento : '', Validators.required],
+      id: [(data && data.id) ? data.usuario.id : null],
+      idUsuario: [(data && data.usuario.id) ? data.usuario.id : '', Validators.required],
       telefone: [(data && data.telefone) ? data.telefone : '', Validators.required]
     });
   }

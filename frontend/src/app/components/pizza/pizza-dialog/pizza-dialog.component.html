@@ -80,10 +80,10 @@
               </mat-chip-grid>
               <input placeholder="Adicionar ingrediente..." #ingredienteInput [formControl]="ingredienteCtrl"
                      [matChipInputFor]="ingredientesGrid"
-                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes" (matChipInputTokenEnd)="add(porcao, $event)" [matAutocomplete]="auto">
+                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matAutocomplete]="auto">
               <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected(porcao, $event)">
                 @for (ingrediente of filteredIngredientes | async; track ingrediente){
-                  <mat-option [value]="ingrediente.id">{{ingrediente.nome}}</mat-option>
+                  <mat-option [value]="ingrediente">{{ingrediente.nome}}</mat-option>
                 }
               </mat-autocomplete>
             </mat-form-field>
@@ -95,7 +95,7 @@
   <mat-card-actions>
     <button mat-raised-button
             color="warn"
-
+            (click)="save()"
             [disabled]="formGroup.invalid">
       Salvar
     </button>

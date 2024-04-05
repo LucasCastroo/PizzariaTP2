@@ -12,7 +12,7 @@ import java.util.Set;
 
 public record ProdutoDTO(@NotBlank String nome, @NotBlank String descricao, @Positive Double preco,
                          @Positive Integer kCal, @NotNull TipoProduto tipo, @Nullable Integer ml,
-                         @Nullable TamanhoPizza tamanhoPizza, @Nullable Integer quantPorcoes, Set<PorcaoPizzaDTO> porcoes, @Nullable Boolean pizzaPronta) {
+                         @Nullable TamanhoPizza tamanhoPizza, Set<PorcaoPizzaDTO> porcoes, @Nullable Boolean pizzaPronta) {
     public ProdutoDTO {
         if(porcoes == null) porcoes = new HashSet<>();
     }
