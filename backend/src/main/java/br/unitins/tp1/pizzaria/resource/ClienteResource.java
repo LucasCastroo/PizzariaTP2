@@ -13,6 +13,8 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.jboss.logging.Logger;
 
+import static io.quarkus.arc.ComponentsProvider.LOG;
+
 @Path("/clientes")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
@@ -20,7 +22,6 @@ public class ClienteResource {
     @Inject
     ClienteService service;
 
-    private static final Logger LOG = Logger.getLogger(AuthResource.class);
 
     @POST
     public Response insert(@Valid ClienteDTO dto) {

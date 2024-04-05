@@ -45,7 +45,6 @@ public class FuncionarioResource {
     @Transactional
     public Response update(FuncionarioDTO dto, @PathParam("id") Long id) {
         service.update(dto, id);
-        LOG.infof("Informações de funcionario id=%d atualizadas!", id);
         return Response.status(Status.NO_CONTENT).build();
     }
 
