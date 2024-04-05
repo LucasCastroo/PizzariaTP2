@@ -3,22 +3,23 @@ import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from '@angular/material/
 import {MatButton} from "@angular/material/button";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {MatCellDef} from "@angular/material/table";
-import {BebidaService} from "../../../services/bebida.service";
+import {PizzaService} from "../../../services/pizza.service";
+import {Pizza} from "../../../models/pizza";
 
 
 @Component({
   selector: 'app-dialog-delete',
   standalone: true,
   imports: [MatDialogModule, MatButton, MatCellDef],
-  templateUrl: './bebida-dialog-delete.component.html',
-  styleUrl: './bebida-dialog-delete.component.css'
+  templateUrl: './pizza-dialog-delete.component.html',
+  styleUrl: './pizza-dialog-delete.component.css'
 })
-export class BebidaDialogDeleteComponent {
-  constructor(public dialogRef: MatDialogRef<BebidaDialogDeleteComponent>, private service: BebidaService,
-              protected snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) protected data: number) {}
+export class PizzaDialogDeleteComponent {
+  constructor(public dialogRef: MatDialogRef<PizzaDialogDeleteComponent>, private service: PizzaService,
+              protected snackBar: MatSnackBar, @Inject(MAT_DIALOG_DATA) protected pizza: Pizza) {}
 
   delete(){
-    this.service.delete(this.data).subscribe({
+    this.service.delete(this.pizza.id).subscribe({
       next: () =>{
         window.location.reload();
       },

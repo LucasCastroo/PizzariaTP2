@@ -25,6 +25,10 @@ export class PizzaService {
     return this.httpClient.get<Pizza[]>(this.baseUrl, {params});
   }
 
+  delete(id: number){
+    return this.httpClient.delete(`${this.baseUrl}/delete/${id}`)
+  }
+
   countPizzas(){
     return this.httpClient.get<number>(`${this.baseUrl}/count/pizza`)
   }
