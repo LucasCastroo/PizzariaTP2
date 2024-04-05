@@ -63,7 +63,7 @@ import {ProdutoService} from "../../../services/produto.service";
 export class PizzaDialogComponent {
   formGroup: FormGroup
   tamanhosPizza: string[]
-  porcoes: PorcaoPizza[]
+  porcoes: PorcaoPizza[] = []
   separatorKeysCodes: number[] = [ENTER, COMMA];
   ingredienteCtrl = new FormControl("");
   filteredIngredientes: Observable<Ingrediente[]>;
@@ -75,7 +75,7 @@ export class PizzaDialogComponent {
               protected dialogRef: MatDialogRef<PizzaDialogComponent>,
               private produtoService: ProdutoService) {
     this.tamanhosPizza = Object.keys(TamanhoPizza).filter(x => isNaN(parseInt(x)))
-    this.porcoes = data.porcoes;
+    if(data != null) this.porcoes = data.porcoes;
     this.formGroup = formBuilder.group({
       id: [(data && data.id) ? data.id : null],
       nome: [(data && data.nome) ? data.nome : '', Validators.required],
