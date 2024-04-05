@@ -11,9 +11,13 @@ import {
 } from "@angular/material/table";
 import {Pizza} from "../../models/pizza";
 import {MatIcon} from "@angular/material/icon";
-import {MatIconButton} from "@angular/material/button";
+import {MatFabButton, MatIconButton} from "@angular/material/button";
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 import {PizzaDialogComponent} from "./pizza-dialog/pizza-dialog.component";
+import {CupomDialogComponent} from "../cupom/cupom-dialog/cupom-dialog.component";
+import {MatToolbar} from "@angular/material/toolbar";
+import {MatDrawer, MatDrawerContainer} from "@angular/material/sidenav";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-pizza',
@@ -31,7 +35,11 @@ import {PizzaDialogComponent} from "./pizza-dialog/pizza-dialog.component";
     MatRow,
     MatRowDef,
     MatHeaderCellDef,
-    MatDialogModule
+    MatDialogModule,
+    MatFabButton,
+    MatToolbar,
+    MatDrawer,
+    MatDrawerContainer
   ],
   templateUrl: './pizza-list.component.html',
   styleUrl: './pizza-list.component.css'
@@ -39,7 +47,7 @@ import {PizzaDialogComponent} from "./pizza-dialog/pizza-dialog.component";
 export class PizzaListComponent implements OnInit{
   displayedColumns = ["id", "nome", "descricao", "kCal", "quantPorcoes", "preco", "tamanhoPizza", "acao"]
   pizzas: Pizza[] = []
-  constructor(private service: PizzaService, public dialog: MatDialog) {
+  constructor(private service: PizzaService, public dialog: MatDialog, private router: Router) {
   }
   ngOnInit(): void {
     this.service.findAll(0, 20).subscribe({
@@ -47,7 +55,12 @@ export class PizzaListComponent implements OnInit{
         this.pizzas = value;
       }
     })
-
   }
+
+  logout() {
+    this.router.navigateByUrl('/login');
+  }
+
   protected readonly PizzaDialogComponent = PizzaDialogComponent;
+    protected readonly DialogCupomComponent = CupomDialogComponent;
 }

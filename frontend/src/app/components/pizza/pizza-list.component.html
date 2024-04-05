@@ -1,3 +1,29 @@
+<mat-toolbar color="warn">
+  <div class="flex-container">
+    <button mat-icon-button (click)="drawer.toggle()">
+      <mat-icon fontIcon="list"></mat-icon>
+    </button>
+    <img src="../../../assets/logo.png" id="logo" alt="Logo">
+    <span class="toolbar-title">Pizzas</span>
+    <button mat-fab color="accent" (click)="dialog.open(PizzaDialogComponent, {
+      width: '350px'})">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <a id="txt-cliente" href="http://localhost:4200/contas-cliente">Clientes</a>
+    <a href="http://localhost:4200/contas-funcionario">Colaboradores</a>
+    <a href="http://localhost:4200/cupons">Cupons</a>
+    <a href="http://localhost:4200/pizza">Pizzas</a>
+    <a href="http://localhost:4200/ingrediente">Ingredientes</a>
+    <button mat-icon-button color="white" id="btn-logout" (click)="logout()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </mat-drawer>
+
 <table mat-table [dataSource]="pizzas" class="mat-elevation-z8">
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef> Id </th>
@@ -30,7 +56,7 @@
   <ng-container matColumnDef="acao">
     <th mat-header-cell *matHeaderCellDef> Ação </th>
     <td mat-cell *matCellDef="let element">
-      <button mat-icon-button color="primary" (click)="dialog.open(PizzaDialogComponent, {data: element, width: '800px',height: '500px',})">
+      <button mat-icon-button color="primary" (click)="dialog.open(PizzaDialogComponent, {data: element, width: '450px',height: '500px',})">
         <mat-icon>edit</mat-icon>
       </button>
       <button mat-icon-button color="warn">
@@ -41,3 +67,4 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+</mat-drawer-container>

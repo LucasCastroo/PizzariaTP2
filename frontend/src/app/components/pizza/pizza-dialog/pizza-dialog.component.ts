@@ -54,7 +54,8 @@ import {PorcaoPizzaService} from "../../../services/porcao-pizza.service";
     MatChipInput,
     MatAutocompleteTrigger,
     MatAutocomplete,
-    AsyncPipe
+    AsyncPipe,
+    MatButton
   ],
   templateUrl: './pizza-dialog.component.html',
   styleUrl: './pizza-dialog.component.css'
