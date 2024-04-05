@@ -27,16 +27,16 @@ import {ActivatedRoute} from "@angular/router";
     NgIf,
     ReactiveFormsModule
   ],
-  templateUrl: './dialog-cupom.component.html',
-  styleUrl: './dialog-cupom.component.css'
+  templateUrl: './cupom-dialog.component.html',
+  styleUrl: './cupom-dialog.component.css'
 })
-export class DialogCupomComponent {
+export class CupomDialogComponent {
   durationInSecond = 5;
   formGroup: FormGroup;
   constructor(private formBuilder: FormBuilder,
               private service: CupomService,
               @Inject(MAT_DIALOG_DATA) data: Cupom,
-              protected dialogRef: MatDialogRef<DialogCupomComponent>,
+              protected dialogRef: MatDialogRef<CupomDialogComponent>,
               protected snackBar: MatSnackBar,
               private activatedRoute: ActivatedRoute) {
 

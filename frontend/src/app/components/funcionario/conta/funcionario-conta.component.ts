@@ -15,9 +15,10 @@ import {Router, RouterLink} from "@angular/router";
 import {FuncionarioService} from "../../../services/funcionario.service";
 import {MatDialog} from "@angular/material/dialog";
 import {Funcionario} from "../../../models/funcionario";
-import {DialogFuncionarioComponent} from "./dialog-funcionario/dialog-funcionario.component";
+import {FuncionarioDialogComponent} from "./funcionario-dialog/funcionario-dialog.component";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {NgOptimizedImage} from "@angular/common";
+import {FuncionarioDialogDeleteComponent} from "./funcionario-dialog-delete/funcionario-dialog-delete.component";
 
 @Component({
   selector: 'app-conta-funcionario',
@@ -42,10 +43,10 @@ import {NgOptimizedImage} from "@angular/common";
     MatButtonModule,
     NgOptimizedImage
   ],
-  templateUrl: './conta-funcionario.component.html',
-  styleUrl: './conta-funcionario.component.css'
+  templateUrl: './funcionario-conta.component.html',
+  styleUrl: './funcionario-conta.component.css'
 })
-export class ContaFuncionarioComponent implements OnInit{
+export class FuncionarioContaComponent implements OnInit{
   displayedColumns: string[] = ['id', 'nome', 'cpf', 'nascimento','email', 'tipoAcesso', 'acao'];
   funcionarios: Funcionario[] = [];
 
@@ -63,5 +64,6 @@ export class ContaFuncionarioComponent implements OnInit{
     this.router.navigateByUrl('/login');
   }
 
-  protected readonly DialogFuncionarioComponent = DialogFuncionarioComponent;
+  protected readonly DialogFuncionarioComponent = FuncionarioDialogComponent;
+  protected readonly DialogDeleteComponent = FuncionarioDialogDeleteComponent;
 }

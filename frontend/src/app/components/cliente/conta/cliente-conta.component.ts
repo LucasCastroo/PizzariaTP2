@@ -11,7 +11,7 @@ import {MatToolbar, MatToolbarModule} from "@angular/material/toolbar";
 import {Cliente} from "../../../models/cliente";
 import {ClienteService} from "../../../services/cliente.service";
 import {MatDialog} from "@angular/material/dialog";
-import {DialogClienteComponent} from "./dialog-cliente/dialog-cliente.component";
+import {ClienteDialogComponent} from "./cliente-dialog/cliente-dialog.component";
 import {MatDrawer, MatDrawerContainer} from "@angular/material/sidenav";
 
 @Component({
@@ -30,11 +30,11 @@ import {MatDrawer, MatDrawerContainer} from "@angular/material/sidenav";
       MatIconModule,
       MatButtonModule,
       RouterModule, MatDrawer, MatDrawerContainer, NgOptimizedImage],
-  templateUrl: './conta-cliente.component.html',
-  styleUrl: './conta-cliente.component.css'
+  templateUrl: './cliente-conta.component.html',
+  styleUrl: './cliente-conta.component.css'
 })
 
-export class ContaClienteComponent implements OnInit{
+export class ClienteContaComponent implements OnInit{
   displayedColumns: string[] = ['id', 'nome', 'cpf', 'nascimento','email', 'telefone', 'acao'];
   clientes: Cliente[] = [];
 
@@ -52,6 +52,6 @@ export class ContaClienteComponent implements OnInit{
     this.router.navigateByUrl('/login');
   }
 
-  protected readonly DialogClienteComponent = DialogClienteComponent;
+  protected readonly DialogClienteComponent = ClienteDialogComponent;
 }
 

@@ -10,7 +10,6 @@ import {
   MatTable
 } from "@angular/material/table";
 import {Pizza} from "../../models/pizza";
-import {DialogCupomComponent} from "../cupom/dialog-cupom/dialog-cupom.component";
 import {MatIcon} from "@angular/material/icon";
 import {MatIconButton} from "@angular/material/button";
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
@@ -50,7 +49,5 @@ export class PizzaListComponent implements OnInit{
     })
 
   }
-
-  protected readonly DialogCupomComponent = DialogCupomComponent;
   protected readonly PizzaDialogComponent = PizzaDialogComponent;
 }

@@ -4,9 +4,9 @@
       <mat-icon fontIcon="list"></mat-icon>
     </button>
     <img src="assets/logo.png" id="logo" alt="Logo">
-    <span class="toolbar-title">Clientes</span>
-    <button mat-fab color="accent" (click)="dialog.open(DialogClienteComponent, {
-      height: '690px',
+    <span class="toolbar-title">Colaboradores</span>
+    <button mat-fab color="accent" (click)="dialog.open(DialogFuncionarioComponent, {
+      height: '600px',
       width: '450px',
     })">
       <mat-icon>add</mat-icon>
@@ -17,14 +17,17 @@
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side">
     <a id="txt-cliente" href="http://localhost:4200/contas-cliente">Cliente</a>
-    <a href="http://localhost:4200/contas-funcionario"> Colaboradores</a>
-    <a href="http://localhost:4200/cupons"> Cupons</a>
+    <a href="http://localhost:4200/contas-funcionario">Colaboradores</a>
+    <a href="http://localhost:4200/cupons">Cupons</a>
+    <a href="http://localhost:4200/pizza">Pizzas</a>
+    <a href="http://localhost:4200/ingrediente">Ingredientes</a>
     <button mat-icon-button color="white" id="btn-logout" (click)="logout()">
       <mat-icon>logout</mat-icon>
     </button>
   </mat-drawer>
 
-<table mat-table [dataSource]="clientes" class="mat-elevation-z8">
+
+<table mat-table [dataSource]="funcionarios" class="mat-elevation-z8">
 
   <!-- Id Column -->
   <ng-container matColumnDef="id">
@@ -56,20 +59,24 @@
     <td mat-cell *matCellDef="let element"> {{element.usuario.email}} </td>
   </ng-container>
 
-  <!-- Telefone Column -->
-  <ng-container matColumnDef="telefone">
-    <th mat-header-cell *matHeaderCellDef> Telefone </th>
-    <td mat-cell *matCellDef="let element"> {{element.telefone}} </td>
+  <!-- Tipo Acesso Column -->
+  <ng-container matColumnDef="tipoAcesso">
+    <th mat-header-cell *matHeaderCellDef> Tipo de Acesso </th>
+    <td mat-cell *matCellDef="let element"> {{element.tipoAcesso}} </td>
   </ng-container>
 
   <!-- Acao Column -->
   <ng-container matColumnDef="acao">
     <th mat-header-cell *matHeaderCellDef> Ação </th>
     <td mat-cell *matCellDef="let element">
-      <button mat-icon-button color="primary" routerLink="/cliente/edit/{{element.id}}">
+      <button mat-icon-button color="primary" (click)="dialog.open(DialogFuncionarioComponent, {
+      height: '600px',
+      width: '450px',
+      data: element
+    })">
         <mat-icon>edit</mat-icon>
       </button>
-      <button mat-icon-button color="warn">
+      <button mat-icon-button color="warn" (click)="dialog.open(DialogDeleteComponent, {data: element.id})">
         <mat-icon>delete</mat-icon>
       </button>
     </td>

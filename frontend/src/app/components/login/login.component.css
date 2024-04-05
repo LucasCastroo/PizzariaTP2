@@ -13,6 +13,11 @@ form {
   min-width: 300px;
 }
 
+#card{
+  border-radius: 20px;
+  height: 235px;
+}
+
 mat-card-title,
 mat-card-content {
   display: flex;
@@ -48,4 +53,8 @@ mat-card-actions {
 
 #btn-entrar{
   width: 97%;
+}
+
+#eye-password{
+  color: white;
 }
