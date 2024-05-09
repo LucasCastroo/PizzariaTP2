@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {PizzaService} from "../../services/pizza.service";
+import {MatButtonModule} from '@angular/material/button';
 import {
   MatCell,
   MatCellDef,
@@ -14,7 +15,8 @@ import {MatIcon} from "@angular/material/icon";
 import {MatFabButton, MatIconButton} from "@angular/material/button";
 import {MatDialog, MatDialogModule} from "@angular/material/dialog";
 import {PizzaDialogComponent} from "./pizza-dialog/pizza-dialog.component";
-import {CupomDialogComponent} from "../cupom/cupom-dialog/cupom-dialog.component";
+import {PizzaDialogImagemComponent} from "./pizza-dialog-imagem/pizza-dialog-imagem.component";
+import {PizzaDialogDeleteComponent} from "./pizza-dialog-delete/pizza-dialog-delete.component";
 import {MatToolbar} from "@angular/material/toolbar";
 import {MatDrawer, MatDrawerContainer} from "@angular/material/sidenav";
 import {Router} from "@angular/router";
@@ -40,13 +42,14 @@ import {ProdutoService} from "../../services/produto.service";
     MatFabButton,
     MatToolbar,
     MatDrawer,
-    MatDrawerContainer
+    MatDrawerContainer,
+    MatButtonModule
   ],
   templateUrl: './pizza-list.component.html',
   styleUrl: './pizza-list.component.css'
 })
 export class PizzaListComponent implements OnInit{
-  displayedColumns = ["id", "nome", "descricao", "kCal", "quantPorcoes", "preco", "tamanhoPizza", "acao"]
+  displayedColumns = ["id", "nome", "descricao", "kCal", "quantPorcoes", "preco", "tamanhoPizza", "imagem","acao"]
   pizzas: Pizza[] = []
   constructor(private service: PizzaService, private produtoService: ProdutoService, public dialog: MatDialog, private router: Router) {
   }
@@ -59,7 +62,7 @@ export class PizzaListComponent implements OnInit{
   }
 
   logout() {
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/loginAdmin');
   }
 
   delete(id: number){
@@ -71,4 +74,6 @@ export class PizzaListComponent implements OnInit{
   }
 
   protected readonly PizzaDialogComponent = PizzaDialogComponent;
+  protected readonly PizzaDialogDeleteComponet = PizzaDialogDeleteComponent;
+  protected readonly PizzaDialogImagemComponent = PizzaDialogImagemComponent;
 }

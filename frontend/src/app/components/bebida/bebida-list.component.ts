@@ -9,7 +9,7 @@ import {
   MatRow, MatRowDef, MatTable
 } from "@angular/material/table";
 import {MatIcon} from "@angular/material/icon";
-import {MatFabButton, MatIconButton} from "@angular/material/button";
+import {MatAnchor, MatFabButton, MatIconButton} from "@angular/material/button";
 import {Bebida} from "../../models/bebida";
 import {BebidaService} from "../../services/bebida.service";
 import {MatPaginator, PageEvent} from "@angular/material/paginator";
@@ -25,26 +25,27 @@ import {Router} from "@angular/router";
 @Component({
   selector: 'app-bebida-list',
   standalone: true,
-  imports: [
-    MatCell,
-    MatCellDef,
-    MatColumnDef,
-    MatHeaderCell,
-    MatHeaderRow,
-    MatHeaderRowDef,
-    MatIcon,
-    MatIconButton,
-    MatRow,
-    MatRowDef,
-    MatTable,
-    MatPaginator,
-    MatHeaderCellDef,
-    DecimalPipe,
-    MatFabButton,
-    MatToolbar,
-    MatDrawer,
-    MatDrawerContainer
-  ],
+    imports: [
+        MatCell,
+        MatCellDef,
+        MatColumnDef,
+        MatHeaderCell,
+        MatHeaderRow,
+        MatHeaderRowDef,
+        MatIcon,
+        MatIconButton,
+        MatRow,
+        MatRowDef,
+        MatTable,
+        MatPaginator,
+        MatHeaderCellDef,
+        DecimalPipe,
+        MatFabButton,
+        MatToolbar,
+        MatDrawer,
+        MatDrawerContainer,
+        MatAnchor
+    ],
   templateUrl: './bebida-list.component.html',
   styleUrl: './bebida-list.component.css'
 })
@@ -69,7 +70,7 @@ export class BebidaListComponent implements OnInit {
   }
 
   logout() {
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/loginAdmin');
   }
 
 

@@ -9,7 +9,7 @@ import {
   MatTable
 } from "@angular/material/table";
 import {MatIcon} from "@angular/material/icon";
-import {MatFabButton, MatIconButton} from "@angular/material/button";
+import {MatAnchor, MatFabButton, MatIconButton} from "@angular/material/button";
 import {Ingrediente} from "../../models/ingrediente";
 import {IngredienteService} from "../../services/ingrediente.service";
 import {MatPaginator, PageEvent} from "@angular/material/paginator";
@@ -41,7 +41,8 @@ import {Router} from "@angular/router";
     MatFabButton,
     MatToolbar,
     MatDrawer,
-    MatDrawerContainer
+    MatDrawerContainer,
+    MatAnchor
   ],
   templateUrl: './ingrediente-list.component.html',
   styleUrl: './ingrediente-list.component.css'
@@ -69,7 +70,7 @@ export class IngredienteListComponent implements OnInit{
   }
 
   logout() {
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/loginAdmin');
   }
 
   paginar(event: PageEvent): void {

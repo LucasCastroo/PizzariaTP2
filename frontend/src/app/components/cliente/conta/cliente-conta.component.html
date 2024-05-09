@@ -16,14 +16,14 @@
 
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side">
-    <a id="txt-usuario" href="http://localhost:4200/usuario">Usuários</a>
-    <a href="http://localhost:4200/contas-cliente">Clientes</a>
-    <a href="http://localhost:4200/contas-funcionario">Colaboradores</a>
-    <a href="http://localhost:4200/cupons">Cupons</a>
-    <a href="http://localhost:4200/pizza">Pizzas</a>
-    <a href="http://localhost:4200/bebida">Bebidas</a>
-    <a href="http://localhost:4200/ingrediente">Ingredientes</a>
-    <button mat-icon-button color="white" id="btn-logout" (click)="logout()">
+    <a mat-button href="http://localhost:4200/usuario"><mat-icon>people_outline</mat-icon>Usuários</a>
+    <a mat-button href="http://localhost:4200/contas-cliente"><mat-icon>people</mat-icon>Clientes</a>
+    <a mat-button href="http://localhost:4200/contas-funcionario"><mat-icon>people</mat-icon>Colaboradores</a>
+    <a mat-button href="http://localhost:4200/cupons"><mat-icon> local_atm</mat-icon>Cupons</a>
+    <a mat-button href="http://localhost:4200/pizza"><mat-icon> local_pizza</mat-icon>Pizzas</a>
+    <a mat-button href="http://localhost:4200/bebida"><mat-icon> local_bar</mat-icon>Bebidas</a>
+    <a mat-button href="http://localhost:4200/ingrediente"><mat-icon> restaurant_menu</mat-icon>Ingredientes</a>
+    <button mat-fab id="btn-logout" (click)="logout()">
       <mat-icon>logout</mat-icon>
     </button>
   </mat-drawer>
@@ -71,7 +71,7 @@
     <th mat-header-cell *matHeaderCellDef> Ação </th>
     <td mat-cell *matCellDef="let element">
       <button mat-icon-button color="primary" (click)="dialog.open(DialogClienteComponent, {
-      height: '600px',
+      height: '380px',
       width: '450px',
       data: element
     })">

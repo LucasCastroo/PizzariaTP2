@@ -49,7 +49,7 @@ export class ClienteContaComponent implements OnInit{
   }
 
   logout() {
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/loginAdmin');
   }
 
   protected readonly DialogClienteComponent = ClienteDialogComponent;

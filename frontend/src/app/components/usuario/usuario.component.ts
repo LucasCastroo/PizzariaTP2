@@ -9,7 +9,7 @@ import {
   MatRow, MatRowDef, MatTable
 } from "@angular/material/table";
 import {MatDrawer, MatDrawerContainer} from "@angular/material/sidenav";
-import {MatFabButton, MatIconButton} from "@angular/material/button";
+import {MatAnchor, MatFabButton, MatIconButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
 import {MatToolbar} from "@angular/material/toolbar";
 import {MatDialog} from "@angular/material/dialog";
@@ -22,24 +22,25 @@ import {UsuarioDialogDeleteComponent} from "./usuario-dialog-delete/usuario-dial
 @Component({
   selector: 'app-usuario',
   standalone: true,
-  imports: [
-    MatCell,
-    MatCellDef,
-    MatColumnDef,
-    MatDrawer,
-    MatDrawerContainer,
-    MatFabButton,
-    MatHeaderCell,
-    MatHeaderRow,
-    MatHeaderRowDef,
-    MatIcon,
-    MatIconButton,
-    MatRow,
-    MatRowDef,
-    MatTable,
-    MatToolbar,
-    MatHeaderCellDef
-  ],
+    imports: [
+        MatCell,
+        MatCellDef,
+        MatColumnDef,
+        MatDrawer,
+        MatDrawerContainer,
+        MatFabButton,
+        MatHeaderCell,
+        MatHeaderRow,
+        MatHeaderRowDef,
+        MatIcon,
+        MatIconButton,
+        MatRow,
+        MatRowDef,
+        MatTable,
+        MatToolbar,
+        MatHeaderCellDef,
+        MatAnchor
+    ],
   templateUrl: './usuario.component.html',
   styleUrl: './usuario.component.css'
 })
@@ -58,7 +59,7 @@ export class UsuarioComponent {
   }
 
   logout() {
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/loginAdmin');
   }
 
   protected readonly DialogUsuarioComponent = UsuarioDialogComponent;

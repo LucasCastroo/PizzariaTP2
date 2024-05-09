@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
 import {Bebida} from "../models/bebida";
 import {Pizza} from "../models/pizza";
 
@@ -21,6 +20,13 @@ export class ProdutoService {
   }
 
   delete(id: number){
-    return this.httpClient.delete<void>(`${this.baseUrl}/delete/${id}`)
+    return this.httpClient.delete<void>(`${this.baseUrl}/delete/${id}`);
+  }
+
+  uploadImagem(id: number, imagem: File) {
+    const formData: FormData = new FormData();
+    formData.append('imagem', imagem, imagem.name);
+
+    return this.httpClient.patch(`${this.baseUrl}/set-image/${id}`, formData);
   }
 }

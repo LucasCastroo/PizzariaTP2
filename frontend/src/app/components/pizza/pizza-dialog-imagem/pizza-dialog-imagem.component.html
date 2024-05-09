@@ -1,0 +1,11 @@
+<div class="cabecalho">
+  <img src="assets/logo.png" id="img-logo" alt="Logo">
+  <h2 class="titulo">Upload de imagem</h2>
+</div>
+<div id="browse-files">
+  <mat-icon>upload_file</mat-icon>
+  <div id="btn-files">
+    <input #csvInput hidden="true" type="file" onclick="this.value=null" (change)="csvInputChange($event)" accept=".png"/>
+    <button mat-flat-button color="primary" (click)="csvInput.click()">Browse Files</button>
+  </div>
+</div>

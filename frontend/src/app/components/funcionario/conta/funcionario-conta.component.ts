@@ -61,7 +61,7 @@ export class FuncionarioContaComponent implements OnInit{
   }
 
   logout() {
-    this.router.navigateByUrl('/login');
+    this.router.navigateByUrl('/loginAdmin');
   }
 
   protected readonly DialogFuncionarioComponent = FuncionarioDialogComponent;

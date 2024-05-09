@@ -1,0 +1,38 @@
+#upload{
+  text-align: center;
+  align-items: center;
+}
+#img-logo{
+  width: 64px;
+}
+.cabecalho{
+  align-items: center;
+  text-align: center;
+  margin-top: 1em;
+}
+.full-width-input{
+  align-items: center;
+  display: grid;
+}
+.titulo{
+  color: white;
+  font-family: "Zeyada", cursive;
+}
+#browse-files {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+}
+.mat-icon {
+  padding: 30px;
+  height: 64px;
+  width: 64px;
+  font-size: 64px;
+  color: white;
+}
+button{
+  width: 170px;
+}
+

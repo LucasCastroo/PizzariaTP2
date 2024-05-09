@@ -23,8 +23,6 @@ import {MatAutocomplete, MatAutocompleteSelectedEvent, MatAutocompleteTrigger} f
 import {COMMA, ENTER} from "@angular/cdk/keycodes";
 import {debounceTime, distinctUntilChanged, Observable, startWith, switchMap} from "rxjs";
 import {IngredienteService} from "../../../services/ingrediente.service";
-import {PorcaoPizzaService} from "../../../services/porcao-pizza.service";
-import {PizzaService} from "../../../services/pizza.service";
 import {ProdutoService} from "../../../services/produto.service";
 
 @Component({
@@ -122,14 +120,16 @@ export class PizzaDialogComponent {
           next: value => {
             this.dialogRef.close();
             window.location.reload()
-            }
+            },
+          error: err => window.location.reload()
         });
       }else {
         this.produtoService.update(pizza).subscribe({
           next: value => {
             this.dialogRef.close();
             window.location.reload()
-          }
+          },
+          error: err => window.location.reload()
         });
       }
     }

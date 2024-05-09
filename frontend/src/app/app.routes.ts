@@ -8,7 +8,7 @@ import {IngredienteListComponent} from "./components/ingrediente/ingrediente-lis
 import {BebidaListComponent} from "./components/bebida/bebida-list.component";
 import {UsuarioComponent} from "./components/usuario/usuario.component";
 
-export const routes: Routes = [{path: "login", component: LoginComponent, title: "Login"},
+export const routes: Routes = [{path: "loginAdmin", component: LoginComponent, title: "LoginAdmin"},
   {path: "cupons", component: CupomComponent, title: "Cupons"},
   {path: 'contas-cliente', component: ClienteContaComponent, title: 'Contas Clientes'},
   {path: 'contas-funcionario', component: FuncionarioContaComponent, title: 'Contas Colaboradores'},

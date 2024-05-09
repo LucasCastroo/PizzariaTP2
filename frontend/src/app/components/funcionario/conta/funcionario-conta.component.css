@@ -2,6 +2,8 @@
   width: 85%;
 }
 .toolbar-title{
+  font-family: "Zeyada", cursive;
+  font-size: 30px;
   flex: 1;
   text-align: center;
 }
@@ -59,12 +61,13 @@
 }
 
 .example-sidenav a{
-  margin-top: 55px;
+  font-size: 16px;
+  margin-top: 40px;
   color: white;
   text-decoration: none;
   text-align: center;
   justify-content: center;
-  display: grid;
+  display: flex;
 }
 
 #txt-usuario{
