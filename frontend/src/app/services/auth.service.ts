@@ -14,12 +14,22 @@ export class AuthService {
     this.httpClient = new HttpClient(handler);
   }
 
-  login(loginData: LoginData){
+  loginFuncionario(loginData: LoginData){
     this.httpClient.post<Authorization>(this.baseUrl, loginData).subscribe({
       next: (auth: Authorization)=>{
         localStorage.setItem("token", auth.token);
         localStorage.setItem("expiry", auth.expiry);
         this.router.navigateByUrl('/contas-funcionario');
+      }
+    });
+  }
+
+  loginCliente(loginData: LoginData){
+    this.httpClient.post<Authorization>(this.baseUrl, loginData).subscribe({
+      next: (auth: Authorization)=>{
+        localStorage.setItem("token", auth.token);
+        localStorage.setItem("expiry", auth.expiry);
+        this.router.navigateByUrl('');
       }
     });
   }

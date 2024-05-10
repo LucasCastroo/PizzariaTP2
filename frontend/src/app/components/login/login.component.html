@@ -14,13 +14,13 @@
     </form>
   </div>
   <div class="form-container sign-in">
-    <form>
+    <form [formGroup]="formGroup" class="flex-container">
       <img src="assets/logo.png" class="logo">
       <h1>Login</h1>
-      <input type="email" placeholder="Email">
-      <input type="password" placeholder="Senha">
+      <input type="email" placeholder="Email" formControlName="email">
+      <input type="password" placeholder="Senha" formControlName="senha">
       <a href="http://localhost:4200/login">Esqueceu a senha?</a>
-      <button>Entrar</button>
+      <button (click)="login()">Entrar</button>
     </form>
   </div>
   <div class="toggle-container">

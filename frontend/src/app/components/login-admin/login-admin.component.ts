@@ -34,7 +34,7 @@ export class LoginAdminComponent {
 
   login(){
     this.route.url.subscribe(params =>{
-      this.service.login(this.formGroup.value)
+      this.service.loginFuncionario(this.formGroup.value)
     })
   }
 }
