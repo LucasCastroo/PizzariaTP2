@@ -70,7 +70,7 @@ export class IngredienteListComponent implements OnInit{
   }
 
   logout() {
-    this.router.navigateByUrl('/loginAdmin');
+    this.router.navigateByUrl('/login-admin');
   }
 
   paginar(event: PageEvent): void {

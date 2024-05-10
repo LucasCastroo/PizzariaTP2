@@ -62,7 +62,7 @@ export class PizzaListComponent implements OnInit{
   }
 
   logout() {
-    this.router.navigateByUrl('/loginAdmin');
+    this.router.navigateByUrl('/login-admin');
   }
 
   delete(id: number){

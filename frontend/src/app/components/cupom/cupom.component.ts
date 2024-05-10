@@ -34,7 +34,7 @@ export class CupomComponent implements OnInit{
   }
 
   logout() {
-    this.router.navigateByUrl('/loginAdmin');
+    this.router.navigateByUrl('/login-admin');
   }
 
   protected readonly DialogCupomComponent = CupomDialogComponent;

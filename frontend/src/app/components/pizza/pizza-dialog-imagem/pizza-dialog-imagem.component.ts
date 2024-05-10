@@ -18,7 +18,7 @@ import {NgIf} from "@angular/common";
 })
 export class PizzaDialogImagemComponent{
 
-  csvInputChange(fileInputEvent: any) {
-    console.log(fileInputEvent.target.files[0]);
+  salvarImagem() {
+
   }
 }

@@ -5,7 +5,7 @@
 <div id="browse-files">
   <mat-icon>upload_file</mat-icon>
   <div id="btn-files">
-    <input #csvInput hidden="true" type="file" onclick="this.value=null" (change)="csvInputChange($event)" accept=".png"/>
-    <button mat-flat-button color="primary" (click)="csvInput.click()">Browse Files</button>
+    <input id="input" type="file" placeholder="Imagem">
+    <button mat-flat-button color="primary" (click)="salvarImagem()">Salvar</button>
   </div>
 </div>

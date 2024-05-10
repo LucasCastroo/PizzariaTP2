@@ -33,6 +33,11 @@
   color: white;
 }
 button{
+  margin-top: 30px;
   width: 170px;
+}
+
+#input{
+  color: white;
 }
 

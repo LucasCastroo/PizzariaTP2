@@ -59,7 +59,7 @@ export class UsuarioComponent {
   }
 
   logout() {
-    this.router.navigateByUrl('/loginAdmin');
+    this.router.navigateByUrl('/login-admin');
   }
 
   protected readonly DialogUsuarioComponent = UsuarioDialogComponent;
