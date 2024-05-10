@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import {LoginComponent} from "./components/login/login.component";
+import {LoginAdminComponent} from "./components/loginAdmin/login-admin.component";
 import {FuncionarioContaComponent} from "./components/funcionario/conta/funcionario-conta.component";
 import {ClienteContaComponent} from "./components/cliente/conta/cliente-conta.component";
 import {CupomComponent} from "./components/cupom/cupom.component";
@@ -7,8 +7,10 @@ import {PizzaListComponent} from "./components/pizza/pizza-list.component";
 import {IngredienteListComponent} from "./components/ingrediente/ingrediente-list.component";
 import {BebidaListComponent} from "./components/bebida/bebida-list.component";
 import {UsuarioComponent} from "./components/usuario/usuario.component";
+import {LoginComponent} from "./components/login/login.component";
 
-export const routes: Routes = [{path: "loginAdmin", component: LoginComponent, title: "LoginAdmin"},
+export const routes: Routes = [{path: "login-admin", component: LoginAdminComponent, title: "Login Admin"},
+  {path: "login", component: LoginComponent, title: "Login"},
   {path: "cupons", component: CupomComponent, title: "Cupons"},
   {path: 'contas-cliente', component: ClienteContaComponent, title: 'Contas Clientes'},
   {path: 'contas-funcionario', component: FuncionarioContaComponent, title: 'Contas Colaboradores'},
