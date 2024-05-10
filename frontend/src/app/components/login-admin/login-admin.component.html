@@ -1,0 +1,40 @@
+<div id="cabecalho" xmlns="http://www.w3.org/1999/html">
+  <img src="assets/logo.png" id="logo" alt="Logo">
+  <h1>Login</h1>
+</div>
+
+<div class="form-container">
+  <mat-card id="card">
+    <mat-card-content>
+      <form [formGroup]="formGroup" class="flex-container">
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>Email</mat-label>
+          <input matInput
+                 placeholder="exemplo@email.com"
+                 required
+                 formControlName="email">
+          <mat-error *ngIf="formGroup.get('email')
+                                   && formGroup.get('email')?.invalid
+                                   && formGroup.get('email')?.touched">
+            Email inválido.
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>Senha</mat-label>
+          <input
+            required
+            formControlName="senha"
+            matInput [type]="hide ? 'password' : 'text'">
+          <mat-error *ngIf="formGroup.get('senha')?.invalid && (formGroup.get('senha')?.dirty || formGroup.get('senha')?.touched)">
+            Senha inválida.
+          </mat-error>
+        </mat-form-field>
+      </form>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button id="btn-entrar" mat-raised-button color="warn" (click)="login()">Entrar</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

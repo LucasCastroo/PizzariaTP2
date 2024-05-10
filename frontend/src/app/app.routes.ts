@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import {LoginAdminComponent} from "./components/loginAdmin/login-admin.component";
+import {LoginAdminComponent} from "./components/login-admin/login-admin.component";
 import {FuncionarioContaComponent} from "./components/funcionario/conta/funcionario-conta.component";
 import {ClienteContaComponent} from "./components/cliente/conta/cliente-conta.component";
 import {CupomComponent} from "./components/cupom/cupom.component";
