@@ -19,6 +19,10 @@ export class UsuarioService {
     return this.httpClient.get<Usuario>(`${this.baseUrl}/${id}`);
   }
 
+  findByEmail() {
+    // Fazer este método para validação no momento de login
+  }
+
   insert(usuario: Usuario): Observable<Usuario> {
     return this.httpClient.post<Usuario>(this.baseUrl, usuario);
   }

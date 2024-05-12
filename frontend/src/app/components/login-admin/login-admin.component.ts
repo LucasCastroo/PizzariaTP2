@@ -8,6 +8,9 @@ import {MatButtonModule} from "@angular/material/button";
 import {AuthService} from "../../services/auth.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {MatIconModule} from "@angular/material/icon";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {catchError} from "rxjs";
+import {error} from "@angular/compiler-cli/src/transformers/util";
 
 @Component({
   selector: 'app-login-form',
@@ -21,6 +24,7 @@ import {MatIconModule} from "@angular/material/icon";
   styleUrl: './login-admin.component.css'
 })
 export class LoginAdminComponent {
+  durationSnackbar = 3;
   hide = true;
   formGroup: FormGroup = new FormGroup(
     {
@@ -29,12 +33,22 @@ export class LoginAdminComponent {
     }
   )
 
-  constructor(private service: AuthService, private route: ActivatedRoute, private router: Router) {
+  constructor(private service: AuthService, private route: ActivatedRoute, private router: Router, private _snackBar: MatSnackBar) {
   }
 
   login(){
-    this.route.url.subscribe(params =>{
-      this.service.loginFuncionario(this.formGroup.value)
-    })
+    if (this.formGroup.valid) {
+      this.route.url.subscribe(params => {
+        this.service.loginFuncionario(this.formGroup.value);
+      });
+    } else {
+      this.openSnackBar();
+    }
+  }
+
+  openSnackBar() {
+    this._snackBar.open('Erro ao efetuar login', '', {
+      duration: this.durationSnackbar * 1000
+    });
   }
 }
