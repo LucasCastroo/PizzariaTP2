@@ -7,8 +7,24 @@
   font-family: 'Montserrat', sans-serif;
 }
 
+body::before{
+  background-image: url(../../../assets/fundoLogin.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y: center;
+  filter: blur(5px);
+  z-index: 0;
+  left: 0;
+  top: 0;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  content: " ";
+  box-sizing: border-box;
+  transform: scale(1.1);
+}
+
 body{
-  background: #c9d6ff linear-gradient(to right, #e2e2e2, #c9d6ff);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -47,7 +63,7 @@ body{
 }
 
 .container button{
-  background-color: #e01c1c;
+  background-color: #1c6909;
   color: #fff;
   font-size: 12px;
   padding: 10px 45px;
@@ -147,13 +163,11 @@ body{
 }
 
 .toggle{
-  background-color: #e01c1c;
   height: 100%;
-  background: linear-gradient(to right, #e01c1c, #e01c1c);
+  background: #e01c1c linear-gradient(to right, #e01c1c, #e01c1c);
   color: #fff;
   position: relative;
   left: -100%;
-  height: 100%;
   width: 200%;
   transform: translateX(0);
   transition: all 0.6s ease-in-out;

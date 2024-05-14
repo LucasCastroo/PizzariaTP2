@@ -5,7 +5,7 @@
     </button>
     <img src="assets/logo.png" id="logo" alt="Logo">
     <span class="toolbar-title">Clientes</span>
-    <button mat-fab color="accent" (click)="dialog.open(DialogClienteComponent, {
+    <button mat-fab class="btn" color="accent" (click)="dialog.open(DialogClienteComponent, {
       height: '380px',
       width: '450px',
     })">
@@ -23,7 +23,7 @@
     <a mat-button href="http://localhost:4200/pizza"><mat-icon> local_pizza</mat-icon>Pizzas</a>
     <a mat-button href="http://localhost:4200/bebida"><mat-icon> local_bar</mat-icon>Bebidas</a>
     <a mat-button href="http://localhost:4200/ingrediente"><mat-icon> restaurant_menu</mat-icon>Ingredientes</a>
-    <button mat-fab id="btn-logout" (click)="logout()">
+    <button mat-fab class="btn" id="btn-logout" (click)="logout()">
       <mat-icon>logout</mat-icon>
     </button>
   </mat-drawer>

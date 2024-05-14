@@ -77,3 +77,8 @@
 #btn-logout{
   margin-top: 45px;
 }
+
+.btn{
+  background-color: #1c6909;
+  color: white;
+}
