@@ -14,13 +14,24 @@ export class AuthService {
     this.httpClient = new HttpClient(handler);
   }
 
-  loginFuncionario(loginData: LoginData){
-    this.httpClient.post<Authorization>(this.baseUrl, loginData).subscribe({
-      next: (auth: Authorization)=>{
-        localStorage.setItem("token", auth.token);
-        localStorage.setItem("expiry", auth.expiry);
-        this.router.navigateByUrl('/contas-funcionario').then();
-      }
+  loginFuncionario(loginData: LoginData): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.httpClient.post<Authorization>(this.baseUrl, loginData).subscribe({
+        next: (auth: Authorization) => {
+          localStorage.setItem("token", auth.token);
+          localStorage.setItem("expiry", auth.expiry);
+          this.router.navigateByUrl('/contas-funcionario').then();
+        },
+        error: (error) => {
+          if (error.status === 500) {
+            reject(new Error('Internal Server Error'));
+          } else if (error.status === 400) {
+            reject(new Error('Bad Request'));
+          } else {
+            reject(error);
+          }
+        }
+      });
     });
   }
 
@@ -35,6 +46,8 @@ export class AuthService {
         error: (error) => {
           if (error.status === 500) {
             reject(new Error('Internal Server Error'));
+          } else if (error.status === 400) {
+            reject(new Error('Bad Request'));
           } else {
             reject(error);
           }

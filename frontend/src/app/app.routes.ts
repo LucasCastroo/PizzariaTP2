@@ -10,8 +10,9 @@ import {UsuarioComponent} from "./components/usuario/usuario.component";
 import {LoginComponent} from "./components/vision-cliente/login/login.component";
 import {HomeComponent} from "./components/vision-cliente/home/home.component";
 
-export const routes: Routes = [{path: "login-admin", component: LoginAdminComponent, title: "Login Admin"},
-  {path: "cupons", component: CupomComponent, title: "Cupons"},
+export const routes: Routes = [
+  {path: "admin", component: LoginAdminComponent, title: "Login Admin"},
+  {path: 'cupons', component: CupomComponent, title: 'Cupons'},
   {path: 'contas-cliente', component: ClienteContaComponent, title: 'Contas Clientes'},
   {path: 'contas-funcionario', component: FuncionarioContaComponent, title: 'Contas Colaboradores'},
   {path: "pizza", component: PizzaListComponent, title: "Pizzas"},
@@ -20,5 +21,6 @@ export const routes: Routes = [{path: "login-admin", component: LoginAdminCompon
   {path: "usuario", component: UsuarioComponent, title: "Conta Usuário"},
 
   {path: "login", component: LoginComponent, title: "Login"},
-  {path: "home", component: HomeComponent, title: "Home"}
+  {path: "home", component: HomeComponent, title: "Home"},
+  {path: "", component: HomeComponent, title: "Home"},
 ];

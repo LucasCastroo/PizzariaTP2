@@ -24,7 +24,6 @@ import {error} from "@angular/compiler-cli/src/transformers/util";
   styleUrl: './login-admin.component.css'
 })
 export class LoginAdminComponent {
-  durationSnackbar = 3;
   hide = true;
   formGroup: FormGroup = new FormGroup(
     {
@@ -36,13 +35,19 @@ export class LoginAdminComponent {
   constructor(private service: AuthService, private route: ActivatedRoute, private router: Router, private _snackBar: MatSnackBar) {
   }
 
-  login(){
+  login() {
     if (this.formGroup.valid) {
       this.route.url.subscribe(params => {
-        this.service.loginFuncionario(this.formGroup.value);
+        this.service.loginFuncionario(this.formGroup.value).catch(error => {
+          if (error.message === 'Internal Server Error' || error.message === 'Bad Request') {
+            this.showSnackBarBottomPosition('Email ou senha incorreto!', '', 3000);
+          } else {
+            console.log(error);
+          }
+        });
       });
     } else {
-      this.showSnackBarBottomPosition('Conta inexistente!', '', 3000);
+      this.showSnackBarBottomPosition('Coloque um e-mail e senha válido!', '', 3000);
     }
   }
 

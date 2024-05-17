@@ -66,7 +66,7 @@ export class LoginComponent implements AfterViewInit{
     if (this.formGroupLogin.valid) {
       this.route.url.subscribe(params => {
         this.service.loginCliente(this.formGroupLogin.value).catch(error => {
-          if (error.message === 'Internal Server Error') {
+          if (error.message === 'Internal Server Error' || error.message === 'Bad Request') {
             this.showSnackBarBottomPosition('Email ou senha incorreto!', '', 3000);
           } else {
             console.log(error);
