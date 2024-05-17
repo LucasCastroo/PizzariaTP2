@@ -1,8 +1,11 @@
 :host {
-  display: grid;
-  justify-content: center;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
+
 form {
   display: flex;
   flex-direction: column;
@@ -13,7 +16,14 @@ form {
   min-width: 300px;
 }
 
-#card{
+.mat-form-field input {
+  background-color: black;
+  color: white;
+}
+
+#card {
+  background-color: #1e1d1d;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
   border-radius: 20px;
   height: 235px;
 }
@@ -36,18 +46,27 @@ mat-card-actions {
   justify-content: center;
 }
 
-#cabecalho{
+#cabecalho {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-top: 5em;
+  margin-bottom: 20px;
+  font-family: "Zeyada", cursive;
+  font-size: 25px;
 }
 
-.flex-container{
+.flex-container {
   color: white;
   width: 400px;
 }
 
-#btn-entrar{
+#btn-entrar {
   width: 97%;
 }
 
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

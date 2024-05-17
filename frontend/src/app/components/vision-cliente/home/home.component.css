@@ -1,0 +1,73 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+#header {
+  font-family: "Zeyada", cursive;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f44336;
+  height: 64px;
+  padding: 0 20px;
+  border-radius: 30px;
+  margin-top: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  box-shadow: 0 20px 10px rgba(0, 0, 0, 0.1);
+}
+
+#logo {
+  height: 56px;
+}
+
+#buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex: 1;
+}
+
+#buttons a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 8px 16px;
+  transition: background 0.3s ease;
+}
+
+#buttons a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+#cart-icon {
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+mat-icon {
+  vertical-align: middle;
+}
+
+#btn-carrinho {
+  color: white;
+  display: inline-block;
+}
+
+#icon-person {
+  margin-right: 5px;
+}
+
+#cart-text {
+  font-size: 9px;
+}

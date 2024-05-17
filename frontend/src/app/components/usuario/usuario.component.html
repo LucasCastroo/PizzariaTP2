@@ -1,10 +1,10 @@
-<mat-toolbar color="warn">
+<mat-toolbar id="header">
   <div class="flex-container">
     <button mat-icon-button (click)="drawer.toggle()">
       <mat-icon fontIcon="list"></mat-icon>
     </button>
     <img src="assets/logo.png" id="logo" alt="Logo">
-    <span class="toolbar-title">Usuário</span>
+    <span class="toolbar-title">Usuários</span>
     <button mat-fab class="btn" color="accent" (click)="dialog.open(DialogUsuarioComponent, {
       height: '600px',
       width: '450px',

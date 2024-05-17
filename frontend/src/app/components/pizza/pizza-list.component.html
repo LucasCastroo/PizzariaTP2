@@ -1,4 +1,4 @@
-<mat-toolbar color="warn">
+<mat-toolbar id="header">
   <div class="flex-container">
     <button mat-icon-button (click)="drawer.toggle()">
       <mat-icon fontIcon="list"></mat-icon>
@@ -71,7 +71,7 @@
         <mat-icon>delete</mat-icon>
       </button>
       <button mat-icon-button color="secundary" (click)="dialog.open(PizzaDialogImagemComponent, {data: element, width: '330px',height: '400px'})">
-        <mat-icon>image</mat-icon>
+        <mat-icon>add_photo_alternate</mat-icon>
       </button>
     </td>
   </ng-container>

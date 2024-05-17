@@ -53,7 +53,7 @@
 
 .example-sidenav {
   width: 190px;
-  background-color: #F44336;
+  background: #f44336 linear-gradient(to bottom, #f44336, #563434);
   display: grid;
   text-align: center;
   justify-content: center;
@@ -80,4 +80,8 @@
 .btn{
   background-color: #1c6909;
   color: white;
+}
+
+#header {
+  background-color: #f44336;
 }

@@ -42,13 +42,15 @@ export class LoginAdminComponent {
         this.service.loginFuncionario(this.formGroup.value);
       });
     } else {
-      this.openSnackBar();
+      this.showSnackBarBottomPosition('Conta inexistente!', '', 3000);
     }
   }
 
-  openSnackBar() {
-    this._snackBar.open('Erro ao efetuar login', '', {
-      duration: this.durationSnackbar * 1000
+  showSnackBarBottomPosition(content: any, action: any, duration: any) {
+    this._snackBar.open(content, action, {
+      duration: 3000,
+      verticalPosition: 'bottom',
+      horizontalPosition: 'center',
     });
   }
 }

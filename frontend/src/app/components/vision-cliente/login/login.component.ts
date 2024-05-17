@@ -2,9 +2,9 @@ import { Component, AfterViewInit, ElementRef } from '@angular/core';
 import {MatError, MatInput} from "@angular/material/input";
 import {NgIf} from "@angular/common";
 import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
-import {AuthService} from "../../services/auth.service";
+import {AuthService} from "../../../services/auth.service";
 import {ActivatedRoute} from "@angular/router";
-import {UsuarioService} from "../../services/usuario.service";
+import {UsuarioService} from "../../../services/usuario.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
@@ -21,8 +21,6 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   styleUrl: './login.component.css'
 })
 export class LoginComponent implements AfterViewInit{
-
-  durationInSeconds = 5;
 
   formGroupLogin: FormGroup = new FormGroup(
     {
@@ -64,11 +62,22 @@ export class LoginComponent implements AfterViewInit{
     }
   }
 
-  login(){
-    this.route.url.subscribe(params =>{
-      this.service.loginCliente(this.formGroupLogin.value)
-    })
+  login() {
+    if (this.formGroupLogin.valid) {
+      this.route.url.subscribe(params => {
+        this.service.loginCliente(this.formGroupLogin.value).catch(error => {
+          if (error.message === 'Internal Server Error') {
+            this.showSnackBarBottomPosition('Email ou senha incorreto!', '', 3000);
+          } else {
+            console.log(error);
+          }
+        });
+      });
+    } else {
+      this.showSnackBarBottomPosition('Coloque um e-mail e senha válido!', '', 3000);
+    }
   }
+
 
   cadastrar(){
     if(this.formGroupCadastro.valid){
@@ -79,9 +88,17 @@ export class LoginComponent implements AfterViewInit{
           },
           error: (err) => {
             console.log('Erro ao Cadastrar' + JSON.stringify(err));
-            this.snackBar.open("Erro ao Cadastrar");
+            this.showSnackBarBottomPosition('Preencha todos os campos corretamente!', '', 3000);
           }
         });
     }
+  }
+
+  showSnackBarBottomPosition(content: any, action: any, duration: any) {
+    this.snackBar.open(content, action, {
+      duration: 3000,
+      verticalPosition: 'bottom',
+      horizontalPosition: 'center',
+    });
   }
 }
