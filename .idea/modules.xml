@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Pizzaria.iml" filepath="$PROJECT_DIR$/.idea/Pizzaria.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/ecommerce-pizzaria.iml" filepath="$PROJECT_DIR$/backend/ecommerce-pizzaria.iml" />
       <module fileurl="file://$PROJECT_DIR$/frontend/frontend.iml" filepath="$PROJECT_DIR$/frontend/frontend.iml" />
     </modules>
   </component>

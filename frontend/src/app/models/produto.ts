@@ -4,5 +4,5 @@ export interface Produto {
   descricao: string;
   preco: number;
   kCal: number;
-  imagem: string;
+  nomeImagem: string;
 }

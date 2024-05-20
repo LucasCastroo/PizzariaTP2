@@ -60,19 +60,18 @@ public class ProdutoResource {
     @Path("/image/{nomeImagem}")
     @PermitAll
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
-    public Response download(@PathParam("nomeImagem") String nomeImagem) {
+    public Response getImage(@PathParam("nomeImagem") String nomeImagem) {
         ResponseBuilder response = Response.ok(fileService.obter(nomeImagem));
         response.header("Content-Disposition", "attachment;filename=" + nomeImagem);
         return response.build();
     }
 
     @PATCH
-    @Path("/set-image/{id}")
+    @Path("/image/{id}")
     @RolesAllowed({NivelAcesso.Role.GERENTE, NivelAcesso.Role.ADMIN})
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     public Response salvarImagem(@MultipartForm ProdutoImageForm form, @PathParam("id") Long id) {
         String nomeImagem;
-        LOG.infof("Imagem do item %d autualizada", id);
         try {
             nomeImagem = fileService.salvar(form.getNomeImagem(), form.getImagem());
         } catch (IOException e) {
@@ -80,8 +79,8 @@ public class ProdutoResource {
             Error error = new Error("409", e.getMessage());
             return Response.status(Response.Status.CONFLICT).entity(error).build();
         }
+        LOG.infof("Imagem do item %d autualizada", id);
         return Response.ok(service.updateImage(id, nomeImagem)).build();
-
     }
 
     @GET

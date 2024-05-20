@@ -21,6 +21,9 @@ import {MatToolbar} from "@angular/material/toolbar";
 import {MatDrawer, MatDrawerContainer} from "@angular/material/sidenav";
 import {Router} from "@angular/router";
 import {ProdutoService} from "../../services/produto.service";
+import {MatTooltip, TooltipComponent} from "@angular/material/tooltip";
+import {NgOptimizedImage} from "@angular/common";
+import {ImageDialogComponent} from "../image-dialog/image-dialog.component";
 
 @Component({
   selector: 'app-pizza',
@@ -43,13 +46,14 @@ import {ProdutoService} from "../../services/produto.service";
     MatToolbar,
     MatDrawer,
     MatDrawerContainer,
-    MatButtonModule
+    MatButtonModule,
+    NgOptimizedImage
   ],
   templateUrl: './pizza-list.component.html',
   styleUrl: './pizza-list.component.css'
 })
 export class PizzaListComponent implements OnInit{
-  displayedColumns = ["id", "nome", "descricao", "kCal", "quantPorcoes", "preco", "tamanhoPizza", "imagem","acao"]
+  displayedColumns = ["id", "nome", "descricao", "kCal", "quantPorcoes", "preco", "tamanhoPizza", "imagem", "acao"]
   pizzas: Pizza[] = []
   constructor(private service: PizzaService, private produtoService: ProdutoService, public dialog: MatDialog, private router: Router) {
   }
@@ -65,15 +69,8 @@ export class PizzaListComponent implements OnInit{
     this.router.navigateByUrl('/login-admin');
   }
 
-  delete(id: number){
-    this.produtoService.delete(id).subscribe({
-      next: value => {
-        window.location.reload();
-      }
-    });
-  }
-
   protected readonly PizzaDialogComponent = PizzaDialogComponent;
   protected readonly PizzaDialogDeleteComponet = PizzaDialogDeleteComponent;
   protected readonly PizzaDialogImagemComponent = PizzaDialogImagemComponent;
+  protected readonly ImageDialogComponent = ImageDialogComponent;
 }

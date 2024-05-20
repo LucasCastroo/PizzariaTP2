@@ -5,7 +5,7 @@
 <div id="browse-files">
   <mat-icon>upload_file</mat-icon>
   <div id="btn-files">
-    <input id="input" type="file" placeholder="Imagem" accept="image/png, image/jpeg">
+    <input id="input" #image type="file" placeholder="Imagem" accept="image/png, image/jpeg" (change)="image.files && image.files.length > 0 ? onChange(image.files[0]) : null">
     <button mat-flat-button color="primary" (click)="salvarImagem()">Salvar</button>
   </div>
 </div>
