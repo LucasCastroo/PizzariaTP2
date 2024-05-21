@@ -12,6 +12,7 @@ import {HomeComponent} from "./components/vision-cliente/home/home.component";
 
 export const routes: Routes = [
   {path: "admin", component: LoginAdminComponent, title: "Login Admin"},
+  {path: "login-admin", component: LoginAdminComponent, title: "Login Admin"},
   {path: 'cupons', component: CupomComponent, title: 'Cupons'},
   {path: 'contas-cliente', component: ClienteContaComponent, title: 'Contas Clientes'},
   {path: 'contas-funcionario', component: FuncionarioContaComponent, title: 'Contas Colaboradores'},

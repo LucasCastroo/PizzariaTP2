@@ -21,6 +21,8 @@ import {CupomDialogComponent} from "../cupom/cupom-dialog/cupom-dialog.component
 import {MatToolbar} from "@angular/material/toolbar";
 import {MatDrawer, MatDrawerContainer} from "@angular/material/sidenav";
 import {Router} from "@angular/router";
+import {ImagemUploadDialogComponent} from "../template/imagem-upload-dialog/imagem-upload-dialog.component";
+import {ImageDialogComponent} from "../template/image-dialog/image-dialog.component";
 
 @Component({
   selector: 'app-bebida-list',
@@ -50,7 +52,7 @@ import {Router} from "@angular/router";
   styleUrl: './bebida-list.component.css'
 })
 export class BebidaListComponent implements OnInit {
-  displayedColumns = ["id", "nome", "descricao", "kCal", "preco", "ml", "acao"]
+  displayedColumns = ["id", "nome", "descricao", "kCal", "preco", "ml", "imagem", "acao"]
   bebidas: Bebida[] = []
   pageSize = 20
   totalRecords = 0;
@@ -73,7 +75,6 @@ export class BebidaListComponent implements OnInit {
     this.router.navigateByUrl('/login-admin');
   }
 
-
   paginar(event: PageEvent): void {
     this.page = event.pageIndex;
     this.pageSize = event.pageSize;
@@ -92,4 +93,6 @@ export class BebidaListComponent implements OnInit {
   protected readonly BebidaDialogComponent = BebidaDialogComponent;
   protected readonly window = window;
   protected readonly DialogCupomComponent = CupomDialogComponent;
+  protected readonly ImagemUploadDialogComponent = ImagemUploadDialogComponent;
+  protected readonly ImageDialogComponent = ImageDialogComponent;
 }

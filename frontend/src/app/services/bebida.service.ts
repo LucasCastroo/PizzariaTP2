@@ -33,4 +33,10 @@ export class BebidaService {
     return this.httpClient.get<number>(`${this.baseUrl}/count/bebida`)
   }
 
+  uploadImage(image: File, id: number){
+    const data = new FormData();
+    data.append("imagem", image)
+    data.append("nomeImagem", image.name)
+    return this.httpClient.patch<Bebida>(`${this.baseUrl}/image/${id}`, data)
+  }
 }

@@ -77,7 +77,7 @@
         <button
           (click)="dialog.open(ImageDialogComponent, {data: '//localhost:8080/produto/image/' + element.nomeImagem, maxWidth: '80vw', maxHeight: '80vh', height: '80%', width: '80%',})"
           color="secundary" mat-icon-button>
-          <mat-icon>photo</mat-icon>
+          <mat-icon>image_search</mat-icon>
         </button>
       </td>
     </ng-container>
@@ -92,7 +92,7 @@
         <button (click)="dialog.open(PizzaDialogDeleteComponet, {data: element.id})" color="warn" mat-icon-button>
           <mat-icon>delete</mat-icon>
         </button>
-        <button (click)="dialog.open(PizzaDialogImagemComponent, {data: element.id, width: '330px',height: '400px'})"
+        <button (click)="dialog.open(ImagemUploadDialogComponent, {data: element.id, width: '330px',height: '400px'})"
                 color="secundary"
                 mat-icon-button>
           <mat-icon>add_photo_alternate</mat-icon>
