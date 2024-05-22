@@ -1,15 +1,15 @@
 import { Routes } from '@angular/router';
-import {LoginAdminComponent} from "./components/login-admin/login-admin.component";
-import {FuncionarioContaComponent} from "./components/funcionario/conta/funcionario-conta.component";
-import {ClienteContaComponent} from "./components/cliente/conta/cliente-conta.component";
-import {CupomComponent} from "./components/cupom/cupom.component";
-import {PizzaListComponent} from "./components/pizza/pizza-list.component";
-import {IngredienteListComponent} from "./components/ingrediente/ingrediente-list.component";
-import {BebidaListComponent} from "./components/bebida/bebida-list.component";
-import {UsuarioComponent} from "./components/usuario/usuario.component";
+import {LoginAdminComponent} from "./components/vision-admin/login-admin/login-admin.component";
+import {FuncionarioContaComponent} from "./components/vision-admin/funcionario/conta/funcionario-conta.component";
+import {ClienteContaComponent} from "./components/vision-admin/cliente/conta/cliente-conta.component";
+import {CupomComponent} from "./components/vision-admin/cupom/cupom.component";
+import {PizzaListComponent} from "./components/vision-admin/pizza/pizza-list.component";
+import {IngredienteListComponent} from "./components/vision-admin/ingrediente/ingrediente-list.component";
+import {BebidaListComponent} from "./components/vision-admin/bebida/bebida-list.component";
+import {UsuarioComponent} from "./components/vision-admin/usuario/usuario.component";
 import {LoginComponent} from "./components/vision-cliente/login/login.component";
 import {HomeComponent} from "./components/vision-cliente/home/home.component";
-import {AdminTemplateComponent} from "./components/template/admin-template/admin-template.component";
+import {AdminTemplateComponent} from "./components/template/admin/admin-template/admin-template.component";
 
 export const routes: Routes = [
 
