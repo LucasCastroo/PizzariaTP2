@@ -11,6 +11,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {IngredienteService} from "../../../../services/ingrediente.service";
 import {Ingrediente} from "../../../../models/ingrediente";
 import {CategoriaIngrediente} from "../../../../models/categoria-ingrediente";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-ingrediente-dialog',
@@ -40,7 +41,8 @@ export class IngredienteDialogComponent {
   constructor(private formBuilder: FormBuilder,
               private service: IngredienteService,
               @Inject(MAT_DIALOG_DATA) data: Ingrediente,
-              protected dialogRef: MatDialogRef<IngredienteDialogComponent>) {
+              protected dialogRef: MatDialogRef<IngredienteDialogComponent>,
+              protected snackBar: MatSnackBar) {
     this.categorias = Object.keys(CategoriaIngrediente).filter(x => isNaN(parseInt(x)))
     this.formGroup = formBuilder.group({
       id: [(data && data.id) ? data.id : null],
@@ -58,6 +60,9 @@ export class IngredienteDialogComponent {
           next: value => {
             this.dialogRef.close();
             window.location.reload()
+          }, error: (err) => {
+            console.log('Erro ao Criar' + JSON.stringify(err));
+            this.showSnackBarBottomPosition('Erro ao Criar Ingrediente!', '', 3000);
           }
         });
       }else {
@@ -65,9 +70,20 @@ export class IngredienteDialogComponent {
           next: value => {
             this.dialogRef.close();
             window.location.reload()
+          }, error: (err) => {
+            console.log('Erro ao Editar' + JSON.stringify(err));
+            this.showSnackBarBottomPosition('Erro ao Editar Ingrediente!', '', 3000);
           }
         });
       }
     }
+  }
+
+  showSnackBarBottomPosition(content: any, action: any, duration: any) {
+    this.snackBar.open(content, action, {
+      duration: 3000,
+      verticalPosition: 'bottom',
+      horizontalPosition: 'center',
+    });
   }
 }

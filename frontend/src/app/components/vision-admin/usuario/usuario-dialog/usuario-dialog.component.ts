@@ -68,7 +68,7 @@ export class UsuarioDialogComponent {
           },
           error: (err) => {
             console.log('Erro ao Criar' + JSON.stringify(err));
-            this.snackBar.open("Erro ao Criar");
+            this.showSnackBarBottomPosition('Erro ao Criar Usuário!', '', 3000);
           }
         });
       } else {
@@ -79,11 +79,21 @@ export class UsuarioDialogComponent {
           },
           error: (err) => {
             console.log('Erro ao Editar' + JSON.stringify(err));
-            this.snackBar.open("Erro ao Editar");
+            this.snackBar.open("");
+            this.showSnackBarBottomPosition('Erro ao Editar Usuário!', '', 3000);
           }
         });
       }
     }
   }
+
+  showSnackBarBottomPosition(content: any, action: any, duration: any) {
+    this.snackBar.open(content, action, {
+      duration: 3000,
+      verticalPosition: 'bottom',
+      horizontalPosition: 'center',
+    });
+  }
+
   protected readonly Object = Object;
 }

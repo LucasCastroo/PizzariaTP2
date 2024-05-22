@@ -24,6 +24,7 @@ import {Pizza} from "../../../../models/pizza";
 import {IngredienteService} from "../../../../services/ingrediente.service";
 import {ProdutoService} from "../../../../services/produto.service";
 import {TamanhoPizza} from "../../../../models/tamanho-pizza";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-pizza-dialog',
@@ -71,7 +72,8 @@ export class PizzaDialogComponent {
               @Inject(MAT_DIALOG_DATA) data: Pizza,
               private ingredienteService: IngredienteService,
               protected dialogRef: MatDialogRef<PizzaDialogComponent>,
-              private produtoService: ProdutoService) {
+              private produtoService: ProdutoService,
+              protected snackBar: MatSnackBar) {
     this.tamanhosPizza = Object.keys(TamanhoPizza).filter(x => isNaN(parseInt(x)))
     if(data != null) this.porcoes = data.porcoes;
     this.formGroup = formBuilder.group({
@@ -119,19 +121,31 @@ export class PizzaDialogComponent {
         this.produtoService.create(pizza).subscribe({
           next: value => {
             this.dialogRef.close();
-            window.location.reload()
+            window.location.reload();
             },
-          error: err => window.location.reload()
+          error: err => {
+            this.showSnackBarBottomPosition('Erro ao Criar Pizza!', '', 3000);
+          }
         });
       }else {
         this.produtoService.update(pizza).subscribe({
           next: value => {
             this.dialogRef.close();
-            window.location.reload()
+            window.location.reload();
           },
-          error: err => window.location.reload()
+          error: err => {
+            this.showSnackBarBottomPosition('Erro ao Editar Pizza!', '', 3000);
+          }
         });
       }
     }
+  }
+
+  showSnackBarBottomPosition(content: any, action: any, duration: any) {
+    this.snackBar.open(content, action, {
+      duration: 3000,
+      verticalPosition: 'bottom',
+      horizontalPosition: 'center',
+    });
   }
 }

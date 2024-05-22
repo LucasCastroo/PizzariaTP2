@@ -31,7 +31,6 @@ import {Cupom} from "../../../../models/cupom";
   styleUrl: './cupom-dialog.component.css'
 })
 export class CupomDialogComponent {
-  durationInSecond = 5;
   formGroup: FormGroup;
   constructor(private formBuilder: FormBuilder,
               private service: CupomService,
@@ -58,7 +57,7 @@ export class CupomDialogComponent {
           },
           error: (err) => {
             console.log('Erro ao Criar' + JSON.stringify(err));
-            this.snackBar.open("Erro ao Criar");
+            this.showSnackBarBottomPosition('Erro ao Criar Cupom!', '', 3000);
           }
         });
       } else {
@@ -69,11 +68,18 @@ export class CupomDialogComponent {
           },
           error: (err) => {
             console.log('Erro ao Editar' + JSON.stringify(err));
-            this.snackBar.open("Erro ao Editar");
-
+            this.showSnackBarBottomPosition('Erro ao Editar Cupom!', '', 3000);
           }
         });
       }
     }
+  }
+
+  showSnackBarBottomPosition(content: any, action: any, duration: any) {
+    this.snackBar.open(content, action, {
+      duration: 3000,
+      verticalPosition: 'bottom',
+      horizontalPosition: 'center',
+    });
   }
 }

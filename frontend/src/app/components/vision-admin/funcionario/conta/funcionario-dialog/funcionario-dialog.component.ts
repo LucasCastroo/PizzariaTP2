@@ -66,7 +66,7 @@ export class FuncionarioDialogComponent {
           },
           error: (err) => {
             console.log('Erro ao Criar' + JSON.stringify(err));
-            this.snackBar.open("Erro ao Criar");
+            this.showSnackBarBottomPosition('Erro ao Criar Colaborador!', '', 3000);
           }
         });
       } else {
@@ -77,12 +77,21 @@ export class FuncionarioDialogComponent {
           },
           error: (err) => {
             console.log('Erro ao Editar' + JSON.stringify(err));
-            this.snackBar.open("Erro ao Editar");
+            this.showSnackBarBottomPosition('Erro ao Editar Colaborador!', '', 3000);
           }
         });
       }
     }
   }
+
+  showSnackBarBottomPosition(content: any, action: any, duration: any) {
+    this.snackBar.open(content, action, {
+      duration: 3000,
+      verticalPosition: 'bottom',
+      horizontalPosition: 'center',
+    });
+  }
+
   protected readonly NivelAcesso = NivelAcesso;
   protected readonly Object = Object;
 }

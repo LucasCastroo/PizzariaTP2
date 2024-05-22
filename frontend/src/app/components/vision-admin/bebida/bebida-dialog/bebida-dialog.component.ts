@@ -19,6 +19,7 @@ import {MatButton} from "@angular/material/button";
 import {ProdutoService} from "../../../../services/produto.service";
 import {BebidaService} from "../../../../services/bebida.service";
 import {Bebida} from "../../../../models/bebida";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-bebida-dialog',
@@ -59,7 +60,8 @@ export class BebidaDialogComponent {
               @Inject(MAT_DIALOG_DATA) data: Bebida,
               private bebidaService: BebidaService,
               private produtoService: ProdutoService,
-              protected dialogRef: MatDialogRef<BebidaDialogComponent>) {
+              protected dialogRef: MatDialogRef<BebidaDialogComponent>,
+              protected snackBar: MatSnackBar) {
     this.formGroup = formBuilder.group({
       id: [(data && data.id) ? data.id : null],
       nome: [(data && data.nome) ? data.nome : '', Validators.required],
@@ -80,6 +82,9 @@ export class BebidaDialogComponent {
           next: value => {
             this.dialogRef.close();
             window.location.reload()
+          }, error: (err) => {
+            console.log('Erro ao Criar' + JSON.stringify(err));
+            this.showSnackBarBottomPosition('Erro ao Criar Bebida!', '', 3000);
           }
         });
       } else {
@@ -87,9 +92,20 @@ export class BebidaDialogComponent {
           next: value => {
             this.dialogRef.close();
             window.location.reload()
+          }, error: (err) => {
+            console.log('Erro ao Editar' + JSON.stringify(err));
+            this.showSnackBarBottomPosition('Erro ao Editar Bebida!', '', 3000);
           }
-        })
+        });
       }
     }
+  }
+
+  showSnackBarBottomPosition(content: any, action: any, duration: any) {
+    this.snackBar.open(content, action, {
+      duration: 3000,
+      verticalPosition: 'bottom',
+      horizontalPosition: 'center',
+    });
   }
 }
