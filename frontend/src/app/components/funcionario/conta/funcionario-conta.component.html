@@ -1,34 +1,3 @@
-<mat-toolbar id="header">
-  <div class="flex-container">
-    <button mat-icon-button (click)="drawer.toggle()">
-      <mat-icon fontIcon="list"></mat-icon>
-    </button>
-    <img src="assets/logo.png" id="logo" alt="Logo">
-    <span class="toolbar-title">Colaboradores</span>
-    <button mat-fab class="btn" color="accent" (click)="dialog.open(DialogFuncionarioComponent, {
-      height: '380px',
-      width: '400px',
-    })">
-      <mat-icon>add</mat-icon>
-    </button>
-  </div>
-</mat-toolbar>
-
-<mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side">
-    <a mat-button href="http://localhost:4200/usuario"><mat-icon>people_outline</mat-icon>Usuários</a>
-    <a mat-button href="http://localhost:4200/contas-cliente"><mat-icon>people</mat-icon>Clientes</a>
-    <a mat-button href="http://localhost:4200/contas-funcionario"><mat-icon>people</mat-icon>Colaboradores</a>
-    <a mat-button href="http://localhost:4200/cupons"><mat-icon> local_atm</mat-icon>Cupons</a>
-    <a mat-button href="http://localhost:4200/pizza"><mat-icon> local_pizza</mat-icon>Pizzas</a>
-    <a mat-button href="http://localhost:4200/bebida"><mat-icon> local_bar</mat-icon>Bebidas</a>
-    <a mat-button href="http://localhost:4200/ingrediente"><mat-icon> restaurant_menu</mat-icon>Ingredientes</a>
-    <button mat-fab class="btn" id="btn-logout" (click)="logout()">
-      <mat-icon>logout</mat-icon>
-    </button>
-  </mat-drawer>
-
-
 <table mat-table [dataSource]="funcionarios" class="mat-elevation-z8">
 
   <!-- Id Column -->
@@ -71,7 +40,7 @@
   <ng-container matColumnDef="acao">
     <th mat-header-cell *matHeaderCellDef> Ação </th>
     <td mat-cell *matCellDef="let element">
-      <button mat-icon-button color="primary" (click)="dialog.open(DialogFuncionarioComponent, {
+      <button mat-icon-button color="primary" (click)="dialog.open(FuncionarioDialogComponent, {
       height: '380px',
       width: '400px',
       data: element
@@ -87,4 +56,3 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
-</mat-drawer-container>

@@ -1,9 +1,9 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {FormsModule} from "@angular/forms";
 import {MatButtonModule, MatFabButton} from "@angular/material/button";
-import {ActivatedRoute, Router, RouterLink, RouterModule} from "@angular/router";
+import {Router, RouterLink, RouterModule} from "@angular/router";
 import {MatIconModule} from "@angular/material/icon";
 import {NgForOf, NgOptimizedImage} from "@angular/common";
 import {MatTableModule} from "@angular/material/table";
@@ -13,6 +13,7 @@ import {ClienteService} from "../../../services/cliente.service";
 import {MatDialog} from "@angular/material/dialog";
 import {ClienteDialogComponent} from "./cliente-dialog/cliente-dialog.component";
 import {MatDrawer, MatDrawerContainer} from "@angular/material/sidenav";
+import {DialogDeleteComponent} from "../../template/template-admin/dialog-delete/dialog-delete.component";
 
 @Component({
   selector: 'app-conta-cliente',
@@ -53,5 +54,6 @@ export class ClienteContaComponent implements OnInit{
   }
 
   protected readonly DialogClienteComponent = ClienteDialogComponent;
+  protected readonly DialogDeleteComponent = DialogDeleteComponent;
 }
 

@@ -1,17 +1,6 @@
 .mat-elevation-z8 {
   width: 85%;
 }
-.toolbar-title{
-  font-family: "Zeyada", cursive;
-  font-size: 30px;
-  flex: 1;
-  text-align: center;
-}
-.flex-container{
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
 .mat-column-id{
   width: 5em;
   border-right: 1px solid currentColor;
@@ -21,67 +10,27 @@
 .mat-column-nome{
   width: 30%;
 }
-.mat-column-cpf{
+.mat-column-descricao{
   text-align: center;
   min-width: 2em;
 }
-.mat-column-email{
+.mat-column-calorias{
   text-align: center;
   min-width: 2em;
 }
-.mat-column-tipoAcesso{
+.mat-column-tamanho{
+  text-align: center;
+  min-width: 2em;
+}
+.mat-column-preco{
+  text-align: center;
+  min-width: 2em;
+}
+.mat-column-imagem{
   text-align: center;
   min-width: 2em;
 }
 .mat-column-acao{
   text-align: center;
   min-width: 10em;
-}
-#logo{
-  width: 47px;
-  margin-left: 15px;
-}
-
-.example-sidenav-content {
-  align-items: center;
-  justify-content: center;
-}
-
-.example-container{
-  height: 100%;
-}
-
-.example-sidenav {
-  width: 190px;
-  background: #f44336 linear-gradient(to bottom, #f44336, #563434);
-  display: grid;
-  text-align: center;
-  justify-content: center;
-}
-
-.example-sidenav a{
-  font-size: 16px;
-  margin-top: 35px;
-  color: white;
-  text-decoration: none;
-  text-align: center;
-  justify-content: center;
-  display: flex;
-}
-
-#txt-usuario{
-  margin-top: 3rem;
-}
-
-#btn-logout{
-  margin-top: 45px;
-}
-
-.btn{
-  background-color: #1c6909;
-  color: white;
-}
-
-#header {
-  background-color: #f44336;
 }

@@ -5,13 +5,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import {MatDialog} from "@angular/material/dialog";
-import {MatSnackBar} from "@angular/material/snack-bar";
 import {Cupom} from "../../models/cupom";
 import {CupomService} from "../../services/cupom.service";
 import {CupomDialogComponent} from "./cupom-dialog/cupom-dialog.component";
 import {MatDrawer, MatDrawerContainer} from "@angular/material/sidenav";
-import {Router, RouterLink} from "@angular/router";
-import {CupomDialogDeleteComponent} from "./cupom-dialog-delete/cupom-dialog-delete.component";
+import {RouterLink} from "@angular/router";
+import {DialogDeleteComponent} from "../template/template-admin/dialog-delete/dialog-delete.component";
 
 
 @Component({
@@ -25,7 +24,7 @@ export class CupomComponent implements OnInit{
   displayedColumns = ["id", "codigo", "desconto", "acao"];
   cupons: Cupom[] = []
 
-  constructor(private service: CupomService, public dialog: MatDialog, protected snackBar: MatSnackBar, private router: Router){}
+  constructor(private service: CupomService, public dialog: MatDialog){}
 
   ngOnInit() {
     this.service.findAll().subscribe(data =>{
@@ -33,10 +32,6 @@ export class CupomComponent implements OnInit{
     })
   }
 
-  logout() {
-    this.router.navigateByUrl('/login-admin');
-  }
-
-  protected readonly DialogCupomComponent = CupomDialogComponent;
-  protected readonly DialogDeleteComponent = CupomDialogDeleteComponent;
+  protected readonly CupomDialogComponent = CupomDialogComponent;
+  protected readonly DialogDeleteComponent = DialogDeleteComponent;
 }

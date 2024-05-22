@@ -13,13 +13,11 @@ import {MatAnchor, MatFabButton, MatIconButton} from "@angular/material/button";
 import {Ingrediente} from "../../models/ingrediente";
 import {IngredienteService} from "../../services/ingrediente.service";
 import {MatPaginator, PageEvent} from "@angular/material/paginator";
-import {PizzaDialogComponent} from "../pizza/pizza-dialog/pizza-dialog.component";
 import {IngredienteDialogComponent} from "./ingrediente-dialog/ingrediente-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
-import {CupomDialogComponent} from "../cupom/cupom-dialog/cupom-dialog.component";
 import {MatToolbar} from "@angular/material/toolbar";
 import {MatDrawer, MatDrawerContainer} from "@angular/material/sidenav";
-import {Router} from "@angular/router";
+import {DialogDeleteComponent} from "../template/template-admin/dialog-delete/dialog-delete.component";
 
 @Component({
   selector: 'app-ingrediente-list',
@@ -53,7 +51,7 @@ export class IngredienteListComponent implements OnInit{
   pageSize = 20
   totalRecords = 0;
   page = 0;
-  constructor(protected service: IngredienteService, public dialog: MatDialog, private router: Router) {
+  constructor(protected service: IngredienteService, public dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -69,24 +67,12 @@ export class IngredienteListComponent implements OnInit{
     })
   }
 
-  logout() {
-    this.router.navigateByUrl('/login-admin');
-  }
-
   paginar(event: PageEvent): void {
     this.page = event.pageIndex;
     this.pageSize = event.pageSize;
     this.ngOnInit();
   }
-  delete(id: number){
-    this.service.delete(id).subscribe({
-      next: value => {
-        window.location.reload();
-      }
-    });
-  }
-  protected readonly PizzaDialogComponent = PizzaDialogComponent;
   protected readonly IngredienteDialogComponent = IngredienteDialogComponent;
   protected readonly window = window;
-  protected readonly DialogCupomComponent = CupomDialogComponent;
+  protected readonly DialogDeleteComponent = DialogDeleteComponent;
 }

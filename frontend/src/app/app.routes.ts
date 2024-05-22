@@ -9,17 +9,28 @@ import {BebidaListComponent} from "./components/bebida/bebida-list.component";
 import {UsuarioComponent} from "./components/usuario/usuario.component";
 import {LoginComponent} from "./components/vision-cliente/login/login.component";
 import {HomeComponent} from "./components/vision-cliente/home/home.component";
+import {AdminTemplateComponent} from "./components/template/admin-template/admin-template.component";
 
 export const routes: Routes = [
-  {path: "admin", component: LoginAdminComponent, title: "Login Admin"},
+
+  {
+    path: '',
+    component: AdminTemplateComponent,
+    title: 'Administrativo Pizzaria',
+    children: [
+      {path: '', pathMatch: 'full', redirectTo: 'contas-cliente'},
+
+      {path: 'cupons', component: CupomComponent, title: 'Cupons'},
+      {path: 'contas-cliente', component: ClienteContaComponent, title: 'Contas Clientes'},
+      {path: 'contas-funcionario', component: FuncionarioContaComponent, title: 'Contas Colaboradores'},
+      {path: "pizzas", component: PizzaListComponent, title: "Pizzas"},
+      {path: "ingredientes", component: IngredienteListComponent, title: "Ingredientes"},
+      {path: "bebidas", component: BebidaListComponent, title: "Bebidas"},
+      {path: "usuarios", component: UsuarioComponent, title: "Conta Usuário"}
+    ]
+  },
   {path: "login-admin", component: LoginAdminComponent, title: "Login Admin"},
-  {path: 'cupons', component: CupomComponent, title: 'Cupons'},
-  {path: 'contas-cliente', component: ClienteContaComponent, title: 'Contas Clientes'},
-  {path: 'contas-funcionario', component: FuncionarioContaComponent, title: 'Contas Colaboradores'},
-  {path: "pizza", component: PizzaListComponent, title: "Pizzas"},
-  {path: "ingrediente", component: IngredienteListComponent, title: "Ingredientes"},
-  {path: "bebida", component: BebidaListComponent, title: "Bebidas"},
-  {path: "usuario", component: UsuarioComponent, title: "Conta Usuário"},
+  {path: "admin", component: LoginAdminComponent, title: "Login Admin"},
 
   {path: "login", component: LoginComponent, title: "Login"},
   {path: "home", component: HomeComponent, title: "Home"},

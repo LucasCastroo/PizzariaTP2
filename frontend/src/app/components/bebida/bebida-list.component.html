@@ -1,31 +1,3 @@
-<mat-toolbar id="header">
-  <div class="flex-container">
-    <button mat-icon-button (click)="drawer.toggle()">
-      <mat-icon fontIcon="list"></mat-icon>
-    </button>
-    <img src="../../../assets/logo.png" id="logo" alt="Logo">
-    <span class="toolbar-title">Bebidas</span>
-    <button mat-fab class="btn" color="accent" (click)="dialog.open(BebidaDialogComponent, {
-      width: '350px'})">
-      <mat-icon>add</mat-icon>
-    </button>
-  </div>
-</mat-toolbar>
-
-<mat-drawer-container class="example-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side">
-    <a mat-button href="http://localhost:4200/usuario"><mat-icon>people_outline</mat-icon>Usuários</a>
-    <a mat-button href="http://localhost:4200/contas-cliente"><mat-icon>people</mat-icon>Clientes</a>
-    <a mat-button href="http://localhost:4200/contas-funcionario"><mat-icon>people</mat-icon>Colaboradores</a>
-    <a mat-button href="http://localhost:4200/cupons"><mat-icon> local_atm</mat-icon>Cupons</a>
-    <a mat-button href="http://localhost:4200/pizza"><mat-icon> local_pizza</mat-icon>Pizzas</a>
-    <a mat-button href="http://localhost:4200/bebida"><mat-icon> local_bar</mat-icon>Bebidas</a>
-    <a mat-button href="http://localhost:4200/ingrediente"><mat-icon> restaurant_menu</mat-icon>Ingredientes</a>
-    <button mat-fab class="btn" id="btn-logout" (click)="logout()">
-      <mat-icon>logout</mat-icon>
-    </button>
-  </mat-drawer>
-
 <table mat-table [dataSource]="bebidas" class="mat-elevation-z8">
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef> Id </th>
@@ -67,7 +39,7 @@
       <button mat-icon-button color="primary" (click)="dialog.open(BebidaDialogComponent, {data: element, width: '800px'})">
         <mat-icon>edit</mat-icon>
       </button>
-      <button mat-icon-button color="warn" (click)="delete(element.id)">
+      <button mat-icon-button color="warn" (click)="dialog.open(DialogDeleteComponent, {data: element.id})">
         <mat-icon>delete</mat-icon>
       </button>
       <button (click)="dialog.open(ImagemUploadDialogComponent, {data: element.id, width: '330px',height: '400px'})"
@@ -86,4 +58,3 @@
   [length]="totalRecords"
   (page)="paginar($event)">
 </mat-paginator>
-</mat-drawer-container>á

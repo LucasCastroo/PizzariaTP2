@@ -17,12 +17,11 @@ import {DecimalPipe} from "@angular/common";
 import {BebidaDialogComponent} from "./bebida-dialog/bebida-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
 import {ProdutoService} from "../../services/produto.service";
-import {CupomDialogComponent} from "../cupom/cupom-dialog/cupom-dialog.component";
 import {MatToolbar} from "@angular/material/toolbar";
 import {MatDrawer, MatDrawerContainer} from "@angular/material/sidenav";
-import {Router} from "@angular/router";
-import {ImagemUploadDialogComponent} from "../template/imagem-upload-dialog/imagem-upload-dialog.component";
-import {ImageDialogComponent} from "../template/image-dialog/image-dialog.component";
+import {ImagemUploadDialogComponent} from "../template/template-admin/imagem-upload-dialog/imagem-upload-dialog.component";
+import {ImageDialogComponent} from "../template/template-admin/image-dialog/image-dialog.component";
+import {DialogDeleteComponent} from "../template/template-admin/dialog-delete/dialog-delete.component";
 
 @Component({
   selector: 'app-bebida-list',
@@ -57,7 +56,7 @@ export class BebidaListComponent implements OnInit {
   pageSize = 20
   totalRecords = 0;
   page = 0;
-  constructor(private service: BebidaService, protected dialog: MatDialog, protected produtoService: ProdutoService, private router: Router) {
+  constructor(private service: BebidaService, protected dialog: MatDialog, protected produtoService: ProdutoService) {
   }
 
   ngOnInit() {
@@ -69,10 +68,6 @@ export class BebidaListComponent implements OnInit {
         this.totalRecords = value;
       }
     })
-  }
-
-  logout() {
-    this.router.navigateByUrl('/login-admin');
   }
 
   paginar(event: PageEvent): void {
@@ -92,7 +87,7 @@ export class BebidaListComponent implements OnInit {
   protected readonly parseFloat = parseFloat;
   protected readonly BebidaDialogComponent = BebidaDialogComponent;
   protected readonly window = window;
-  protected readonly DialogCupomComponent = CupomDialogComponent;
   protected readonly ImagemUploadDialogComponent = ImagemUploadDialogComponent;
   protected readonly ImageDialogComponent = ImageDialogComponent;
+  protected readonly DialogDeleteComponent = DialogDeleteComponent;
 }

@@ -2,10 +2,10 @@ import {Component, Inject} from '@angular/core';
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {PizzaService} from "../../../services/pizza.service";
+import {PizzaService} from "../../../../services/pizza.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {NgIf} from "@angular/common";
-import {BebidaService} from "../../../services/bebida.service";
+import {BebidaService} from "../../../../services/bebida.service";
 import {Router} from "@angular/router";
 
 @Component({

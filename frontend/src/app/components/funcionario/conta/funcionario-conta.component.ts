@@ -11,14 +11,13 @@ import {
 import {MatButton, MatButtonModule, MatFabButton, MatIconButton} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {MatToolbar} from "@angular/material/toolbar";
-import {Router, RouterLink} from "@angular/router";
 import {FuncionarioService} from "../../../services/funcionario.service";
 import {MatDialog} from "@angular/material/dialog";
 import {Funcionario} from "../../../models/funcionario";
 import {FuncionarioDialogComponent} from "./funcionario-dialog/funcionario-dialog.component";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {NgOptimizedImage} from "@angular/common";
-import {FuncionarioDialogDeleteComponent} from "./funcionario-dialog-delete/funcionario-dialog-delete.component";
+import {DialogDeleteComponent} from "../../template/template-admin/dialog-delete/dialog-delete.component";
 
 @Component({
   selector: 'app-conta-funcionario',
@@ -37,7 +36,6 @@ import {FuncionarioDialogDeleteComponent} from "./funcionario-dialog-delete/func
     MatRowDef,
     MatTableModule,
     MatToolbar,
-    RouterLink,
     MatButton,
     MatSidenavModule,
     MatButtonModule,
@@ -51,7 +49,7 @@ export class FuncionarioContaComponent implements OnInit{
   funcionarios: Funcionario[] = [];
 
   constructor(private funcionarioService: FuncionarioService,
-              public dialog: MatDialog, private router: Router) {
+              public dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -60,10 +58,6 @@ export class FuncionarioContaComponent implements OnInit{
     })
   }
 
-  logout() {
-    this.router.navigateByUrl('/login-admin');
-  }
-
-  protected readonly DialogFuncionarioComponent = FuncionarioDialogComponent;
-  protected readonly DialogDeleteComponent = FuncionarioDialogDeleteComponent;
+  protected readonly FuncionarioDialogComponent = FuncionarioDialogComponent;
+  protected readonly DialogDeleteComponent = DialogDeleteComponent;
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {
   MatCell,
   MatCellDef,
@@ -13,11 +13,10 @@ import {MatAnchor, MatFabButton, MatIconButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
 import {MatToolbar} from "@angular/material/toolbar";
 import {MatDialog} from "@angular/material/dialog";
-import {Router} from "@angular/router";
 import {Usuario} from "../../models/usuario";
 import {UsuarioDialogComponent} from "./usuario-dialog/usuario-dialog.component";
 import {UsuarioService} from "../../services/usuario.service";
-import {UsuarioDialogDeleteComponent} from "./usuario-dialog-delete/usuario-dialog-delete.component";
+import {DialogDeleteComponent} from "../template/template-admin/dialog-delete/dialog-delete.component";
 
 @Component({
   selector: 'app-usuario',
@@ -44,12 +43,12 @@ import {UsuarioDialogDeleteComponent} from "./usuario-dialog-delete/usuario-dial
   templateUrl: './usuario.component.html',
   styleUrl: './usuario.component.css'
 })
-export class UsuarioComponent {
+export class UsuarioComponent implements OnInit{
   displayedColumns: string[] = ['id', 'nome', 'cpf', 'nascimento','email', 'acao'];
   usuarios: Usuario[] = [];
 
   constructor(private suarioService: UsuarioService,
-              public dialog: MatDialog, private router: Router) {
+              public dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -58,10 +57,6 @@ export class UsuarioComponent {
     })
   }
 
-  logout() {
-    this.router.navigateByUrl('/login-admin');
-  }
-
   protected readonly DialogUsuarioComponent = UsuarioDialogComponent;
-  protected readonly DialogDeleteComponent = UsuarioDialogDeleteComponent;
+  protected readonly DialogDeleteComponent = DialogDeleteComponent;
 }
