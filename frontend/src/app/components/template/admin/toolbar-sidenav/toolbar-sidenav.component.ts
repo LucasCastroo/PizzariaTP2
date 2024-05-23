@@ -5,17 +5,17 @@ import {MatIcon} from "@angular/material/icon";
 import {MatToolbar} from "@angular/material/toolbar";
 import {Router, RouterOutlet} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
-import {PizzaDialogComponent} from "../../../vision-admin/pizza/pizza-dialog/pizza-dialog.component";
-import {UsuarioDialogComponent} from "../../../vision-admin/usuario/usuario-dialog/usuario-dialog.component";
+import {PizzaDialogComponent} from "../../../view-admin/pizza/pizza-dialog/pizza-dialog.component";
+import {UsuarioDialogComponent} from "../../../view-admin/usuario/usuario-dialog/usuario-dialog.component";
 import {
   FuncionarioDialogComponent
-} from "../../../vision-admin/funcionario/conta/funcionario-dialog/funcionario-dialog.component";
-import {ClienteDialogComponent} from "../../../vision-admin/cliente/conta/cliente-dialog/cliente-dialog.component";
-import {CupomDialogComponent} from "../../../vision-admin/cupom/cupom-dialog/cupom-dialog.component";
-import {BebidaDialogComponent} from "../../../vision-admin/bebida/bebida-dialog/bebida-dialog.component";
+} from "../../../view-admin/funcionario/conta/funcionario-dialog/funcionario-dialog.component";
+import {ClienteDialogComponent} from "../../../view-admin/cliente/conta/cliente-dialog/cliente-dialog.component";
+import {CupomDialogComponent} from "../../../view-admin/cupom/cupom-dialog/cupom-dialog.component";
+import {BebidaDialogComponent} from "../../../view-admin/bebida/bebida-dialog/bebida-dialog.component";
 import {
   IngredienteDialogComponent
-} from "../../../vision-admin/ingrediente/ingrediente-dialog/ingrediente-dialog.component";
+} from "../../../view-admin/ingrediente/ingrediente-dialog/ingrediente-dialog.component";
 
 @Component({
   selector: 'app-toolbar-sidenav',
@@ -69,7 +69,7 @@ export class ToolbarSidenavComponent{
         height: '600px',
         width: '450px',
       })
-    } else if (this.currentURL == 'contas-fucionario') {
+    } else if (this.currentURL == 'contas-funcionario') {
       this.dialog.open(FuncionarioDialogComponent, {
         height: '380px',
         width: '400px',

@@ -1,15 +1,15 @@
 import { Routes } from '@angular/router';
-import {LoginAdminComponent} from "./components/vision-admin/login-admin/login-admin.component";
-import {FuncionarioContaComponent} from "./components/vision-admin/funcionario/conta/funcionario-conta.component";
-import {ClienteContaComponent} from "./components/vision-admin/cliente/conta/cliente-conta.component";
-import {CupomComponent} from "./components/vision-admin/cupom/cupom.component";
-import {PizzaListComponent} from "./components/vision-admin/pizza/pizza-list.component";
-import {IngredienteListComponent} from "./components/vision-admin/ingrediente/ingrediente-list.component";
-import {BebidaListComponent} from "./components/vision-admin/bebida/bebida-list.component";
-import {UsuarioComponent} from "./components/vision-admin/usuario/usuario.component";
-import {LoginComponent} from "./components/vision-cliente/login/login.component";
-import {HomeComponent} from "./components/vision-cliente/home/home.component";
 import {AdminTemplateComponent} from "./components/template/admin/admin-template/admin-template.component";
+import {CupomComponent} from "./components/view-admin/cupom/cupom.component";
+import {ClienteContaComponent} from "./components/view-admin/cliente/conta/cliente-conta.component";
+import {FuncionarioContaComponent} from "./components/view-admin/funcionario/conta/funcionario-conta.component";
+import {PizzaListComponent} from "./components/view-admin/pizza/pizza-list.component";
+import {IngredienteListComponent} from "./components/view-admin/ingrediente/ingrediente-list.component";
+import {BebidaListComponent} from "./components/view-admin/bebida/bebida-list.component";
+import {UsuarioComponent} from "./components/view-admin/usuario/usuario.component";
+import {LoginAdminComponent} from "./components/view-admin/login-admin/login-admin.component";
+import {LoginComponent} from "./components/view-cliente/login/login.component";
+import {HomeComponent} from "./components/view-cliente/home/home.component";
 
 export const routes: Routes = [
 
