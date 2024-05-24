@@ -13,4 +13,5 @@ public interface UsuarioService {
     public List<UsuarioResponseDTO> findByNome(String nome);
     public UsuarioResponseDTO findByEmailSenha(String email, String senha);
     public Boolean alterarSenha(AlterarSenhaDTO dto, Long id);
+    public UsuarioResponseDTO updateImage(Long id, String fileName);
 }

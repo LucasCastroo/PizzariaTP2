@@ -1,7 +1,5 @@
 package br.unitins.tp1.pizzaria.service;
 
-import jakarta.enterprise.context.ApplicationScoped;
-
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -12,30 +10,36 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
-@ApplicationScoped
-public class ProdutoFileService implements FileService{
+
+public abstract class ImageService implements FileService{
 
     private static final int MAX_FILE_SIZE = 1024 * 1024 * 10;
 
     private static final List<String> SUPPORTED_MIME_TYPES =
             Arrays.asList("image/jpeg", "image/jpg", "image/png", "image/gif");
-    private final String PATH = "." + File.separator + "img" + File.separator + "item" + File.separator;
+    private final String path;
+
+    public ImageService(String folder){
+        path = "." + File.separator + "img" + File.separator + folder + File.separator;
+    }
 
     public String gerarNomeArquivo(String extensao) {
         String nome = UUID.randomUUID() + "." + extensao;
-        if (Paths.get(PATH).resolve(nome).toFile().exists()) {
+        if (Paths.get(path).resolve(nome).toFile().exists()) {
             // praticamente impossivel isso acontecer antes da morte térmica do universo, mas vai que né
             nome = gerarNomeArquivo(extensao);
         }
         return nome;
     }
 
+
+
     @Override
     public String salvar(String nomeArquivo, byte[] arquivo) throws IOException {
         verificarTamanhoImagem(arquivo);
 
         verificarTipoImagem(nomeArquivo);
-        Path diretorio = Paths.get(PATH);
+        Path diretorio = Paths.get(path);
         Files.createDirectories(diretorio);
 
         String mimeType = Files.probeContentType(Paths.get(nomeArquivo));
@@ -51,8 +55,14 @@ public class ProdutoFileService implements FileService{
     }
 
     @Override
+    public File remover(String nomeArquivo) throws IOException {
+        Files.deleteIfExists(Paths.get(path).resolve(nomeArquivo));
+        return null;
+    }
+
+    @Override
     public File obter(String nomeArquivo) {
-        File file = new File(PATH + nomeArquivo);
+        File file = new File(path + nomeArquivo);
         return file;
     }
 

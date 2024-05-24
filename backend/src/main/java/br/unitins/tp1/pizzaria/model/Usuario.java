@@ -12,6 +12,15 @@ public class Usuario extends BaseEntity {
     private String email;
     private String senha;
     private LocalDate nascimento;
+    private String image;
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public String getNome() {
         return nome;

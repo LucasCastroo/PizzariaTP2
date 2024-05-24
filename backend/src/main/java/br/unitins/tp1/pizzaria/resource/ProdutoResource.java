@@ -2,11 +2,12 @@ package br.unitins.tp1.pizzaria.resource;
 
 import br.unitins.tp1.pizzaria.application.Error;
 import br.unitins.tp1.pizzaria.dto.ProdutoDTO;
-import br.unitins.tp1.pizzaria.form.ProdutoImageForm;
+import br.unitins.tp1.pizzaria.form.ImageForm;
 import br.unitins.tp1.pizzaria.model.NivelAcesso;
 import br.unitins.tp1.pizzaria.model.TipoProduto;
-import br.unitins.tp1.pizzaria.service.ProdutoFileService;
+import br.unitins.tp1.pizzaria.service.ProdutoImageService;
 import br.unitins.tp1.pizzaria.service.ProdutoService;
+import io.quarkus.logging.Log;
 import jakarta.annotation.security.PermitAll;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -15,7 +16,6 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.ResponseBuilder;
-import org.jboss.logging.Logger;
 import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 
 import java.io.IOException;
@@ -31,7 +31,7 @@ public class ProdutoResource {
     ProdutoService service;
 
     @Inject
-    ProdutoFileService fileService;
+    ProdutoImageService imageService;
 
 
     @POST
@@ -61,7 +61,7 @@ public class ProdutoResource {
     @PermitAll
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
     public Response getImage(@PathParam("nomeImagem") String nomeImagem) {
-        ResponseBuilder response = Response.ok(fileService.obter(nomeImagem));
+        ResponseBuilder response = Response.ok(imageService.obter(nomeImagem));
         response.header("Content-Disposition", "attachment;filename=" + nomeImagem);
         return response.build();
     }
@@ -70,12 +70,16 @@ public class ProdutoResource {
     @Path("/image/{id}")
     @RolesAllowed({NivelAcesso.Role.GERENTE, NivelAcesso.Role.ADMIN})
     @Consumes(MediaType.MULTIPART_FORM_DATA)
-    public Response salvarImagem(@MultipartForm ProdutoImageForm form, @PathParam("id") Long id) {
+    public Response salvarImagem(@MultipartForm ImageForm form, @PathParam("id") Long id) {
         String nomeImagem;
         try {
-            nomeImagem = fileService.salvar(form.getNomeImagem(), form.getImagem());
+            String old = service.findById(id).nomeImagem();
+            if(!old.isBlank()){
+                imageService.remover(old);
+            }
+            nomeImagem = imageService.salvar(form.getNomeImagem(), form.getImagem());
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.error(e);
             Error error = new Error("409", e.getMessage());
             return Response.status(Response.Status.CONFLICT).entity(error).build();
         }

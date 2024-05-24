@@ -86,5 +86,13 @@ public class UsuarioServiceImpl implements UsuarioService{
         return false;
     }
 
+    @Override
+    @Transactional
+    public UsuarioResponseDTO updateImage(Long id, String fileName) {
+        Usuario usuario = repository.findById(id);
+        usuario.setImage(fileName);
+        return UsuarioResponseDTO.valueOf(usuario);
+    }
+
 
 }
