@@ -10,6 +10,7 @@ import {UsuarioComponent} from "./components/view-admin/usuario/usuario.componen
 import {LoginAdminComponent} from "./components/view-admin/login-admin/login-admin.component";
 import {LoginComponent} from "./components/view-cliente/login/login.component";
 import {HomeComponent} from "./components/view-cliente/home/home.component";
+import {ClienteTemplateComponent} from "./components/template/cliente/cliente-template/cliente-template.component";
 
 export const routes: Routes = [
 
@@ -29,10 +30,21 @@ export const routes: Routes = [
       {path: "usuarios", component: UsuarioComponent, title: "Conta Usuário"}
     ]
   },
+
   {path: "login-admin", component: LoginAdminComponent, title: "Login Admin"},
   {path: "admin", component: LoginAdminComponent, title: "Login Admin"},
-
   {path: "login", component: LoginComponent, title: "Login"},
-  {path: "home", component: HomeComponent, title: "Home"},
-  {path: "", component: HomeComponent, title: "Home"},
+
+  {
+    path: '',
+    component: ClienteTemplateComponent,
+    title: 'Come e Dorme Pizzaria',
+    children: [
+      {path: '', pathMatch: 'full', redirectTo: 'home'},
+
+      {path: "home", component: HomeComponent, title: "Home"},
+      {path: "", component: HomeComponent, title: "Home"},
+    ]
+  },
+
 ];

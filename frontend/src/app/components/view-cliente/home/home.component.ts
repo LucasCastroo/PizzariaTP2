@@ -18,5 +18,5 @@ import {MatTree, MatTreeNode} from "@angular/material/tree";
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  clienteLogado = "Login/Cadastro";
+
 }

@@ -1,0 +1,26 @@
+<div id="header">
+  <a href="http://localhost:4200/home"><img src="assets/logo.png" id="logo" alt="Logo"></a>
+  <div id="buttons">
+    <a href="http://localhost:4200/home">HOME</a>
+    <a href="#">CARDÁPIO</a>
+    <a href="#">SOBRE</a>
+    <ng-container *ngIf="!clienteLogado; else loggedInTemplate">
+      <a (click)="loginAccount()">
+        <mat-icon class="icon-person">account_circle</mat-icon>{{nomeClienteLogado}}
+      </a>
+    </ng-container>
+    <ng-template #loggedInTemplate>
+      <button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon class="icon-person">account_circle</mat-icon>{{nomeClienteLogado}}
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="navigateToAccount()">Minha Conta</button>
+        <button mat-menu-item (click)="logout()">Sair</button>
+      </mat-menu>
+    </ng-template>
+  </div>
+  <button mat-icon-button id="btn-sacola">
+    <mat-icon id="sacola">local_mall</mat-icon>
+  </button>
+</div>
+<router-outlet></router-outlet>

@@ -8,66 +8,84 @@ body {
   font-family: Arial, sans-serif;
 }
 
-#header {
-  font-family: "Zeyada", cursive;
+header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  background: #f44336;
-  height: 64px;
-  padding: 0 20px;
-  border-radius: 30px;
-  margin-top: 5px;
-  margin-left: 5px;
-  margin-right: 5px;
-  box-shadow: 0 20px 10px rgba(0, 0, 0, 0.1);
+  align-items: center;
+  padding: 20px 10%;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-#logo {
-  height: 56px;
+.logo {
+  font-size: 24px;
+  font-weight: bold;
 }
 
-#buttons {
+nav ul {
+  display: flex;
+  list-style: none;
+}
+
+nav ul li {
+  margin-left: 20px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+main {
+  margin-top: 110px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 10%;
+}
+
+.intro {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 20px;
-  flex: 1;
+  gap: 50px;
 }
 
-#buttons a {
+.intro img {
+  width: 400px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.intro-text {
+  max-width: 500px;
+}
+
+.intro-text h1 {
+  font-size: 48px;
+  color: #0c0606;
+}
+
+.sub-heading {
+  font-size: 24px;
+  margin: 20px 0;
+}
+
+.description {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.menu-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #1c6909;
   color: white;
   text-decoration: none;
-  font-size: 16px;
-  font-weight: 500;
-  padding: 8px 16px;
-  transition: background 0.3s ease;
+  border-radius: 5px;
+  font-weight: bold;
 }
 
-#buttons a:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 4px;
-}
+#pizza-home {
 
-#cart-icon {
-  color: white;
-  font-size: 24px;
-  cursor: pointer;
-}
-
-mat-icon {
-  vertical-align: middle;
-}
-
-#btn-carrinho {
-  color: white;
-  display: inline-block;
-}
-
-#icon-person {
-  margin-right: 5px;
-}
-
-#cart-text {
-  font-size: 9px;
 }
