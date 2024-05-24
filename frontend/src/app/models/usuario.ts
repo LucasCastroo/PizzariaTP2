@@ -5,4 +5,5 @@ export interface Usuario {
   nascimento: string;
   nome: string;
   senha: string;
+  nomeImagem: string;
 }

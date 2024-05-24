@@ -3,7 +3,9 @@ import {MatIcon} from "@angular/material/icon";
 import {MatButton, MatIconButton} from "@angular/material/button";
 import {Router, RouterOutlet} from "@angular/router";
 import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
-import {NgIf} from "@angular/common";
+import {AsyncPipe, NgIf, NgOptimizedImage} from "@angular/common";
+import {UsuarioService} from "../../../../services/usuario.service";
+import {Usuario} from "../../../../models/usuario";
 
 @Component({
   selector: 'app-header',
@@ -16,36 +18,30 @@ import {NgIf} from "@angular/common";
     MatMenu,
     MatButton,
     MatMenuTrigger,
-    NgIf
+    NgIf,
+    AsyncPipe,
+    NgOptimizedImage
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  constructor(private router: Router) {}
+  usuarioLogado: Usuario | undefined;
 
-  nomeClienteLogado: string = "Login/Cadastro";
-  clienteLogado = false;
-
-  loginAccount() {
-    if (this.clienteLogado) {
-      // Lógica para quando o cliente está logado e quer acessar a conta
-    } else {
-      this.router.navigateByUrl('/login').then();
-      this.clienteLogado = true;
-      this.nomeClienteLogado = "Nome do Cliente"; // Substituir com o nome real do cliente
-    }
-  }
-
-  navigateToAccount() {
-    // Lógica para navegar para a página de conta do usuário
-    this.router.navigateByUrl('/conta').then();
+  constructor(protected router: Router, private service: UsuarioService) {
+    service.minhaConta().subscribe({
+      next: usuario =>{
+        this.usuarioLogado = usuario;
+      },
+      error: e => {
+        this.usuarioLogado = undefined;
+      }
+    });
   }
 
   logout() {
-    // Lógica para logout
-    this.clienteLogado = false;
-    this.nomeClienteLogado = "Login/Cadastro";
+    localStorage.removeItem("token");
+    localStorage.removeItem("expiry");
     this.router.navigateByUrl('/home').then();
   }
 }

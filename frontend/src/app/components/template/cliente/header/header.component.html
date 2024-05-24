@@ -4,17 +4,18 @@
     <a href="http://localhost:4200/home">HOME</a>
     <a href="#">CARDÁPIO</a>
     <a href="#">SOBRE</a>
-    <ng-container *ngIf="!clienteLogado; else loggedInTemplate">
-      <a (click)="loginAccount()">
-        <mat-icon class="icon-person">account_circle</mat-icon>{{nomeClienteLogado}}
+    <ng-container *ngIf="!usuarioLogado; else loggedInTemplate">
+      <a (click)="router.navigateByUrl('/login')">
+        <mat-icon class="icon-person">account_circle</mat-icon>Login/Cadastro
       </a>
     </ng-container>
     <ng-template #loggedInTemplate>
       <button mat-button [matMenuTriggerFor]="menu">
-        <mat-icon class="icon-person">account_circle</mat-icon>{{nomeClienteLogado}}
+        <img ngSrc="http://localhost:8080/usuario/image/{{usuarioLogado?.nomeImagem}}" width="32" height="32" alt="">
+        <span>{{usuarioLogado?.nome}}</span>
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="navigateToAccount()">Minha Conta</button>
+        <button mat-menu-item (click)="router.navigateByUrl('/conta')">Minha Conta</button>
         <button mat-menu-item (click)="logout()">Sair</button>
       </mat-menu>
     </ng-template>
