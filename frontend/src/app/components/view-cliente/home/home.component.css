@@ -2,8 +2,6 @@ main {
   margin: 0;
   padding: 60px 0 0;
   font-family: Arial, sans-serif;
-  background: url(/assets/background-home.jpg) no-repeat fixed center center;
-  background-size: cover;
 }
 
 .overlay {
@@ -27,10 +25,12 @@ main {
 }
 
 .pizza {
-  width: 380px;
+  width: 350px;
   animation: slideIn 2s forwards;
   position: absolute;
   right: -350px;
+  margin-bottom: 75px;
+  filter: brightness(0.85) contrast(1.5);
 }
 
 .content {
