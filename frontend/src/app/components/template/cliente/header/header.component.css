@@ -9,6 +9,7 @@ body {
 }
 
 #header {
+  z-index: 1000;
   font-family: "Zeyada", cursive;
   display: flex;
   align-items: center;

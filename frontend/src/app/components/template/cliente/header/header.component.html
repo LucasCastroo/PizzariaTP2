@@ -10,10 +10,10 @@
       </a>
     </ng-container>
     <ng-template #loggedInTemplate>
-      <button mat-button [matMenuTriggerFor]="menu">
+      <a [matMenuTriggerFor]="menu">
         <img ngSrc="http://localhost:8080/usuario/image/{{usuarioLogado?.nomeImagem}}" width="32" height="32" alt="">
         <span>{{usuarioLogado?.nome}}</span>
-      </button>
+      </a>
       <mat-menu #menu="matMenu">
         <button mat-menu-item (click)="router.navigateByUrl('/conta')">Minha Conta</button>
         <button mat-menu-item (click)="logout()">Sair</button>
@@ -24,4 +24,3 @@
     <mat-icon id="sacola">local_mall</mat-icon>
   </button>
 </div>
-<router-outlet></router-outlet>

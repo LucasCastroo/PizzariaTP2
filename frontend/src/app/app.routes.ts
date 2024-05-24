@@ -15,12 +15,10 @@ import {ClienteTemplateComponent} from "./components/template/cliente/cliente-te
 export const routes: Routes = [
 
   {
-    path: '',
+    path: 'admin',
     component: AdminTemplateComponent,
     title: 'Administrativo Pizzaria',
     children: [
-      {path: '', pathMatch: 'full', redirectTo: 'contas-cliente'},
-
       {path: 'cupons', component: CupomComponent, title: 'Cupons'},
       {path: 'contas-cliente', component: ClienteContaComponent, title: 'Contas Clientes'},
       {path: 'contas-funcionario', component: FuncionarioContaComponent, title: 'Contas Colaboradores'},
@@ -41,10 +39,7 @@ export const routes: Routes = [
     title: 'Come e Dorme Pizzaria',
     children: [
       {path: '', pathMatch: 'full', redirectTo: 'home'},
-
       {path: "home", component: HomeComponent, title: "Home"},
-      {path: "", component: HomeComponent, title: "Home"},
     ]
   },
-
 ];
