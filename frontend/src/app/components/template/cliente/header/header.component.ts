@@ -45,7 +45,7 @@ export class HeaderComponent implements OnInit{
   logout() {
     localStorage.removeItem("token");
     localStorage.removeItem("expiry");
-    this.router.navigateByUrl('/home').then();
+    this.router.navigateByUrl('/login').then();
   }
 
   ngOnInit(): void {
