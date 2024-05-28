@@ -15,12 +15,12 @@
         <span>{{usuarioLogado?.nome}}</span>
       </a>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="router.navigateByUrl('/conta')">Minha Conta</button>
+        <button mat-menu-item (click)="router.navigateByUrl('/minha-conta')">Minha Conta</button>
         <button mat-menu-item (click)="logout()">Sair</button>
       </mat-menu>
     </ng-template>
   </div>
   <button mat-icon-button id="btn-sacola">
-    <mat-icon id="sacola">local_mall</mat-icon>
+    <mat-icon id="sacola" [matBadge]="qtdItensCarrinho"  matBadgeColor="accent" matBadgePosition="after" matBadgeOverlap="false">local_mall</mat-icon>
   </button>
 </div>

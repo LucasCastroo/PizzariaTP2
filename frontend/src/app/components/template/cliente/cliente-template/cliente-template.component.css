@@ -1,4 +1,13 @@
-.home{
-  background: url(/assets/background-home.jpg) no-repeat fixed center center;
-  background-size: cover;
+app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: transparent;
+  z-index: 1000;
+}
+
+body {
+  margin: 0;
+  padding-top: 60px;
 }

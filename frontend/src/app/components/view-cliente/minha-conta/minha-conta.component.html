@@ -1,0 +1,70 @@
+<app-header></app-header>
+<body>
+<div class="container">
+  <header>
+    <img src="assets/avatar-do-usuario.png" alt="Ícone" class="icon"> <!-- Substitua "icon.png" pelo caminho da sua imagem de ícone -->
+    <h1>Alterar perfil</h1>
+  </header>
+  <div class="content">
+    <form class="form">
+      <label for="nome">Nome Completo</label>
+      <input type="text" id="nome">
+
+      <label for="email">Email</label>
+      <input type="email" id="email">
+
+      <label for="senha">Alterar Senha</label>
+      <div class="password-container">
+        <input type="password" id="senha">
+        <button type="button" class="toggle-password">👁️</button> <!-- Botão para exibir/ocultar senha -->
+      </div>
+
+      <label for="telefone">Telefone</label>
+      <input type="tel" id="telefone">
+
+      <label for="nascimento">Data de nascimento</label>
+      <input type="date" id="nascimento" placeholder="dd/MM/yyyy">
+    </form>
+
+    <div class="enderecos">
+      <h2>Endereços</h2>
+      <div class="endereco">
+        <div class="endereco-header">
+          <p>Rua 9 de Janeiro Q 09, 12 - Setor</p>
+          <button class="toggle-details">▼</button>
+        </div>
+        <p>Cidade - Estado</p>
+        <p>Portão preto com branco, ao lado da UNITINS</p>
+      </div>
+      <div class="endereco">
+        <div class="endereco-header">
+          <p>Avenida Brasil Q 39, 02 - Setor</p>
+          <button class="toggle-details">▼</button>
+        </div>
+        <p>Cidade - Estado</p>
+        <p>De frente ao mercado Gigante</p>
+        <div class="endereco-detalhes">
+          <label for="endereco1">Endereço</label>
+          <input type="text" id="endereco1" value="Avenida Brasil Q 39, 02">
+
+          <label for="cidade1">Cidade</label>
+          <input type="text" id="cidade1" placeholder="Cidade">
+
+          <label for="estado1">Estado</label>
+          <select id="estado1">
+            <option value="">Estado</option>
+            <!-- Adicione mais opções conforme necessário -->
+          </select>
+
+          <label for="setor1">Setor</label>
+          <input type="text" id="setor1" placeholder="Setor">
+
+          <label for="descricao1">Descrição</label>
+          <input type="text" id="descricao1" value="De frente ao mercado Gigante">
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="alterar">Alterar</button>
+</div>
+</body>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatIcon} from "@angular/material/icon";
 import {MatButton, MatIconButton} from "@angular/material/button";
 import {Router, RouterOutlet} from "@angular/router";
@@ -6,6 +6,7 @@ import {MatMenu, MatMenuItem, MatMenuTrigger} from "@angular/material/menu";
 import {AsyncPipe, NgIf, NgOptimizedImage} from "@angular/common";
 import {UsuarioService} from "../../../../services/usuario.service";
 import {Usuario} from "../../../../models/usuario";
+import {MatBadge} from "@angular/material/badge";
 
 @Component({
   selector: 'app-header',
@@ -20,13 +21,15 @@ import {Usuario} from "../../../../models/usuario";
     MatMenuTrigger,
     NgIf,
     AsyncPipe,
-    NgOptimizedImage
+    NgOptimizedImage,
+    MatBadge
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit{
   usuarioLogado: Usuario | undefined;
+  qtdItensCarrinho: number = 0;
 
   constructor(protected router: Router, private service: UsuarioService) {
     service.minhaConta().subscribe({
@@ -43,5 +46,13 @@ export class HeaderComponent {
     localStorage.removeItem("token");
     localStorage.removeItem("expiry");
     this.router.navigateByUrl('/home').then();
+  }
+
+  ngOnInit(): void {
+    this.obterQtdItens();
+  }
+
+  obterQtdItens() {
+
   }
 }

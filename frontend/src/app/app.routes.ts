@@ -11,6 +11,7 @@ import {LoginAdminComponent} from "./components/view-admin/login-admin/login-adm
 import {LoginComponent} from "./components/view-cliente/login/login.component";
 import {HomeComponent} from "./components/view-cliente/home/home.component";
 import {ClienteTemplateComponent} from "./components/template/cliente/cliente-template/cliente-template.component";
+import {MinhaContaComponent} from "./components/view-cliente/minha-conta/minha-conta.component";
 
 export const routes: Routes = [
 
@@ -32,6 +33,7 @@ export const routes: Routes = [
   {path: "login-admin", component: LoginAdminComponent, title: "Login Admin"},
   {path: "admin", component: LoginAdminComponent, title: "Login Admin"},
   {path: "login", component: LoginComponent, title: "Login"},
+  {path: "minha-conta", component: MinhaContaComponent, title: "Minha Conta"},
 
   {
     path: '',
