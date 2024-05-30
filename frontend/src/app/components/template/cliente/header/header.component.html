@@ -14,9 +14,9 @@
         <img ngSrc="http://localhost:8080/usuario/image/{{usuarioLogado?.nomeImagem}}" width="32" height="32" alt="">
         <span>{{usuarioLogado?.nome}}</span>
       </a>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="router.navigateByUrl('/minha-conta')">Minha Conta</button>
-        <button mat-menu-item (click)="logout()">Sair</button>
+      <mat-menu #menu="matMenu" xPosition="before">
+        <button mat-menu-item (click)="router.navigateByUrl('/minha-conta')"><mat-icon>person</mat-icon>Minha Conta</button>
+        <button mat-menu-item (click)="logout()"><mat-icon>exit_to_app</mat-icon>Sair</button>
       </mat-menu>
     </ng-template>
   </div>
