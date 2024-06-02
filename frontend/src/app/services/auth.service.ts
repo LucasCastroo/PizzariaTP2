@@ -59,7 +59,7 @@ export class AuthService {
   getToken(): string {
     let expiry = new Date(localStorage.getItem("expiry")!);
     if(expiry.getTime() <= Date.now()){
-      this.router.navigate(["/login-admin"]).then();
+      //this.router.navigate(["/login"]).then();
       throw Error("Login expired");
     }
     return localStorage.getItem("token")!
