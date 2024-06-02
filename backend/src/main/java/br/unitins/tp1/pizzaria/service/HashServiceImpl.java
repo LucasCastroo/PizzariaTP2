@@ -11,7 +11,7 @@ import java.util.Base64;
 
 @ApplicationScoped
 public class HashServiceImpl implements HashService{
-    private String salt = "ja8souihgfd8iusahbf98sdfy";
+    private final String salt = "ja8souihgfd8iusahbf98sdfy";
     private final Integer iterations = 405;
 
     private final Integer keyLength = 512;

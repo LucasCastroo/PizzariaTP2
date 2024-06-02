@@ -18,7 +18,7 @@ export class PorcaoPizzaService {
   }
 
   removeIngrediente(id: string, ingredienteId: string){
-    return this.httpClient.patch<PorcaoPizza>(`${this.baseUrl}/${id}/remove/${ingredienteId}`, null);;
+    return this.httpClient.patch<PorcaoPizza>(`${this.baseUrl}/${id}/remove/${ingredienteId}`, null);
   }
 
   delete(id: string){

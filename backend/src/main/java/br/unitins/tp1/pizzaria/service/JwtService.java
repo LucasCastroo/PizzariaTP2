@@ -5,8 +5,6 @@ import br.unitins.tp1.pizzaria.dto.ClienteResponseDTO;
 import br.unitins.tp1.pizzaria.dto.FuncionarioResponseDTO;
 import br.unitins.tp1.pizzaria.dto.UsuarioResponseDTO;
 
-;
-
 public interface JwtService {
-    public AuthorizationResponseDTO generateJwt(UsuarioResponseDTO usuario);
+    AuthorizationResponseDTO generateJwt(UsuarioResponseDTO usuario);
 }
