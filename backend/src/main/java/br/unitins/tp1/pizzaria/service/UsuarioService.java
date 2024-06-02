@@ -5,13 +5,13 @@ import br.unitins.tp1.pizzaria.dto.*;
 import java.util.List;
 
 public interface UsuarioService {
-    public UsuarioResponseDTO insert(UsuarioDTO dto);
-    public UsuarioResponseDTO update(UsuarioDTO dto, Long id);
-    public void delete(Long id);
-    public List<UsuarioResponseDTO> findAll();
-    public UsuarioResponseDTO findById(Long id);
-    public List<UsuarioResponseDTO> findByNome(String nome);
-    public UsuarioResponseDTO findByEmailSenha(String email, String senha);
-    public Boolean alterarSenha(AlterarSenhaDTO dto, Long id);
-    public UsuarioResponseDTO updateImage(Long id, String fileName);
+    UsuarioResponseDTO insert(UsuarioDTO dto);
+    UsuarioResponseDTO update(UsuarioDTO dto, Long id);
+    void delete(Long id);
+    List<UsuarioResponseDTO> findAll();
+    UsuarioResponseDTO findById(Long id);
+    List<UsuarioResponseDTO> findByNome(String nome);
+    UsuarioResponseDTO findByEmailSenha(String email, String senha);
+    Boolean alterarSenha(AlterarSenhaDTO dto, Long id);
+    UsuarioResponseDTO updateImage(Long id, String fileName);
 }

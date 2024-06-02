@@ -19,7 +19,7 @@ public class BeanValidationExceptionMapper implements ExceptionMapper<Constraint
 
         for (ConstraintViolation<?> violation : exception.getConstraintViolations()) {
             String fullFieldName = violation.getPropertyPath().toString();
-            String parts[] = fullFieldName.split("\\.");
+            String[] parts = fullFieldName.split("\\.");
             String fieldName = parts[parts.length - 1];
             String message = violation.getMessage();
 

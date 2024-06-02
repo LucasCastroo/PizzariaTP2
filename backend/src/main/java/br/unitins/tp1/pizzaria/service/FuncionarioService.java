@@ -6,11 +6,11 @@ import br.unitins.tp1.pizzaria.dto.FuncionarioResponseDTO;
 import java.util.List;
 
 public interface FuncionarioService {
-    public FuncionarioResponseDTO insert(FuncionarioDTO dto);
-    public FuncionarioResponseDTO update(FuncionarioDTO dto, Long id);
-    public void delete(Long id);
-    public List<FuncionarioResponseDTO> findAll();
-    public FuncionarioResponseDTO findById(Long id);
-    public FuncionarioResponseDTO findByUsuarioId(Long id);
+    FuncionarioResponseDTO insert(FuncionarioDTO dto);
+    FuncionarioResponseDTO update(FuncionarioDTO dto, Long id);
+    void delete(Long id);
+    List<FuncionarioResponseDTO> findAll();
+    FuncionarioResponseDTO findById(Long id);
+    FuncionarioResponseDTO findByUsuarioId(Long id);
 
 }
