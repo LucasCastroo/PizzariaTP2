@@ -9,7 +9,7 @@
           <mat-icon class="btn-edit-icon">edit</mat-icon>
         </button>
       </div>
-      <h1>Alterar perfil</h1>
+      <h1>Meus Dados</h1>
     </header>
     <div class="form-section">
       <form class="profile-form">
@@ -18,11 +18,11 @@
           <tr>
             <td>
               <label>Nome</label>
-              <input matInput disabled type="text" id="nome" value="Zezinho da Silva">
+              <input matInput disabled type="text" id="nome">
             </td>
             <td>
               <label>Cpf</label>
-              <input matInput disabled type="text" id="cpf" value="068.158.999-25">
+              <input matInput disabled type="text" id="cpf">
             </td>
           </tr>
         </table>
@@ -31,23 +31,22 @@
           <tr>
             <td>
               <label>Email</label>
-              <input type="email"  id="email" value="zezinho@gmail.com">
+              <input type="email"  id="email">
             </td>
             <td>
-              <label>Alterar Senha</label>
+              <label>Senha</label>
               <div class="password-container">
-                <input matInput disabled type="password" id="senha" value="**********" >
-                <mat-icon class="edit-icon">edit</mat-icon>
+                <input matInput disabled type="password" id="senha" value="*********">
+                <mat-icon (click)="dialog.open(DialogChangePasswordComponent, {width: '350px'})" class="edit-icon">edit</mat-icon>
               </div>
             </td>
           </tr>
         </table>
-
         <table>
           <tr>
             <td>
               <label>Telefone</label>
-              <input type="tel" id="telefone" value="(63) 99999-9999">
+              <input type="tel" id="telefone">
             </td>
             <td>
               <label>Data de Nascimento</label>
@@ -60,32 +59,34 @@
       <div class="addresses">
         <div class="addresses-title">
           <h2>Endereços</h2>
-          <button mat-fab class="btn-add-address"><mat-icon>add</mat-icon></button>
+          <button mat-fab class="btn-add-address" (click)="addAddress()">
+            <mat-icon>add</mat-icon>
+          </button>
         </div>
 
+        <ng-container *ngFor="let address of addresses; let i = index">
           <mat-expansion-panel class="expansion-panel">
             <mat-expansion-panel-header>
               <mat-panel-title class="text-panel">
-                <mat-icon>place</mat-icon>Apelido do Endereço
+                <mat-icon>place</mat-icon>{{ address.alias }}
               </mat-panel-title>
               <mat-panel-description class="text-panel">
-                Breve descrição do endereço
+                {{ address.description }}
               </mat-panel-description>
             </mat-expansion-panel-header>
-
             <table>
               <tr>
                 <td>
                   <label class="text-panel">Rua</label>
-                  <input matInput type="text">
+                  <input matInput [(ngModel)]="address.rua" type="text">
                 </td>
                 <td>
                   <label class="text-panel">Número</label>
-                  <input matInput type="text">
+                  <input matInput [(ngModel)]="address.numero" type="text">
                 </td>
                 <td>
                   <label class="text-panel">CEP</label>
-                  <input matInput type="text">
+                  <input matInput [(ngModel)]="address.cep" type="text">
                 </td>
               </tr>
             </table>
@@ -93,27 +94,29 @@
               <tr>
                 <td>
                   <label class="text-panel">Bairro</label>
-                  <input matInput type="text">
+                  <input matInput [(ngModel)]="address.bairro" type="text">
                 </td>
                 <td>
                   <label class="text-panel">Complemento</label>
-                  <input matInput type="text">
+                  <input matInput [(ngModel)]="address.complemento" type="text">
                 </td>
               </tr>
             </table>
             <label class="text-panel">Apelido do Endereço</label>
-            <input matInput type="text">
+            <input matInput [(ngModel)]="address.alias" type="text">
             <div class="buttons-panel">
-              <button mat-icon-button>
+              <button mat-icon-button (click)="removeAddress(i)">
                 <mat-icon color="warn">delete</mat-icon>
               </button>
-              <button mat-raised-button>
+              <button mat-raised-button (click)="saveAddress(i)">
                 Salvar
               </button>
             </div>
           </mat-expansion-panel>
-      </div>
+        </ng-container>
+        </div>
     </div>
+
     <button class="submit-btn">Alterar</button>
   </div>
 </main>
