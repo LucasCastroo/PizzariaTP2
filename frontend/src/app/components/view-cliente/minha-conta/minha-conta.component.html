@@ -1,70 +1,120 @@
 <app-header></app-header>
 <body>
-<div class="container">
-  <header>
-    <img src="assets/avatar-do-usuario.png" alt="Ícone" class="icon"> <!-- Substitua "icon.png" pelo caminho da sua imagem de ícone -->
-    <h1>Alterar perfil</h1>
-  </header>
-  <div class="content">
-    <form class="form">
-      <label for="nome">Nome Completo</label>
-      <input type="text" id="nome">
-
-      <label for="email">Email</label>
-      <input type="email" id="email">
-
-      <label for="senha">Alterar Senha</label>
-      <div class="password-container">
-        <input type="password" id="senha">
-        <button type="button" class="toggle-password">👁️</button> <!-- Botão para exibir/ocultar senha -->
+<main>
+  <div class="container">
+    <header>
+      <div id="img-perfil">
+        <img ngSrc="http://localhost:8080/usuario/image/{{usuarioLogado?.nomeImagem}}" width="64" height="64" alt="">
+        <button mat-mini-fab class="btn-add-address btn-edit-img">
+          <mat-icon class="btn-edit-icon">edit</mat-icon>
+        </button>
       </div>
+      <h1>Alterar perfil</h1>
+    </header>
+    <div class="form-section">
+      <form class="profile-form">
 
-      <label for="telefone">Telefone</label>
-      <input type="tel" id="telefone">
+        <table>
+          <tr>
+            <td>
+              <label>Nome</label>
+              <input matInput disabled type="text" id="nome" value="Zezinho da Silva">
+            </td>
+            <td>
+              <label>Cpf</label>
+              <input matInput disabled type="text" id="cpf" value="068.158.999-25">
+            </td>
+          </tr>
+        </table>
 
-      <label for="nascimento">Data de nascimento</label>
-      <input type="date" id="nascimento" placeholder="dd/MM/yyyy">
-    </form>
+        <table>
+          <tr>
+            <td>
+              <label>Email</label>
+              <input type="email"  id="email" value="zezinho@gmail.com">
+            </td>
+            <td>
+              <label>Alterar Senha</label>
+              <div class="password-container">
+                <input matInput disabled type="password" id="senha" value="**********" >
+                <mat-icon class="edit-icon">edit</mat-icon>
+              </div>
+            </td>
+          </tr>
+        </table>
 
-    <div class="enderecos">
-      <h2>Endereços</h2>
-      <div class="endereco">
-        <div class="endereco-header">
-          <p>Rua 9 de Janeiro Q 09, 12 - Setor</p>
-          <button class="toggle-details">▼</button>
+        <table>
+          <tr>
+            <td>
+              <label>Telefone</label>
+              <input type="tel" id="telefone" value="(63) 99999-9999">
+            </td>
+            <td>
+              <label>Data de Nascimento</label>
+              <input type="date" id="nascimento" placeholder="dd/MM/yyyy">
+            </td>
+          </tr>
+        </table>
+      </form>
+
+      <div class="addresses">
+        <div class="addresses-title">
+          <h2>Endereços</h2>
+          <button mat-fab class="btn-add-address"><mat-icon>add</mat-icon></button>
         </div>
-        <p>Cidade - Estado</p>
-        <p>Portão preto com branco, ao lado da UNITINS</p>
-      </div>
-      <div class="endereco">
-        <div class="endereco-header">
-          <p>Avenida Brasil Q 39, 02 - Setor</p>
-          <button class="toggle-details">▼</button>
-        </div>
-        <p>Cidade - Estado</p>
-        <p>De frente ao mercado Gigante</p>
-        <div class="endereco-detalhes">
-          <label for="endereco1">Endereço</label>
-          <input type="text" id="endereco1" value="Avenida Brasil Q 39, 02">
 
-          <label for="cidade1">Cidade</label>
-          <input type="text" id="cidade1" placeholder="Cidade">
+          <mat-expansion-panel class="expansion-panel">
+            <mat-expansion-panel-header>
+              <mat-panel-title class="text-panel">
+                <mat-icon>place</mat-icon>Apelido do Endereço
+              </mat-panel-title>
+              <mat-panel-description class="text-panel">
+                Breve descrição do endereço
+              </mat-panel-description>
+            </mat-expansion-panel-header>
 
-          <label for="estado1">Estado</label>
-          <select id="estado1">
-            <option value="">Estado</option>
-            <!-- Adicione mais opções conforme necessário -->
-          </select>
-
-          <label for="setor1">Setor</label>
-          <input type="text" id="setor1" placeholder="Setor">
-
-          <label for="descricao1">Descrição</label>
-          <input type="text" id="descricao1" value="De frente ao mercado Gigante">
-        </div>
+            <table>
+              <tr>
+                <td>
+                  <label class="text-panel">Rua</label>
+                  <input matInput type="text">
+                </td>
+                <td>
+                  <label class="text-panel">Número</label>
+                  <input matInput type="text">
+                </td>
+                <td>
+                  <label class="text-panel">CEP</label>
+                  <input matInput type="text">
+                </td>
+              </tr>
+            </table>
+            <table>
+              <tr>
+                <td>
+                  <label class="text-panel">Bairro</label>
+                  <input matInput type="text">
+                </td>
+                <td>
+                  <label class="text-panel">Complemento</label>
+                  <input matInput type="text">
+                </td>
+              </tr>
+            </table>
+            <label class="text-panel">Apelido do Endereço</label>
+            <input matInput type="text">
+            <div class="buttons-panel">
+              <button mat-icon-button>
+                <mat-icon color="warn">delete</mat-icon>
+              </button>
+              <button mat-raised-button>
+                Salvar
+              </button>
+            </div>
+          </mat-expansion-panel>
       </div>
     </div>
+    <button class="submit-btn">Alterar</button>
   </div>
-  <button class="alterar">Alterar</button>
-</div>
+</main>
 </body>

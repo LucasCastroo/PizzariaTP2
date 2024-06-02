@@ -1,12 +1,17 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
+app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: transparent;
+  z-index: 1000;
 }
 
 body {
-  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f7f7f7;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,139 +19,192 @@ body {
 }
 
 .container {
-  width: 80%;
-  max-width: 1200px;
+  margin-top: 120px;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 1300px;
 }
 
 header {
-  display: grid;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-header .icon {
-  width: 50px;
-  height: 50px;
-  margin-right: 10px;
-  align-items: center;
+  text-align: center;
+  margin-bottom: 40px;
 }
 
 header h1 {
-  font-family: "Zeyada", cursive;
   font-size: 36px;
-  color: #000;
+  font-weight: 500;
+  color: #333;
 }
 
-.content {
+.form-section {
   display: flex;
   justify-content: space-between;
+  margin-right: 15px;
 }
 
-form {
-  width: 45%;
+.profile-form {
+  flex: 1;
+  margin-right: 20px;
 }
 
-form label {
+.profile-form label {
   display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
+  margin-bottom: 8px;
+  font-weight: 500;
 }
 
-form input {
-  width: 100%;
+.profile-form input {
+  width: 300px;
   padding: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 6px;
+  font-size: 16px;
 }
 
 .password-container {
+  position: relative;
   display: flex;
   align-items: center;
 }
 
-.password-container input {
-  flex: 1;
-}
 
 .password-container .toggle-password {
   background: none;
   border: none;
-  margin-left: -30px;
+  margin-left: 10px;
   cursor: pointer;
+  font-size: 18px;
 }
 
-.enderecos {
-  width: 50%;
+.edit-icon {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  margin-bottom: 0;
 }
 
-.enderecos h2 {
+.addresses {
+  flex: 1;
+}
+
+.addresses h2 {
   font-size: 24px;
   margin-bottom: 20px;
 }
 
-.endereco {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 15px;
+.address-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
 }
 
-.endereco-header {
+.address-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
 }
 
-.endereco-header p {
-  font-weight: bold;
-}
-
-.endereco-header .toggle-details {
+.address-header button {
   background: none;
   border: none;
   cursor: pointer;
+  font-size: 18px;
 }
 
-.endereco p {
-  margin-bottom: 5px;
+.address-details {
+  margin-top: 20px;
 }
 
-.endereco-detalhes {
-  display: none;
-  padding-top: 10px;
-}
-
-.endereco-detalhes label {
+.address-details label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
+  font-weight: 500;
 }
 
-.endereco-detalhes input,
-.endereco-detalhes select {
+.address-details input,
+.address-details select {
   width: 100%;
   padding: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  font-size: 16px;
 }
 
-.alterar {
+.submit-btn {
   display: block;
   width: 100%;
   padding: 15px;
   background-color: #f44336;
-  color: #fff;
-  font-size: 18px;
-  font-weight: bold;
+  color: white;
   border: none;
   border-radius: 5px;
+  font-size: 18px;
   cursor: pointer;
-  margin-top: 20px;
+  transition: background-color 0.3s;
 }
 
-.alterar:hover {
-  background-color: #c23c3c;
+.submit-btn:hover {
+  background-color: #ad3131;
+}
+
+.addresses-title{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.btn-add-address {
+  background-color: #1c6909;
+  color: white;
+}
+
+.btn-edit-img {
+  width: 26px;
+  height: 27px;
+  min-width: 26px;
+}
+
+.btn-edit-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 17px;
+  color: white;
+}
+
+.mat-expansion-panel {
+  background-color: #ffffff;
+}
+
+.text-panel {
+  color: #1e1d1d;
+}
+
+.expansion-panel label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+.expansion-panel input {
+  width: 160px;
+  padding: 10px;
+  margin-bottom: 20px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 10px;
+}
+
+.buttons-panel {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
 }
