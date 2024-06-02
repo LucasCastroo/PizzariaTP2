@@ -3,6 +3,7 @@ import {HttpBackend, HttpClient} from "@angular/common/http";
 import {LoginData} from "../models/login-data";
 import {Authorization} from "../models/authorization";
 import {Router} from "@angular/router";
+import {Usuario} from "../models/usuario";
 
 @Injectable({
   providedIn: 'root'
