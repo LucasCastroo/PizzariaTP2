@@ -7,3 +7,11 @@ export interface Usuario {
   senha: string;
   nomeImagem: string;
 }
+
+export interface UsuarioCreate{
+  nome: string;
+  cpf: string;
+  email: string;
+  nascimento: string;
+  senha: string;
+}

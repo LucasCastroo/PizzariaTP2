@@ -1,7 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import {HttpBackend, HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Usuario } from '../models/usuario';
+import {Usuario, UsuarioCreate} from '../models/usuario';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +10,10 @@ export class UsuarioService {
   private baseUrl = "http://localhost:8080"
   private usuarioUrl = this.baseUrl + "/usuario";
   private minhaContaUrl = this.baseUrl + "/minha-conta"
-
-  constructor(private httpClient: HttpClient) {  }
+  private httpClientNoAuth: HttpClient;
+  constructor(private httpClient: HttpClient, handler: HttpBackend) {
+    this.httpClientNoAuth = new HttpClient(handler);
+  }
 
   findAll(): Observable<Usuario[]> {
     return this.httpClient.get<Usuario[]>(this.usuarioUrl);
@@ -21,8 +23,8 @@ export class UsuarioService {
     return this.httpClient.get<Usuario>(`${this.usuarioUrl}/${id}`);
   }
 
-  insert(usuario: Usuario): Observable<Usuario> {
-    return this.httpClient.post<Usuario>(this.usuarioUrl, usuario);
+  insert(usuario: UsuarioCreate): Observable<Usuario> {
+    return this.httpClientNoAuth.post<Usuario>(this.usuarioUrl, usuario);
   }
 
   update(usuario: Usuario): Observable<Usuario> {

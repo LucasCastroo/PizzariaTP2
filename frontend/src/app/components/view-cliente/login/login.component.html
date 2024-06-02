@@ -2,24 +2,24 @@
 <div class="container" id="container">
   <div class="form-container sign-up">
     <form [formGroup]="formGroupCadastro">
-      <img src="../../../../assets/logo.png" class="logo">
+      <img src="assets/logo.png" class="logo">
       <h1>Cadastro</h1>
       <span>Insira as seguintes informações para criar uma conta</span>
       <input type="text" placeholder="Nome Completo" formControlName="nome">
       <input type="text" placeholder="CPF" formControlName="cpf">
-      <input type="date" placeholder="Data de Nascimento" formControlName="dataNascimento">
-      <input type="email" placeholder="Email" formControlName="emailCadastro">
-      <input type="password" placeholder="Senha" formControlName="senhaCadastro">
+      <input type="date" placeholder="Data de Nascimento" formControlName="nascimento">
+      <input type="email" placeholder="Email" formControlName="email">
+      <input type="password" placeholder="Senha" formControlName="senha">
       <button (click)="cadastrar()">Cadastrar</button>
     </form>
   </div>
   <div class="form-container sign-in">
     <form [formGroup]="formGroupLogin" class="flex-container">
-      <img src="../../../../assets/logo.png" class="logo">
+      <img src="assets/logo.png" class="logo">
       <h1>Login</h1>
       <input type="email" placeholder="Email" formControlName="email">
       <input type="password" placeholder="Senha" formControlName="senha">
-      <a href="http://localhost:4200/login">Esqueceu a senha?</a>
+      <a href="/login">Esqueceu a senha?</a>
       <button (click)="login()">Entrar</button>
     </form>
   </div>
