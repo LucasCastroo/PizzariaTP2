@@ -70,20 +70,10 @@ header h1 {
   align-items: center;
 }
 
-
-.password-container .toggle-password {
-  background: none;
-  border: none;
-  margin-left: 10px;
-  cursor: pointer;
-  font-size: 18px;
-}
-
 .edit-icon {
   position: absolute;
   right: 10px;
   cursor: pointer;
-  margin-bottom: 0;
 }
 
 .addresses {
@@ -187,6 +177,11 @@ header h1 {
   color: #1e1d1d;
 }
 
+.expansion-panel {
+  position: relative;
+  margin-bottom: 5px;
+}
+
 .expansion-panel label {
   display: block;
   margin-bottom: 8px;
@@ -207,4 +202,6 @@ header h1 {
   position: absolute;
   bottom: 10px;
   right: 10px;
+  display: flex;
+  gap: 10px;
 }

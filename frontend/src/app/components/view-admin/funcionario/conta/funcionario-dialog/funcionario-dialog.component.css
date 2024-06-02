@@ -16,7 +16,7 @@
   font-family: Bahnschrift;
 }
 mat-card-actions{
-  justify-content: center;
+  justify-content: space-around;
 }
 mat-hint{
   color: white;
