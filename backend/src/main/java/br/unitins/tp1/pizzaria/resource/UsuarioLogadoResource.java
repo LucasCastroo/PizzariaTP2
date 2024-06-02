@@ -14,7 +14,6 @@ import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import org.eclipse.microprofile.jwt.Claim;
 import org.eclipse.microprofile.jwt.JsonWebToken;
 import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 
@@ -28,9 +27,6 @@ import static io.quarkus.arc.ComponentsProvider.LOG;
 @RolesAllowed({Cliente.ROLE, Funcionario.ROLE})
 public class UsuarioLogadoResource {
     @Inject
-    @Claim("sub")
-    Long idUsuario;
-    @Inject
     JsonWebToken jwt;
 
     @Inject
@@ -41,14 +37,14 @@ public class UsuarioLogadoResource {
 
     @GET
     public Response minhaConta() {
-        return Response.ok(service.findById(idUsuario)).build();
+        return Response.ok(service.findById(Long.valueOf(jwt.getSubject()))).build();
     }
 
     @PATCH
     @Path("/alterar-senha")
     public Response alterarSenha(@Valid AlterarSenhaDTO dto) {
         try {
-            service.alterarSenha(dto, idUsuario);
+            service.alterarSenha(dto, Long.valueOf(jwt.getSubject()));
             Log.info("Senha alterada");
             return Response.noContent().build();
         } catch (Exception e) {
@@ -61,7 +57,7 @@ public class UsuarioLogadoResource {
     @PATCH
     @Path("/update")
     public Response update(UsuarioDTO dto) {
-        return Response.ok(service.update(dto, idUsuario)).build();
+        return Response.ok(service.update(dto, Long.valueOf(jwt.getSubject()))).build();
     }
 
     @PATCH
@@ -71,7 +67,7 @@ public class UsuarioLogadoResource {
     public Response salvarImagem(@MultipartForm ImageForm form) {
         String nomeImagem;
         try {
-            String old = service.findById(idUsuario).nomeImagem();
+            String old = service.findById(Long.valueOf(jwt.getSubject())).nomeImagem();
             if(old != null){
                 imageService.remover(old);
             }
@@ -81,7 +77,7 @@ public class UsuarioLogadoResource {
             Error error = new Error("409", e.getMessage());
             return Response.status(Response.Status.CONFLICT).entity(error).build();
         }
-        LOG.infof("Imagem do item %d autualizada", idUsuario);
-        return Response.ok(service.updateImage(idUsuario, nomeImagem)).build();
+        LOG.infof("Imagem do item %d autualizada", Long.valueOf(jwt.getSubject()));
+        return Response.ok(service.updateImage(Long.valueOf(jwt.getSubject()), nomeImagem)).build();
     }
 }

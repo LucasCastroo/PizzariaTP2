@@ -11,7 +11,7 @@ export class UsuarioService {
   private usuarioUrl = this.baseUrl + "/usuario";
   private minhaContaUrl = this.baseUrl + "/minha-conta"
   private httpClientNoAuth: HttpClient;
-  constructor(private httpClient: HttpClient, handler: HttpBackend) {
+  constructor(private httpClient: HttpClient, private handler: HttpBackend) {
     this.httpClientNoAuth = new HttpClient(handler);
   }
 

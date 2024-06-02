@@ -45,7 +45,6 @@ export class LoginComponent implements AfterViewInit{
   constructor(private elementRef: ElementRef,
               private service: AuthService,
               private route: ActivatedRoute,
-              private router: Router,
               private serviceUsuario: UsuarioService,
               protected snackBar: MatSnackBar) {
 
