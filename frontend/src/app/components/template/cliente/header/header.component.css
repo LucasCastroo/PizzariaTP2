@@ -52,8 +52,14 @@ body {
   border-radius: 4px;
 }
 
-mat-icon {
+mat-icon, .img-account {
   vertical-align: middle;
+  margin-right: 5px;
+  color: white;
+}
+
+.img-account {
+  border-radius: 50%;
 }
 
 #btn-sacola {
@@ -66,7 +72,6 @@ mat-icon {
   margin-bottom: 5px;
 }
 
-#icon-person {
-  color: white;
-  margin-right: 8px;
+.mat-menu-panel {
+  background-color: #f44336 !important;
 }

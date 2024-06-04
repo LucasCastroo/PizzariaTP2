@@ -6,16 +6,17 @@
     <a href="#">SOBRE</a>
     <ng-container *ngIf="!usuarioLogado; else loggedInTemplate">
       <a (click)="router.navigateByUrl('/login')">
-        <mat-icon class="icon-person">account_circle</mat-icon>Login/Cadastro
+        <mat-icon>account_circle</mat-icon>Login/Cadastro
       </a>
     </ng-container>
     <ng-template #loggedInTemplate>
       <a [matMenuTriggerFor]="menu">
-        <img ngSrc="http://localhost:8080/usuario/image/{{usuarioLogado?.nomeImagem}}" width="32" height="32" alt="">
+        <img class="img-account" ngSrc="http://localhost:8080/usuario/image/{{usuarioLogado?.nomeImagem}}" width="32" height="32" alt="">
         <span>{{usuarioLogado?.nome}}</span>
       </a>
-      <mat-menu #menu="matMenu" xPosition="before">
+      <mat-menu #menu="matMenu" xPosition="before" class="mat-menu-panel">
         <button mat-menu-item (click)="router.navigateByUrl('/minha-conta')"><mat-icon>person</mat-icon>Minha Conta</button>
+        <button mat-menu-item (click)="router.navigateByUrl('/minha-conta')"><mat-icon>description</mat-icon>Meus Pedidos</button>
         <button mat-menu-item (click)="logout()"><mat-icon>exit_to_app</mat-icon>Sair</button>
       </mat-menu>
     </ng-template>
