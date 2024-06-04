@@ -2,6 +2,7 @@ import {HttpBackend, HttpClient} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {Usuario, UsuarioCreate} from '../models/usuario';
+import {Cliente} from "../models/cliente";
 
 @Injectable({
   providedIn: 'root'
@@ -37,5 +38,14 @@ export class UsuarioService {
 
   minhaConta(){
     return this.httpClient.get<Usuario>(this.minhaContaUrl)
+  }
+
+  alterarSenha(obj: {antigaSenha: string | null, novaSenha: string | null}){
+    if(obj.antigaSenha && obj.novaSenha) return this.httpClient.patch(`${this.minhaContaUrl}/alterar-senha`, obj);
+    else throw Error("Preencha os campos corretamente!")
+  }
+
+  getCliente(){
+    return this.httpClient.get<Cliente>(`${this.minhaContaUrl}/cliente`)
   }
 }

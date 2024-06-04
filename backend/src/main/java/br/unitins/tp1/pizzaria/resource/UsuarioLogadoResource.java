@@ -5,6 +5,7 @@ import br.unitins.tp1.pizzaria.dto.*;
 import br.unitins.tp1.pizzaria.form.ImageForm;
 import br.unitins.tp1.pizzaria.model.Cliente;
 import br.unitins.tp1.pizzaria.model.Funcionario;
+import br.unitins.tp1.pizzaria.service.ClienteService;
 import br.unitins.tp1.pizzaria.service.UsuarioImageService;
 import br.unitins.tp1.pizzaria.service.UsuarioService;
 import io.quarkus.logging.Log;
@@ -35,6 +36,9 @@ public class UsuarioLogadoResource {
     @Inject
     UsuarioService service;
 
+    @Inject
+    ClienteService clienteService;
+
     @GET
     public Response minhaConta() {
         return Response.ok(service.findById(Long.valueOf(jwt.getSubject()))).build();
@@ -55,9 +59,21 @@ public class UsuarioLogadoResource {
     }
 
     @PATCH
+    @Path("/alterar")
+    public Response alterarConta(UsuarioDTO dto){
+        return Response.ok(service.update(dto, Long.valueOf(jwt.getSubject()))).build();
+    }
+
+    @PATCH
     @Path("/update")
     public Response update(UsuarioDTO dto) {
         return Response.ok(service.update(dto, Long.valueOf(jwt.getSubject()))).build();
+    }
+
+    @GET
+    @Path("/cliente")
+    public Response getCliente(){
+        return Response.ok(clienteService.findByUsuarioId(Long.valueOf(jwt.getSubject()))).build();
     }
 
     @PATCH

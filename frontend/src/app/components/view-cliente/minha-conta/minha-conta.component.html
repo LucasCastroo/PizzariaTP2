@@ -11,18 +11,18 @@
       </div>
       <h1>Meus Dados</h1>
     </header>
-    <div class="form-section">
-      <form class="profile-form">
-
+    <div class="form-section" >
+      <ng-container *ngIf="form | async as form; else loading">
+      <form class="profile-form" [formGroup]="form">
         <table>
           <tr>
             <td>
               <label>Nome</label>
-              <input matInput disabled type="text" id="nome">
+              <input matInput type="text" formControlName="nome">
             </td>
             <td>
-              <label>Cpf</label>
-              <input matInput disabled type="text" id="cpf">
+              <label>CPF</label>
+              <input matInput [disabled]="true" type="text" formControlName="cpf">
             </td>
           </tr>
         </table>
@@ -31,7 +31,7 @@
           <tr>
             <td>
               <label>Email</label>
-              <input type="email"  id="email">
+              <input type="email"  formControlName="email">
             </td>
             <td>
               <label>Senha</label>
@@ -46,16 +46,17 @@
           <tr>
             <td>
               <label>Telefone</label>
-              <input type="tel" id="telefone">
+              <input type="tel" formControlName="telefone">
             </td>
             <td>
               <label>Data de Nascimento</label>
-              <input type="date" id="nascimento" placeholder="dd/MM/yyyy">
+              <input type="date" formControlName="nascimento" placeholder="dd/MM/yyyy">
             </td>
           </tr>
         </table>
       </form>
-
+      </ng-container>
+      <ng-template #loading>Carregando...</ng-template>
       <div class="addresses">
         <div class="addresses-title">
           <h2>Endereços</h2>
@@ -68,21 +69,25 @@
           <mat-expansion-panel class="expansion-panel">
             <mat-expansion-panel-header>
               <mat-panel-title class="text-panel">
-                <mat-icon>place</mat-icon>{{ address.alias }}
+                <mat-icon>place</mat-icon>{{ address.logradouro }}
               </mat-panel-title>
               <mat-panel-description class="text-panel">
-                {{ address.description }}
+                {{address.logradouro}} {{address.bairro}} {{address.cidade}} {{address.cep}}
               </mat-panel-description>
             </mat-expansion-panel-header>
             <table>
               <tr>
                 <td>
-                  <label class="text-panel">Rua</label>
-                  <input matInput [(ngModel)]="address.rua" type="text">
+                  <label class="text-panel">Logradouro</label>
+                  <input matInput [(ngModel)]="address.logradouro" type="text">
                 </td>
                 <td>
-                  <label class="text-panel">Número</label>
-                  <input matInput [(ngModel)]="address.numero" type="text">
+                  <label class="text-panel">Bairro/Setor</label>
+                  <input matInput [(ngModel)]="address.bairro" type="text">
+                </td>
+                <td>
+                  <label class="text-panel">Cidade</label>
+                  <input matInput [(ngModel)]="address.cidade" type="text">
                 </td>
                 <td>
                   <label class="text-panel">CEP</label>
@@ -90,20 +95,6 @@
                 </td>
               </tr>
             </table>
-            <table>
-              <tr>
-                <td>
-                  <label class="text-panel">Bairro</label>
-                  <input matInput [(ngModel)]="address.bairro" type="text">
-                </td>
-                <td>
-                  <label class="text-panel">Complemento</label>
-                  <input matInput [(ngModel)]="address.complemento" type="text">
-                </td>
-              </tr>
-            </table>
-            <label class="text-panel">Apelido do Endereço</label>
-            <input matInput [(ngModel)]="address.alias" type="text">
             <div class="buttons-panel">
               <button mat-icon-button (click)="removeAddress(i)">
                 <mat-icon color="warn">delete</mat-icon>

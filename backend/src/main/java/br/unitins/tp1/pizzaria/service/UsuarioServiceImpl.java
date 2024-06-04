@@ -7,6 +7,8 @@ import br.unitins.tp1.pizzaria.repository.UsuarioRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Validator;
+import jakarta.validation.ValidatorFactory;
 import jakarta.ws.rs.NotFoundException;
 
 import java.util.List;
@@ -19,6 +21,9 @@ public class UsuarioServiceImpl implements UsuarioService{
 
     @Inject
     HashService hashService;
+
+    @Inject
+    Validator validator;
 
     @Override
     @Transactional
@@ -37,8 +42,14 @@ public class UsuarioServiceImpl implements UsuarioService{
     @Transactional
     public UsuarioResponseDTO update(UsuarioDTO dto, Long id) {
         Usuario usuario = repository.findById(id);
+        validator.validate(dto).forEach((violation) -> {
+            switch (violation.getPropertyPath().toString()){
+                case "email" -> dto.setEmail(null);
+                case "nome" -> dto.setNome(null);
+                case "nascimento" -> dto.setNascimento(null);
+            }
+        });
         if(usuario == null) throw new NotFoundException("Usuário não encontrado");
-        if(dto.getCpf() != null) usuario.setCpf(dto.getCpf());
         if(dto.getEmail() != null) usuario.setEmail(dto.getEmail());
         if(dto.getNascimento() != null) usuario.setNascimento(dto.getNascimento());
         if(dto.getNome() != null) usuario.setNome(dto.getNome());

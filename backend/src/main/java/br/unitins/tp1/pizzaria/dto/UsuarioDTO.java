@@ -12,19 +12,19 @@ import java.util.Objects;
 
 public class UsuarioDTO {
     @NotBlank(message = "Campo nome não pode ser nulo!")
-    private final String nome;
+    private String nome;
     @NotBlank(message = "Campo cpf não pode ser nulo!")
     @CPF
-    private final String cpf;
+    private String cpf;
     @NotBlank(message = "Campo email não pode ser nulo!")
-    private final String email;
+    private String email;
     @NotBlank(message = "Campo senha não pode ser nulo!")
     @Size(min = 6, message = "Senha deve ter no mínimo 6 caracters!")
-    private final String senha;
+    private String senha;
 
     @NotNull
     @Past
-    private final LocalDate nascimento;
+    private LocalDate nascimento;
 
     public UsuarioDTO(String nome, String cpf, String email, String senha, LocalDate nascimento) {
         this.nome = nome;
@@ -52,6 +52,26 @@ public class UsuarioDTO {
 
     public LocalDate getNascimento() {
         return nascimento;
+    }
+
+    public void setNome(@NotBlank(message = "Campo nome não pode ser nulo!") String nome) {
+        this.nome = nome;
+    }
+
+    public void setCpf(@NotBlank(message = "Campo cpf não pode ser nulo!") @CPF String cpf) {
+        this.cpf = cpf;
+    }
+
+    public void setEmail(@NotBlank(message = "Campo email não pode ser nulo!") String email) {
+        this.email = email;
+    }
+
+    public void setSenha(@NotBlank(message = "Campo senha não pode ser nulo!") @Size(min = 6, message = "Senha deve ter no mínimo 6 caracters!") String senha) {
+        this.senha = senha;
+    }
+
+    public void setNascimento(@NotNull @Past LocalDate nascimento) {
+        this.nascimento = nascimento;
     }
 
     @Override
