@@ -1,0 +1,43 @@
+<div class="header">
+  <img src="assets/pizza-cardapio.png" class="icon-pizza">
+  <h1 class="title-cardapio" id="title">Cardápio</h1>
+</div>
+
+<h1 class="title-cardapio">Pizzas</h1>
+<div class="container responsive-grid">
+
+  <mat-card class="card" *ngFor="let card of cardsPizza()">
+    <img mat-card-image [src]="card.urlImagem" class="card-image">
+    <mat-card-title class="centered-text">{{card.descricao}}</mat-card-title>
+    <mat-card-content class="centered-text">
+      <p class="price">R${{card.preco}}</p>
+    </mat-card-content>
+    <mat-card-footer>
+      <button mat-flat-button color="warn" class="add-to-cart-button">
+        Adicionar a sacola
+      </button>
+    </mat-card-footer>
+  </mat-card>
+
+</div>
+
+<div class="header-bebidas">
+  <h1 class="title-cardapio">Bebidas</h1>
+  <img src="assets/copo-bebida.png" class="icon-bebida">
+</div>
+
+<div class="container responsive-grid">
+  <mat-card class="card" *ngFor="let card of cardsBebida()">
+    <img mat-card-image [src]="card.urlImagem" class="card-image">
+    <mat-card-title class="centered-text">{{card.bebida}}</mat-card-title>
+    <mat-card-content class="centered-text">
+      <p class="price">R${{card.preco}}</p>
+    </mat-card-content>
+    <mat-card-footer>
+      <button mat-flat-button color="warn" class="add-to-cart-button">
+        Adicionar ao carrinho
+      </button>
+    </mat-card-footer>
+  </mat-card>
+
+</div>

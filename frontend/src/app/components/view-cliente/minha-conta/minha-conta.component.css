@@ -19,7 +19,7 @@ body {
 }
 
 .container {
-  margin-top: 120px;
+  margin-top: 100px;
   background: white;
   padding: 30px;
   border-radius: 10px;
@@ -175,11 +175,12 @@ header h1 {
 
 .text-panel {
   color: #1e1d1d;
+  margin-right: 30px;
 }
 
 .expansion-panel {
   position: relative;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .expansion-panel label {
@@ -195,7 +196,7 @@ header h1 {
   margin-right: 10px;
   border: 1px solid #ccc;
   border-radius: 6px;
-  font-size: 10px;
+  font-size: 15px;
 }
 
 .buttons-panel {

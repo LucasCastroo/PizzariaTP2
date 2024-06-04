@@ -16,6 +16,8 @@ import {BebidaDialogComponent} from "../../../view-admin/bebida/bebida-dialog/be
 import {
   IngredienteDialogComponent
 } from "../../../view-admin/ingrediente/ingrediente-dialog/ingrediente-dialog.component";
+import {UsuarioService} from "../../../../services/usuario.service";
+import {Usuario} from "../../../../models/usuario";
 
 @Component({
   selector: 'app-toolbar-sidenav',
@@ -35,10 +37,19 @@ import {
   styleUrl: './toolbar-sidenav.component.css'
 })
 export class ToolbarSidenavComponent{
-  usuarioLogado = 'Usuário Logado';
+  usuarioLogado: Usuario | undefined;
   currentURL = this.router.url.replace(/^\//, '');
   title = this.transformTitle();
-  constructor(private router: Router, public dialog: MatDialog) {
+
+  constructor(private router: Router, public dialog: MatDialog, private service: UsuarioService) {
+    service.minhaConta().subscribe({
+      next: usuario =>{
+        this.usuarioLogado = usuario;
+      },
+      error: e => {
+        this.usuarioLogado = undefined;
+      }
+    });
   }
 
   logout() {
@@ -95,4 +106,10 @@ export class ToolbarSidenavComponent{
         width: '350px'})
     }
   }
+
+  edit() {
+    this.router.navigateByUrl('http://localhost:4200/contas-funcionario').then();
+    this.dialog.open(FuncionarioDialogComponent)
+  }
+
 }

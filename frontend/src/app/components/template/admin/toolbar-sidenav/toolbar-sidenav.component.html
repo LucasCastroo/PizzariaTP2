@@ -34,9 +34,9 @@
     <a href="http://localhost:4200/ingredientes" mat-button>
       <mat-icon>restaurant_menu</mat-icon>
       Ingredientes</a>
-    <a mat-icon-button id="account" href="http://localhost:4200/contas-funcionario">
+    <a mat-icon-button id="account" (click)="edit()">
       <mat-icon id="account-icon">account_circle</mat-icon>
-      {{usuarioLogado}}</a>
+      {{usuarioLogado?.nome}}</a>
     <button (click)="logout()" class="btn" id="btn-logout" mat-fab>
       <mat-icon>logout</mat-icon>
     </button>
