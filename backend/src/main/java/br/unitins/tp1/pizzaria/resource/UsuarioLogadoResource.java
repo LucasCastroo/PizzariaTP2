@@ -6,6 +6,7 @@ import br.unitins.tp1.pizzaria.form.ImageForm;
 import br.unitins.tp1.pizzaria.model.Cliente;
 import br.unitins.tp1.pizzaria.model.Funcionario;
 import br.unitins.tp1.pizzaria.service.ClienteService;
+import br.unitins.tp1.pizzaria.service.FuncionarioService;
 import br.unitins.tp1.pizzaria.service.UsuarioImageService;
 import br.unitins.tp1.pizzaria.service.UsuarioService;
 import io.quarkus.logging.Log;
@@ -38,6 +39,9 @@ public class UsuarioLogadoResource {
 
     @Inject
     ClienteService clienteService;
+
+    @Inject
+    FuncionarioService funcionarioService;
 
     @GET
     public Response minhaConta() {
@@ -76,6 +80,11 @@ public class UsuarioLogadoResource {
         return Response.ok(clienteService.findByUsuarioId(Long.valueOf(jwt.getSubject()))).build();
     }
 
+    @GET
+    @Path("/funcionario")
+    public Response getFuncionario(){
+        return Response.ok(funcionarioService.findByUsuarioId(Long.valueOf(jwt.getSubject()))).build();
+    }
     @PATCH
     @Path("/image")
     @RolesAllowed({Cliente.ROLE, Funcionario.ROLE})

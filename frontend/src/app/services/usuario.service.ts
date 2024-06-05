@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {Usuario, UsuarioCreate} from '../models/usuario';
 import {Cliente} from "../models/cliente";
+import {Funcionario} from "../models/funcionario";
 
 @Injectable({
   providedIn: 'root'
@@ -47,5 +48,8 @@ export class UsuarioService {
 
   getCliente(){
     return this.httpClient.get<Cliente>(`${this.minhaContaUrl}/cliente`)
+  }
+  getFuncionario(){
+    return this.httpClient.get<Funcionario>(`${this.minhaContaUrl}/funcionario`)
   }
 }

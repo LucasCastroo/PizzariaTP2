@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnDestroy, OnInit} from '@angular/core';
 import {
   MatCell,
   MatCellDef,
@@ -18,6 +18,10 @@ import {NgOptimizedImage} from "@angular/common";
 import {Funcionario} from "../../../../models/funcionario";
 import {FuncionarioService} from "../../../../services/funcionario.service";
 import {DialogDeleteComponent} from "../../../template/admin/template-admin/dialog-delete/dialog-delete.component";
+import {ActivatedRoute} from "@angular/router";
+import {forkJoin, merge, Subscription} from "rxjs";
+import {UsuarioService} from "../../../../services/usuario.service";
+import {NivelAcesso} from "../../../../models/nivel-acesso";
 
 @Component({
   selector: 'app-conta-funcionario',
@@ -44,18 +48,29 @@ import {DialogDeleteComponent} from "../../../template/admin/template-admin/dial
   templateUrl: './funcionario-conta.component.html',
   styleUrl: './funcionario-conta.component.css'
 })
-export class FuncionarioContaComponent implements OnInit{
+export class FuncionarioContaComponent implements AfterViewInit{
   displayedColumns: string[] = ['id', 'nome', 'cpf', 'nascimento','email', 'tipoAcesso', 'acao'];
   funcionarios: Funcionario[] = [];
 
   constructor(private funcionarioService: FuncionarioService,
-              public dialog: MatDialog) {
+              public dialog: MatDialog, private route: ActivatedRoute, private usuarioService: UsuarioService) {
+
   }
 
-  ngOnInit() {
+  ngAfterViewInit() {
+    if(this.route.snapshot.queryParamMap.get("me")){
+      this.usuarioService.getFuncionario().subscribe(funcionario =>{
+        this.dialog.open(FuncionarioDialogComponent, {
+          height: '380px',
+          width: '400px',
+          data: funcionario
+        });
+      });
+    }
     this.funcionarioService.findAll().subscribe(data => {
       this.funcionarios = data;
-    })
+    });
+
   }
 
   protected readonly FuncionarioDialogComponent = FuncionarioDialogComponent;

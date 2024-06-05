@@ -111,15 +111,8 @@ export class ToolbarSidenavComponent{
   }
 
   edit() {
-    this.router.navigateByUrl('/contas-funcionario').then(() => {
-      this.title = 'Colaboradores';
-      setTimeout(() => {
-        this.dialog.open(FuncionarioDialogComponent, {
-          height: '380px',
-          width: '400px',
-          data: this.usuarioLogado
-        });
-      }, 150);
+    this.router.navigateByUrl('/contas-funcionario?me=true').then(() => {
+      window.location.reload();
     });
   }
 }
