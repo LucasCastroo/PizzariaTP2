@@ -18,6 +18,7 @@ import {
 } from "../../../view-admin/ingrediente/ingrediente-dialog/ingrediente-dialog.component";
 import {UsuarioService} from "../../../../services/usuario.service";
 import {Usuario} from "../../../../models/usuario";
+import {MatCell, MatCellDef} from "@angular/material/table";
 
 @Component({
   selector: 'app-toolbar-sidenav',
@@ -31,7 +32,9 @@ import {Usuario} from "../../../../models/usuario";
     MatIconButton,
     MatToolbar,
     RouterOutlet,
-    MatIconAnchor
+    MatIconAnchor,
+    MatCell,
+    MatCellDef
   ],
   templateUrl: './toolbar-sidenav.component.html',
   styleUrl: './toolbar-sidenav.component.css'
@@ -108,8 +111,15 @@ export class ToolbarSidenavComponent{
   }
 
   edit() {
-    this.router.navigateByUrl('http://localhost:4200/contas-funcionario').then();
-    this.dialog.open(FuncionarioDialogComponent)
+    this.router.navigateByUrl('/contas-funcionario').then(() => {
+      this.title = 'Colaboradores';
+      setTimeout(() => {
+        this.dialog.open(FuncionarioDialogComponent, {
+          height: '380px',
+          width: '400px',
+          data: this.usuarioLogado
+        });
+      }, 150);
+    });
   }
-
 }
