@@ -10,7 +10,8 @@
     <img mat-card-image [src]="card.urlImagem" class="card-image">
     <mat-card-title class="centered-text">{{card.descricao}}</mat-card-title>
     <mat-card-content class="centered-text">
-      <p class="price">R${{card.preco}}</p>
+      <p class="price">R${{card.preco.toLocaleString("pt-BR", {maximumFractionDigits: 2, minimumFractionDigits: 2})}}</p>
+
     </mat-card-content>
     <mat-card-footer>
       <button mat-flat-button color="warn" class="add-to-cart-button">
@@ -31,7 +32,7 @@
     <img mat-card-image [src]="card.urlImagem" class="card-image">
     <mat-card-title class="centered-text">{{card.bebida}}</mat-card-title>
     <mat-card-content class="centered-text">
-      <p class="price">R${{card.preco}}</p>
+      <p class="price">R${{card.preco.toLocaleString("pt-BR", {maximumFractionDigits: 2, minimumFractionDigits: 2})}}</p>
     </mat-card-content>
     <mat-card-footer>
       <button mat-flat-button color="warn" class="add-to-cart-button">
