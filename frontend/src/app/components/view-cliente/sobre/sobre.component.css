@@ -1,0 +1,48 @@
+#about {
+  text-align: center;
+  padding: 50px 20px;
+  background-color: #f8f9fa;
+}
+
+.section-title {
+  font-family: "Zeyada", cursive;
+  font-size: 60px;
+  margin-bottom: 80px;
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  justify-items: center;
+}
+
+.card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.card img {
+  margin-top: 20px;
+  width: 60px;
+}
+
+.card h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  font-family: 'Zeyada', cursive;
+}
+
+.card p {
+  font-size: 16px;
+  color: #555;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}

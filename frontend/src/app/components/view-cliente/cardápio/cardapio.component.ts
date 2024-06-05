@@ -1,18 +1,18 @@
 import {Component, OnInit, signal} from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
-import {MatButton} from "@angular/material/button";
+import {MatButton, MatIconButton} from "@angular/material/button";
 import {Pizza} from "../../../models/pizza";
 import {Bebida} from "../../../models/bebida";
 import {BebidaService} from "../../../services/bebida.service";
 import {PizzaService} from "../../../services/pizza.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
-import {Router} from "@angular/router";
 import {CurrencyPipe, NgForOf} from "@angular/common";
+import {MatIcon} from "@angular/material/icon";
 
 
 type CardPizza = {
   id: number;
-  descricao: string;
+  pizza: string;
   tamanho: string;
   ingredientes: string;
   preco: number;
@@ -22,7 +22,7 @@ type CardPizza = {
 type CardBebida = {
   id: number;
   bebida: string;
-  litros: number;
+  litros: string;
   preco: number;
   urlImagem: string;
 }
@@ -34,7 +34,9 @@ type CardBebida = {
     MatCardModule,
     MatButton,
     NgForOf,
-    CurrencyPipe
+    CurrencyPipe,
+    MatIconButton,
+    MatIcon
   ],
   templateUrl: './cardapio.component.html',
   styleUrl: './cardapio.component.css'
@@ -76,24 +78,33 @@ export class CardapioComponent implements OnInit{
     const cardsBebida: CardBebida[] = [];
 
     this.pizzas.forEach(pizza => {
+      const ingredientes = pizza.porcoes
+        .flatMap(porcao => porcao.ingredientes.map(ing => ing.nome))
+        .join(', ');
+
       cardsPizza.push({
         id: pizza.id,
-        descricao: pizza.descricao,
-        tamanho: '',
-        ingredientes: '',
+        pizza: pizza.nome,
+        tamanho: pizza.tamanhoPizza.toString(),
+        ingredientes: ingredientes,
         preco: pizza.preco,
-        urlImagem: ''
+        urlImagem: pizza.nomeImagem || ''
       });
     });
     this.cardsPizza.set(cardsPizza);
 
     this.bebidas.forEach(bebida => {
+      const litros = bebida.ml < 1000
+        ? `${bebida.ml}ml`
+        : Number.isInteger(bebida.ml / 1000)
+          ? `${(bebida.ml / 1000).toString().replace('.', ',')}L`
+          : `${(bebida.ml / 1000).toFixed(1).replace('.', ',')}L`;
       cardsBebida.push({
         id: bebida.id,
         preco: bebida.preco,
         bebida: bebida.nome,
-        litros: bebida.ml,
-        urlImagem: ''
+        litros: litros,
+        urlImagem: bebida.nomeImagem || ''
       });
     });
     this.cardsBebida.set(cardsBebida);
