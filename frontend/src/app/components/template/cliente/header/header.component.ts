@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {MatIcon} from "@angular/material/icon";
 import {MatButton, MatIconButton} from "@angular/material/button";
 import {Router, RouterOutlet} from "@angular/router";
@@ -7,6 +7,7 @@ import {AsyncPipe, NgIf, NgOptimizedImage} from "@angular/common";
 import {UsuarioService} from "../../../../services/usuario.service";
 import {Usuario} from "../../../../models/usuario";
 import {MatBadge} from "@angular/material/badge";
+import {SacolaService} from "../../../../services/sacola.service";
 
 @Component({
   selector: 'app-header',
@@ -27,11 +28,12 @@ import {MatBadge} from "@angular/material/badge";
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent implements OnInit{
+export class HeaderComponent{
   usuarioLogado: Usuario | undefined;
   qtdItensCarrinho: number = 0;
 
-  constructor(protected router: Router, private service: UsuarioService) {
+  constructor(protected router: Router, private service: UsuarioService, private sacolaService: SacolaService) {
+    this.qtdItensCarrinho = sacolaService.getQuant()
     service.minhaConta().subscribe({
       next: usuario =>{
         this.usuarioLogado = usuario;
@@ -48,11 +50,4 @@ export class HeaderComponent implements OnInit{
     this.router.navigateByUrl('/login').then();
   }
 
-  ngOnInit(): void {
-    this.obterQtdItens();
-  }
-
-  obterQtdItens() {
-
-  }
 }

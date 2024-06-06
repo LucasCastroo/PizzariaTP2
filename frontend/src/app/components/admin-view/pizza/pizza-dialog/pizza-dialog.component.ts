@@ -20,10 +20,9 @@ import {COMMA, ENTER} from "@angular/cdk/keycodes";
 import {debounceTime, distinctUntilChanged, Observable, startWith, switchMap} from "rxjs";
 import {PorcaoPizza} from "../../../../models/porcao-pizza";
 import {Ingrediente} from "../../../../models/ingrediente";
-import {Pizza} from "../../../../models/pizza";
+import {Pizza, TamanhoPizza} from "../../../../models/pizza";
 import {IngredienteService} from "../../../../services/ingrediente.service";
 import {ProdutoService} from "../../../../services/produto.service";
-import {TamanhoPizza} from "../../../../models/tamanho-pizza";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({

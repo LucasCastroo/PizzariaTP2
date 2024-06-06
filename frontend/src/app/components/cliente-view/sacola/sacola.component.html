@@ -1,7 +1,7 @@
 <table mat-table [dataSource]="sacolaService.getSacola()">
   <ng-container matColumnDef="nome">
     <th mat-header-cell *matHeaderCellDef> Nome </th>
-    <td mat-cell *matCellDef="let element"> {{element.produto.nome}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.produto.nome}} {{isPizza(element.produto) ? formatTamanhoPizza(element.produto.tamanhoPizza) : formatarMl(element.produto.ml)}} </td>
   </ng-container>
   <ng-container matColumnDef="quantidade">
     <th mat-header-cell *matHeaderCellDef> Quantidade </th>

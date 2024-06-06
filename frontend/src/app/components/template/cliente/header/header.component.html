@@ -21,7 +21,7 @@
       </mat-menu>
     </ng-template>
   </div>
-  <button mat-icon-button id="btn-sacola">
+  <button mat-icon-button id="btn-sacola" (click)="router.navigateByUrl('/sacola')">
     <mat-icon id="sacola" [matBadge]="qtdItensCarrinho"  matBadgeColor="accent" matBadgePosition="after" matBadgeOverlap="false">local_mall</mat-icon>
   </button>
 </div>

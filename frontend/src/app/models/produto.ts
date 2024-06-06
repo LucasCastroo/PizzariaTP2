@@ -1,3 +1,5 @@
+import {Pizza} from "./pizza";
+
 export interface Produto {
   id: number;
   nome: string;
@@ -5,4 +7,9 @@ export interface Produto {
   preco: number;
   kCal: number;
   nomeImagem: string;
+
+}
+
+export function isPizza(produto: any): produto is Pizza{
+  return !!produto.tamanhoPizza;
 }
