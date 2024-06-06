@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import {HeaderComponent} from "../header/header.component";
 import {RouterOutlet} from "@angular/router";
-import {HomeComponent} from "../../../view-cliente/home/home.component";
-import {CardapioComponent} from "../../../view-cliente/cardápio/cardapio.component";
+import {HomeComponent} from "../../../cliente-view/home/home.component";
+import {CardapioComponent} from "../../../cliente-view/cardapio/cardapio.component";
 
 @Component({
   selector: 'app-cliente-template',

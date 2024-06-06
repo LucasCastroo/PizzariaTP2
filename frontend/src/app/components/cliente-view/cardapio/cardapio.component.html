@@ -1,0 +1,44 @@
+<div class="header">
+  <img src="assets/pizza-cardapio.png" class="icon-pizza">
+  <h1 class="title-cardapio" id="title">Cardápio</h1>
+</div>
+
+<h1 class="title-cardapio">Pizzas</h1>
+<div class="container responsive-grid">
+
+  <mat-card class="card" *ngFor="let pizza of pizzas">
+    <img mat-card-image [src]="pizza.nomeImagem" class="card-image">
+    <mat-card-title class="centered-text">{{pizza.descricao}}</mat-card-title>
+    <mat-card-content class="centered-text">
+      <p class="price">R${{pizza.preco.toLocaleString("pt-BR", {maximumFractionDigits: 2, minimumFractionDigits: 2})}}</p>
+
+    </mat-card-content>
+    <mat-card-footer>
+      <button mat-flat-button color="warn" class="add-to-cart-button" (click)="sacolaService.addProduto(pizza)">
+        Adicionar a sacola
+      </button>
+    </mat-card-footer>
+  </mat-card>
+
+</div>
+
+<div class="header-bebidas">
+  <h1 class="title-cardapio">Bebidas</h1>
+  <img src="assets/copo-bebida.png" class="icon-bebida">
+</div>
+
+<div class="container responsive-grid">
+  <mat-card class="card" *ngFor="let bebida of bebidas">
+    <img mat-card-image [src]="bebida.nomeImagem" class="card-image">
+    <mat-card-title class="centered-text">{{bebida.nome}}</mat-card-title>
+    <mat-card-content class="centered-text">
+      <p class="price">R${{bebida.preco.toLocaleString("pt-BR", {maximumFractionDigits: 2, minimumFractionDigits: 2})}}</p>
+    </mat-card-content>
+    <mat-card-footer>
+      <button mat-flat-button color="warn" class="add-to-cart-button" (click)="sacolaService.addProduto(bebida)">
+        Adicionar ao carrinho
+      </button>
+    </mat-card-footer>
+  </mat-card>
+
+</div>

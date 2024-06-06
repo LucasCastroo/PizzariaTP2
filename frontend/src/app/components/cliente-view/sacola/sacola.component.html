@@ -1,0 +1,20 @@
+<table mat-table [dataSource]="sacolaService.getSacola()">
+  <ng-container matColumnDef="nome">
+    <th mat-header-cell *matHeaderCellDef> Nome </th>
+    <td mat-cell *matCellDef="let element"> {{element.produto.nome}} </td>
+  </ng-container>
+  <ng-container matColumnDef="quantidade">
+    <th mat-header-cell *matHeaderCellDef> Quantidade </th>
+    <td mat-cell *matCellDef="let element"> {{element.quantidade}} </td>
+  </ng-container>
+  <ng-container matColumnDef="precoUnit">
+    <th mat-header-cell *matHeaderCellDef> Preço Unitário </th>
+    <td mat-cell *matCellDef="let element"> R${{parseFloat(element.produto.preco).toFixed(2)}} </td>
+  </ng-container>
+  <ng-container matColumnDef="precoTotal">
+    <th mat-header-cell *matHeaderCellDef> Preço Total </th>
+    <td mat-cell *matCellDef="let element"> R${{(parseFloat(element.produto.preco) * element.quantidade).toFixed(2)}} </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

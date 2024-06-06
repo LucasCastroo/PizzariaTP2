@@ -5,17 +5,17 @@ import {MatIcon} from "@angular/material/icon";
 import {MatToolbar} from "@angular/material/toolbar";
 import {Router, RouterOutlet} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
-import {PizzaDialogComponent} from "../../../view-admin/pizza/pizza-dialog/pizza-dialog.component";
-import {UsuarioDialogComponent} from "../../../view-admin/usuario/usuario-dialog/usuario-dialog.component";
+import {PizzaDialogComponent} from "../../../admin-view/pizza/pizza-dialog/pizza-dialog.component";
+import {UsuarioDialogComponent} from "../../../admin-view/usuario/usuario-dialog/usuario-dialog.component";
 import {
   FuncionarioDialogComponent
-} from "../../../view-admin/funcionario/conta/funcionario-dialog/funcionario-dialog.component";
-import {ClienteDialogComponent} from "../../../view-admin/cliente/conta/cliente-dialog/cliente-dialog.component";
-import {CupomDialogComponent} from "../../../view-admin/cupom/cupom-dialog/cupom-dialog.component";
-import {BebidaDialogComponent} from "../../../view-admin/bebida/bebida-dialog/bebida-dialog.component";
+} from "../../../admin-view/funcionario/conta/funcionario-dialog/funcionario-dialog.component";
+import {ClienteDialogComponent} from "../../../admin-view/cliente/conta/cliente-dialog/cliente-dialog.component";
+import {CupomDialogComponent} from "../../../admin-view/cupom/cupom-dialog/cupom-dialog.component";
+import {BebidaDialogComponent} from "../../../admin-view/bebida/bebida-dialog/bebida-dialog.component";
 import {
   IngredienteDialogComponent
-} from "../../../view-admin/ingrediente/ingrediente-dialog/ingrediente-dialog.component";
+} from "../../../admin-view/ingrediente/ingrediente-dialog/ingrediente-dialog.component";
 import {UsuarioService} from "../../../../services/usuario.service";
 import {Usuario} from "../../../../models/usuario";
 import {MatCell, MatCellDef} from "@angular/material/table";
