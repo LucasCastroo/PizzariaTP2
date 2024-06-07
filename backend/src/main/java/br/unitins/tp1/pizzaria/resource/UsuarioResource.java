@@ -85,7 +85,7 @@ public class UsuarioResource {
         String nomeImagem;
         try {
             String old = service.findById(id).nomeImagem();
-            if(!old.isBlank()){
+            if(old != null && !old.isBlank()){
                 imageService.remover(old);
             }
             nomeImagem = imageService.salvar(form.getNomeImagem(), form.getImagem());

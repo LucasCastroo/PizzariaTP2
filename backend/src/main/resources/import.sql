@@ -1,15 +1,15 @@
-INSERT INTO Usuario (cpf, email, nascimento, nome, senha)
+INSERT INTO Usuario (cpf, email, nascimento, nome, senha, image)
 VALUES
-    ('123.456.789-00', 'joao.silva@email.com', '1990-05-15', 'João da Silva', 'q+D+cDAwxEy2a3n2y7I9Sf5DT3ZgV+MYgvPEcoZVe3MsbN2MtxsoRvjvLz5pKTQQDZN0QGhCDkkS0eJLRa06/w=='),            -- senha001
-    ('987.654.321-00', 'maria.oliveira@email.com', '1985-09-22', 'Maria Oliveira', 'iNRuQR7wu06aIXBBG75G1hLuq+7rxfgqyZMrC74XPfsQM/lyKb49TZQ+U7IVO67oQUsR6BuTN2nukBG0kR41hg=='),       -- senha002
-    ('111.222.333-44', 'pedro.santos@email.com', '1978-03-10', 'Pedro Santos', 'peei/QAgQ3M9+x6SVNktDpmI5IfOpu9NVSbFzng7pYJJDBXeQpp90v05In4nIcgSmyCXuQbbrcZkGTfRpCrkug=='),           -- senha003
-    ('444.555.666-77', 'ana.pereira@email.com', '1982-11-28', 'Ana Pereira', 'AeKu9/YgvXRAuWQwH9MLOVkKGzJfuHGT1QwYfTlBc8O85rbDAqsHgI0FaIPRf0gc3qowJzEi87+X8PSFXzBYSA=='),             -- senha004
-    ('777.888.999-00', 'lucas.costa@email.com', '1995-07-19', 'Lucas Costa', 'EM+jvGuU03VpGk6SG1+9RRUkdJ2+qeBjMNJy605KZ+NFCaLtXZaBDHxxWAcw3FOruqy3vm26fC3NDYSUsT8afA=='),             -- senha005
-    ('222.333.444-55', 'mariana.souza@email.com', '1972-01-03', 'Mariana Souza', 'Rk+ivvXH+HIM7urg0CGPtQPxnjZKklOO7h9vjmyySB0BIeI5zb4Fe9gLTFbaQkOsPMF8bcFShgmFO3m1srMyWA=='),         -- senha006
-    ('666.777.888-99', 'rafaela.oliveira@email.com', '1988-08-12', 'Rafaela Oliveira', 'OkeG9VHPGw6fwZ7wDNM7cyqccVd9NJMNbN9XRRmrZ5Gdr9/bMRW5acoQ2sVx/Hf7PzXdFoRYbuRoaJnx36EJeA=='),   -- senha007
-    ('999.000.111-22', 'fernando.santos@email.com', '1998-04-25', 'Fernando Santos', '9yPWeH7sJnThq9W+JaeUOmPVYcBMEMaqsPk5z8qJWA3dSWGxp9qOi5iW4OSttKT/A8j5r0biaXeAdh3ooQfrNg=='),     -- senha008
-    ('333.444.555-66', 'carla.silva@email.com', '1980-06-30', 'Carla Silva', 'as/fRQszzfpnpBUhtW/08YpktTt8BO2G6nvgVXojQ6FDOsLSI+uHfJY87kAmc0hkllo0ASLeZuLf6dvKcfPM9Q=='),             -- senha009
-    ('555.666.777-88', 'paulo.pereira@email.com', '1975-10-17', 'Paulo Pereira', 'LiQ+yqmq8o2TpUUc9HjvePYzYSG2cnK4veVHOjw9MYjr+RYI4A7NsOV5eNM3+vcyKg1kgE43abrXTlGzkb2nVw==');        -- senha010
+    ('123.456.789-00', 'joao.silva@email.com', '1990-05-15', 'João da Silva', 'q+D+cDAwxEy2a3n2y7I9Sf5DT3ZgV+MYgvPEcoZVe3MsbN2MtxsoRvjvLz5pKTQQDZN0QGhCDkkS0eJLRa06/w==', 'cadc1c0c-7366-4caa-a79f-ab832600b40a.jpeg'),            -- senha001
+    ('987.654.321-00', 'maria.oliveira@email.com', '1985-09-22', 'Maria Oliveira', 'iNRuQR7wu06aIXBBG75G1hLuq+7rxfgqyZMrC74XPfsQM/lyKb49TZQ+U7IVO67oQUsR6BuTN2nukBG0kR41hg==', null),       -- senha002
+    ('111.222.333-44', 'pedro.santos@email.com', '1978-03-10', 'Pedro Santos', 'peei/QAgQ3M9+x6SVNktDpmI5IfOpu9NVSbFzng7pYJJDBXeQpp90v05In4nIcgSmyCXuQbbrcZkGTfRpCrkug==', null),          -- senha003
+    ('444.555.666-77', 'ana.pereira@email.com', '1982-11-28', 'Ana Pereira', 'AeKu9/YgvXRAuWQwH9MLOVkKGzJfuHGT1QwYfTlBc8O85rbDAqsHgI0FaIPRf0gc3qowJzEi87+X8PSFXzBYSA==', null),             -- senha004
+    ('777.888.999-00', 'lucas.costa@email.com', '1995-07-19', 'Lucas Costa', 'EM+jvGuU03VpGk6SG1+9RRUkdJ2+qeBjMNJy605KZ+NFCaLtXZaBDHxxWAcw3FOruqy3vm26fC3NDYSUsT8afA==', null),             -- senha005
+    ('222.333.444-55', 'mariana.souza@email.com', '1972-01-03', 'Mariana Souza', 'Rk+ivvXH+HIM7urg0CGPtQPxnjZKklOO7h9vjmyySB0BIeI5zb4Fe9gLTFbaQkOsPMF8bcFShgmFO3m1srMyWA==', null),      -- senha006
+    ('666.777.888-99', 'rafaela.oliveira@email.com', '1988-08-12', 'Rafaela Oliveira', 'OkeG9VHPGw6fwZ7wDNM7cyqccVd9NJMNbN9XRRmrZ5Gdr9/bMRW5acoQ2sVx/Hf7PzXdFoRYbuRoaJnx36EJeA==', null),   -- senha007
+    ('999.000.111-22', 'fernando.santos@email.com', '1998-04-25', 'Fernando Santos', '9yPWeH7sJnThq9W+JaeUOmPVYcBMEMaqsPk5z8qJWA3dSWGxp9qOi5iW4OSttKT/A8j5r0biaXeAdh3ooQfrNg==', null),     -- senha008
+    ('333.444.555-66', 'carla.silva@email.com', '1980-06-30', 'Carla Silva', 'as/fRQszzfpnpBUhtW/08YpktTt8BO2G6nvgVXojQ6FDOsLSI+uHfJY87kAmc0hkllo0ASLeZuLf6dvKcfPM9Q==', null),          -- senha009
+    ('555.666.777-88', 'paulo.pereira@email.com', '1975-10-17', 'Paulo Pereira', 'LiQ+yqmq8o2TpUUc9HjvePYzYSG2cnK4veVHOjw9MYjr+RYI4A7NsOV5eNM3+vcyKg1kgE43abrXTlGzkb2nVw==', '7544757f-096b-4895-95ff-799a0c24b164.png');        -- senha010
 
 
 INSERT INTO Cliente (id_usuario, telefone)
@@ -110,12 +110,12 @@ VALUES
 
 
 
-INSERT INTO Produto (tipo, descricao, kCal, nome, preco, ml, tamanhoPizza, quantporcoes, pizzapronta)
-VALUES ('PIZZA', 'Pizza de Calabresa', 1200, 'Pizza Calabresa', 25.50, null, 'MEDIA', 1, true),
-       ('BEBIDA', 'Refrigerante de Limão', 180, 'Sprite', 4.50, 350, null, null, null),
-       ('BEBIDA', 'Refrigerante de Cola', 200, 'Coca-Cola', 5.50, 1000, null, null, null),
-       ('PIZZA', 'Pizza de Frango', 1300, 'Pizza Frango', 23.75, null, 'MEDIA', 1, true),
-       ('PIZZA', 'Pizza de Margherita', 1100, 'Pizza Margherita', 22.00, null, 'MEDIA', 1, true);
+INSERT INTO Produto (tipo, descricao, kCal, nome, preco, ml, tamanhoPizza, quantporcoes, pizzapronta, nomeimagem)
+VALUES ('PIZZA', 'Pizza de Calabresa', 1200, 'Pizza Calabresa', 25.50, null, 'MEDIA', 1, true, '1a40109e-8890-4b40-93eb-4b512295b5d5.png'),
+       ('BEBIDA', 'Refrigerante de Limão', 180, 'Sprite', 4.50, 350, null, null, null, 'f57275cb-4cc1-4083-a1cd-e8a1a177c9db.png'),
+       ('BEBIDA', 'Refrigerante de Cola', 200, 'Coca-Cola', 5.50, 1000, null, null, null, 'ca983046-2de4-4f7c-a027-fe97a3f6ad95.png'),
+       ('PIZZA', 'Pizza de Frango', 1300, 'Pizza Frango', 23.75, null, 'MEDIA', 1, true, '006a8b5c-d318-4f37-941e-668a023657b2.png'),
+       ('PIZZA', 'Pizza de Margherita', 1100, 'Pizza Margherita', 22.00, null, 'MEDIA', 1, true, '88d38e87-c33e-407a-8ff3-7db190d920a9.png');
 
 INSERT INTO produto_porcaopizza (pizza_id, porcoes_id)
 VALUES (1, 1),

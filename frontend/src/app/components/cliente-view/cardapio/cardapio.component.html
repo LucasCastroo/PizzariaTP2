@@ -7,7 +7,7 @@
 <div class="container responsive-grid">
 
   <mat-card class="card" *ngFor="let pizza of pizzas">
-    <img mat-card-image [src]="pizza.nomeImagem" class="card-image">
+    <img mat-card-image [src]="'//localhost:8080/produto/image/' + pizza.nomeImagem" class="card-image">
     <mat-card-title class="centered-text">{{pizza.descricao}}</mat-card-title>
     <mat-card-content class="centered-text">
       <p class="price">R${{pizza.preco.toLocaleString("pt-BR", {maximumFractionDigits: 2, minimumFractionDigits: 2})}}</p>
@@ -29,7 +29,7 @@
 
 <div class="container responsive-grid">
   <mat-card class="card" *ngFor="let bebida of bebidas">
-    <img mat-card-image [src]="bebida.nomeImagem" class="card-image">
+    <img mat-card-image [src]="'//localhost:8080/produto/image/' + bebida.nomeImagem" class="card-image">
     <mat-card-title class="centered-text">{{bebida.nome}}</mat-card-title>
     <mat-card-content class="centered-text">
       <p class="price">R${{bebida.preco.toLocaleString("pt-BR", {maximumFractionDigits: 2, minimumFractionDigits: 2})}}</p>
