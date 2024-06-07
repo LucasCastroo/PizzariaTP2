@@ -1,9 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
 import {NgForOf} from "@angular/common";
 import {Pedido, ProdutoPedido, ProdutoPedidoCreate, Status} from "../../../models/pedido";
 import {MatButtonToggle} from "@angular/material/button-toggle";
-import {MatSnackBar} from "@angular/material/snack-bar";
 import {PedidoService} from "../../../services/pedido.service";
 import {isPizza, Produto} from "../../../models/produto";
 import {formatTamanhoPizza} from "../../../models/pizza";
@@ -34,7 +33,10 @@ export class PedidosComponent{
 
   setStatus(id: number, status: Status){
     this.pedidoService.updateStatus(id, status).subscribe(pedido =>{
-      this.pedidos.splice(this.pedidos.findIndex(p => p.id == pedido.id), 1);
+      if(status === Status.ENTREGUE || status == Status.CANCELADO){
+        this.pedidos.splice(this.pedidos.findIndex(p => p.id == pedido.id), 1);
+
+      }
     });
   }
 

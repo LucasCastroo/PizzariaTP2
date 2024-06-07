@@ -10,51 +10,44 @@
       </div>
       <h1>Meus Dados</h1>
     </header>
-    <div class="form-section">
+    <main class="form-section">
       <ng-container *ngIf="form | async as form; else loading">
         <form class="profile-form" [formGroup]="form">
-          <table>
-            <tr>
-              <td>
-                <label>Nome</label>
+                <mat-form-field>
+                <mat-label>Nome</mat-label>
                 <input matInput type="text" formControlName="nome">
-              </td>
-              <td>
-                <label>CPF</label>
+                </mat-form-field>
+              <mat-form-field>
+                <mat-label>CPF</mat-label>
                 <input matInput [disabled]="true" type="text" formControlName="cpf">
-              </td>
-            </tr>
-          </table>
-          <table>
-            <tr>
-              <td>
-                <label>Email</label>
-                <input type="email" formControlName="email">
-              </td>
-              <td>
-                <label>Senha</label>
-                <div class="password-container">
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput type="email" formControlName="email">
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Senha</mat-label>
+                <div  class="password-container">
                   <input matInput disabled type="password" id="senha" value="*********">
                   <mat-icon (click)="dialog.open(DialogChangePasswordComponent, {width: '350px'})" class="edit-icon">edit</mat-icon>
                 </div>
-              </td>
-            </tr>
-          </table>
-          <table>
-            <tr>
-              <td>
-                <label>Telefone</label>
-                <input type="tel" formControlName="telefone">
-              </td>
-              <td>
-                <label>Data de Nascimento</label>
-                <input type="date" formControlName="nascimento" placeholder="dd/MM/yyyy">
-              </td>
-            </tr>
-          </table>
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Telefone</mat-label>
+                <input matInput formControlName="telefone">
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Data de Nascimento</mat-label>
+                <input matInput type="date" formControlName="nascimento" placeholder="dd/MM/yyyy">
+              </mat-form-field>
         </form>
       </ng-container>
-      <ng-template #loading>Carregando...</ng-template>
+      <ng-template #loading>
+        <div class="loading-container">
+          <mat-spinner></mat-spinner>
+          <p>Carregando perfil...</p>
+        </div>
+      </ng-template>
       <div class="addresses">
         <div class="addresses-title">
           <h2>Endereços</h2>
@@ -108,8 +101,8 @@
           </mat-expansion-panel>
         </ng-container>
       </div>
-    </div>
+    </main>
 
-    <button class="submit-btn">Alterar</button>
+    <button class="submit-btn" (click)="alterar()">Alterar</button>
   </div>
 </div>

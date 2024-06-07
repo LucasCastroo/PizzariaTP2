@@ -15,6 +15,7 @@ import {validarCPF} from "../../../utils/validators";
 import {combineLatestWith, forkJoin, lastValueFrom, map, merge, Observable} from "rxjs";
 import {Cliente} from "../../../models/cliente";
 import {Endereco} from "../../../models/endereco";
+import {MatProgressSpinner} from "@angular/material/progress-spinner";
 
 @Component({
   selector: 'app-minha-conta',
@@ -34,7 +35,8 @@ import {Endereco} from "../../../models/endereco";
     NgForOf,
     ReactiveFormsModule,
     NgIf,
-    AsyncPipe
+    AsyncPipe,
+    MatProgressSpinner
   ],
   templateUrl: './minha-conta.component.html',
   styleUrl: './minha-conta.component.css'
@@ -45,10 +47,11 @@ export class MinhaContaComponent {
   addresses: Endereco[] = [];
   protected readonly open = open;
   protected readonly DialogChangePasswordComponent = ChangePasswordDialogComponent;
-
+  id: number = -1;
   constructor(protected dialog: MatDialog, private fb: FormBuilder, private service: UsuarioService) {
     this.form = forkJoin([service.minhaConta(), service.getCliente()]).pipe(map(data => {
       let usuario: Usuario & Cliente = {...data.at(0), ...data.at(1)} as Usuario & Cliente;
+      this.id = usuario.id;
       return fb.group({
         nome: [(usuario && usuario.nome) ? usuario.nome : '', [Validators.required]],
         cpf: [{value: (usuario && usuario.cpf) ? usuario.cpf : '', disabled: true}, [Validators.required, validarCPF]],
@@ -68,7 +71,9 @@ export class MinhaContaComponent {
   }
 
   addAddress() {
+    this.addresses.push({
 
+    })
   }
 
   removeAddress(index: number) {
@@ -76,7 +81,15 @@ export class MinhaContaComponent {
   }
 
   saveAddress(index: number) {
-    // Logic to save address
-    console.log('Saving address at index', index);
+
+  }
+
+  alterar(){
+    this.form.subscribe(f =>{
+      let data = f.value
+      data.enderecos = this.addresses
+      data.id = this.id;
+      this.service.update(data).subscribe()
+    })
   }
 }

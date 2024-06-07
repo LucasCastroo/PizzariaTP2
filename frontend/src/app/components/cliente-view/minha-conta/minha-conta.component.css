@@ -50,11 +50,14 @@ header h1 {
   display: flex;
   justify-content: space-between;
   margin-right: 15px;
+  column-gap: 20px;
 }
 
 .profile-form {
   flex: 1;
   margin-right: 20px;
+  column-gap: 20px;
+
 }
 
 .profile-form label {
@@ -63,14 +66,7 @@ header h1 {
   font-weight: 500;
 }
 
-.profile-form input {
-  width: 300px;
-  padding: 10px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 16px;
-}
+
 
 .password-container {
   position: relative;
@@ -213,4 +209,11 @@ header h1 {
   right: 10px;
   display: flex;
   gap: 10px;
+}
+
+.mdc-text-field * {
+  background-color: white !important;
+}
+.mat-mdc-text-field-wrapper * {
+  color: black !important;
 }
