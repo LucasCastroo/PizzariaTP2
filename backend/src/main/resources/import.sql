@@ -18,7 +18,8 @@ VALUES
     (2, '(22) 9876-5432'),
     (3, '(33) 5555-5555'),
     (5, '(44) 7777-7777'),
-    (6, '(55) 2222-2222');
+    (6, '(55) 2222-2222'),
+    (10, '(55) 2222-222542');
 
 
 INSERT INTO Cupom (codigo, desconto)
@@ -35,7 +36,8 @@ VALUES
     ('Bairro 1', '98765-432', 'Cidade B', 'Avenida Secundária, 456'),
     ('Bairro 2', '54321-987', 'Cidade C', 'Travessa da Esquina, 789'),
     ('Bairro 3', '13579-246', 'Cidade D', 'Rua das Flores, 101'),
-    ('Bairro 4', '87654-321', 'Cidade E', 'Avenida das Árvores, 222');
+    ('Bairro 4', '87654-321', 'Cidade E', 'Avenida das Árvores, 222'),
+    ('Bairro 4', '87654-321', 'Cidade E', 'Avenida das Árvores, 262');
 
 INSERT INTO Cliente_Endereco (id_cliente, id_endereco)
 VALUES
@@ -43,6 +45,7 @@ VALUES
     (2, 2),
     (3, 3),
     (4, 4),
+    (6, 6),
     (5, 5);
 
 INSERT INTO Funcionario (id_usuario, tipoAcesso)
