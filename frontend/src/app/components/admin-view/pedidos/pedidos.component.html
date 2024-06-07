@@ -1,33 +1,39 @@
 <div class="all-cards">
-  <mat-card class="pedido-card">
-    <mat-card-header>
-      <mat-card-title-group>
-        <mat-card-title>Pedido#ID</mat-card-title>
-      </mat-card-title-group>
-    </mat-card-header>
-    <div class="description-pedido">
-      <!--   Fazer um *ngFor pra mostrar o itens do pedido   -->
-      <mat-card-content class="itens-pedido">
-        <p>Quantidade - Nome</p>
-      </mat-card-content>
-      <mat-card-content class="endereco-pedido">
-        Rua 9 de Julho, Quadra 15, Lote 25 - Setor Bela Vista
-      </mat-card-content>
-    </div>
-    <mat-card-footer class="buttons-card">
-      <mat-button-toggle class="btn btn-cancelar">
-        Cancelar
-      </mat-button-toggle>
-      <mat-button-toggle class="btn btn-preparo">
-        Em preparo
-      </mat-button-toggle>
-      <mat-button-toggle class="btn btn-entrega">
-        Em entrega
-      </mat-button-toggle>
-      <mat-button-toggle class="btn-entregue">
-        Entregue
-      </mat-button-toggle>
-    </mat-card-footer>
-  </mat-card>
+  @for (pedido of pedidos; track pedido){
+    <mat-card class="pedido-card">
+      <mat-card-header>
+        <mat-card-title-group>
+          <mat-card-title>Pedido #{{pedido.id}}</mat-card-title>
+        </mat-card-title-group>
+      </mat-card-header>
+      <div class="description-pedido">
+        <mat-card-content class="itens-pedido">
+        @for(item of getItems(pedido.items); track item){
+            <p>{{item.quantidade}}x {{item.produto.nome}} {{ isPizza(item.produto) ? formatTamanhoPizza(item.produto.tamanhoPizza) : formatarMl(getBebida(item.produto).ml)}}</p>
+        }
+        </mat-card-content>
+
+        <mat-card-content class="endereco-pedido">
+          <p>
+            {{pedido.endereco!.logradouro}}, {{pedido.endereco!.bairro}}, {{pedido.endereco!.cidade}}, {{pedido.endereco!.cep}}
+          </p>
+        </mat-card-content>
+      </div>
+      <mat-card-footer class="buttons-card">
+        <button mat-flat-button class="btn btn-cancelar" (click)="setStatus(pedido.id!, Status.CANCELADO)">
+          Cancelar
+        </button>
+        <button mat-flat-button class="btn btn-preparo" (click)="setStatus(pedido.id!, Status.EM_PREPARO)">
+          Em preparo
+        </button>
+        <button mat-flat-button class="btn btn-entrega" (click)="setStatus(pedido.id!, Status.EM_ENTREGA)">
+          Em entrega
+        </button>
+        <button mat-flat-button class="btn-entregue" (click)="setStatus(pedido.id!, Status.ENTREGUE)">
+          Entregue
+        </button>
+      </mat-card-footer>
+    </mat-card>
+  }
 </div>
 

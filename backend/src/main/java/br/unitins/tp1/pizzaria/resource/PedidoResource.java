@@ -69,6 +69,13 @@ public class PedidoResource {
         return Response.ok().entity(service.findByClienteId(Long.valueOf(jwt.getSubject()))).build();
     }
 
+    @GET
+    @Path("/ativos")
+    @RolesAllowed({NivelAcesso.Role.SUPERVISOR, NivelAcesso.Role.ATENDENTE, NivelAcesso.Role.ADMIN})
+    public Response findAllNaoFinalizado(){
+        return Response.ok(service.findAllNaoFinalizados()).build();
+    }
+
     @PATCH
     @Path("/{id}/pagar")
     @RolesAllowed(Cliente.ROLE)

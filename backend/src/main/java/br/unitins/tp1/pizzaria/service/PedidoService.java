@@ -17,4 +17,5 @@ public interface PedidoService {
 
     PedidoResponseDTO findById(Long id);
     List<PedidoResponseDTO> findByClienteId(Long idCliente);
+    List<PedidoResponseDTO> findAllNaoFinalizados();
 }

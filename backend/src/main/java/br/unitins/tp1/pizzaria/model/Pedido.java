@@ -34,7 +34,8 @@ public class Pedido extends BaseEntity {
 
     @OneToMany(
             cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
-            orphanRemoval = true
+            orphanRemoval = true,
+            fetch = FetchType.EAGER
     )
     @JoinColumn(name = "id_pedido")
     private List<StatusPedido> status;

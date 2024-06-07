@@ -116,4 +116,10 @@ public class PedidoServiceImpl implements PedidoService{
         return repository.findByClienteId(idCliente).stream().map(PedidoResponseDTO::from).toList();
 
     }
+
+    @Override
+    @Transactional
+    public List<PedidoResponseDTO> findAllNaoFinalizados() {
+        return repository.findAllNaoFinalizados().stream().map(PedidoResponseDTO::from).toList();
+    }
 }
