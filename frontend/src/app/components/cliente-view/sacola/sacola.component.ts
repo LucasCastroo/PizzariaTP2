@@ -15,7 +15,7 @@ import {
 import {isPizza} from "../../../models/produto";
 import {formatarMl} from "../../../utils/utils";
 import {formatTamanhoPizza} from "../../../models/pizza";
-import {MatButton} from "@angular/material/button";
+import {MatButton, MatIconButton} from "@angular/material/button";
 import {FormBuilder, ReactiveFormsModule, Validators} from "@angular/forms";
 import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
@@ -24,16 +24,22 @@ import {UsuarioService} from "../../../services/usuario.service";
 import {Endereco} from "../../../models/endereco";
 import {PedidoService} from "../../../services/pedido.service";
 import {Router} from "@angular/router";
+import {HeaderComponent} from "../../template/cliente/header/header.component";
+import {MatOption, MatSelect} from "@angular/material/select";
+import {NgForOf} from "@angular/common";
+import {FooterComponent} from "../../template/cliente/footer/footer.component";
+import {DialogDeleteComponent} from "../../template/admin/template-admin/dialog-delete/dialog-delete.component";
+import {MatIcon} from "@angular/material/icon";
 
 @Component({
   selector: 'app-sacola',
   standalone: true,
-  imports: [MatTable, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderCellDef, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatButton, ReactiveFormsModule, MatFormField, MatInput, MatLabel],
+  imports: [MatTable, MatCell, MatCellDef, MatColumnDef, MatHeaderCell, MatHeaderCellDef, MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef, MatButton, ReactiveFormsModule, MatFormField, MatInput, MatLabel, HeaderComponent, MatSelect, MatOption, NgForOf, FooterComponent, MatIcon, MatIconButton],
   templateUrl: './sacola.component.html',
   styleUrl: './sacola.component.css'
 })
 export class SacolaComponent implements OnInit {
-  displayedColumns = ["nome", "quantidade", "precoUnit", "precoTotal"]
+  displayedColumns = ["nome", "quantidade", "precoUnit", "precoTotal", "acao"]
   form = this.fb.group({
     codigoCupom: ["", ""],
     idEndereco: [-1, [Validators.required]],
@@ -73,4 +79,5 @@ export class SacolaComponent implements OnInit {
       this.router.navigateByUrl(`/pedido/${pedido.id}`).then();
     })
   }
+  protected readonly DialogDeleteComponent = DialogDeleteComponent;
 }

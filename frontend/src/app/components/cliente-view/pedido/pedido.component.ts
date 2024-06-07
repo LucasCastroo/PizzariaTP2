@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {PedidoService} from "../../../services/pedido.service";
 import {ActivatedRoute} from "@angular/router";
 import {formatFormaPagamento, formatStatus, Pedido, ProdutoPedido} from "../../../models/pedido";
 import {Title} from "@angular/platform-browser";
 import {MatProgressSpinner} from "@angular/material/progress-spinner";
-import {formatDate, NgIf} from "@angular/common";
+import {formatDate, NgForOf, NgIf} from "@angular/common";
 import {isPizza} from "../../../models/produto";
 import {formatTamanhoPizza} from "../../../models/pizza";
 import {formatarMl} from "../../../utils/utils";
@@ -15,8 +15,10 @@ import {
   MatHeaderCell, MatHeaderCellDef,
   MatHeaderRow,
   MatHeaderRowDef,
-  MatRow, MatRowDef, MatTable
+  MatRow, MatRowDef, MatTable, MatTableDataSource
 } from "@angular/material/table";
+import {HeaderComponent} from "../../template/cliente/header/header.component";
+import {FooterComponent} from "../../template/cliente/footer/footer.component";
 
 @Component({
   selector: 'app-pedido',
@@ -33,24 +35,28 @@ import {
     MatRow,
     MatRowDef,
     MatTable,
-    MatHeaderCellDef
+    MatHeaderCellDef,
+    HeaderComponent,
+    FooterComponent,
+    NgForOf
   ],
   templateUrl: './pedido.component.html',
   styleUrl: './pedido.component.css'
 })
 export class PedidoComponent {
   displayedColumns = ["nome", "quantidade", "precoUnit", "precoTotal"]
-
   pedido: Pedido | undefined;
-  items: ProdutoPedido[] = []
-  constructor(private service: PedidoService, private route: ActivatedRoute, titleService: Title) {
-    let id = route.snapshot.paramMap.get("id")
-    if(id){
-      titleService.setTitle(id);
-      service.get(Number.parseInt(id)).subscribe(pedido =>{
+  dataSource = new MatTableDataSource<ProdutoPedido>();
+
+  constructor(private service: PedidoService, private route: ActivatedRoute, private titleService: Title) { }
+
+  ngOnInit(): void {
+    let id = this.route.snapshot.paramMap.get("id")
+    if (id) {
+      this.titleService.setTitle(id);
+      this.service.get(Number.parseInt(id)).subscribe(pedido => {
         this.pedido = pedido;
-        console.log(formatDate(pedido.historicoStatus[0].data!, "short", "pt-BR"))
-        this.items = pedido.items as ProdutoPedido[]
+        this.dataSource.data = pedido.items as ProdutoPedido[];
       });
     }
   }
