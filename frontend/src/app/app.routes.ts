@@ -13,6 +13,7 @@ import { HomeComponent } from "./components/cliente-view/home/home.component";
 import { ClienteTemplateComponent } from "./components/template/cliente/cliente-template/cliente-template.component";
 import { MinhaContaComponent } from "./components/cliente-view/minha-conta/minha-conta.component";
 import {SacolaComponent} from "./components/cliente-view/sacola/sacola.component";
+import {PedidosComponent} from "./components/admin-view/pedidos/pedidos.component";
 
 export const routes: Routes = [
 
@@ -45,7 +46,8 @@ export const routes: Routes = [
       { path: 'pizzas', component: PizzaListComponent, title: 'Pizzas' },
       { path: 'ingredientes', component: IngredienteListComponent, title: 'Ingredientes' },
       { path: 'bebidas', component: BebidaListComponent, title: 'Bebidas' },
-      { path: 'usuarios', component: UsuarioComponent, title: 'Conta Usuário' }
+      { path: 'usuarios', component: UsuarioComponent, title: 'Conta Usuário' },
+      { path: 'pedidos', component: PedidosComponent, title: 'Pedidos' },
     ]
   },
 ];

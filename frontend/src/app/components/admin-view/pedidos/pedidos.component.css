@@ -1,0 +1,50 @@
+.all-cards {
+  padding: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pedido-card {
+  border-radius: 25px;
+  max-width: 460px;
+  margin: 0 10px 20px 10px;
+}
+
+.description-pedido {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 15px;
+}
+
+.itens-pedido {
+  width: 350px;
+}
+
+.btn {
+  margin-right: 8px;
+  font-family: "Zeyada", cursive;
+}
+
+.buttons-card {
+  display: inline-flex;
+  padding: 10px;
+  justify-content: center;
+}
+
+.btn-cancelar {
+  background-color: #e01c1c;
+}
+
+.btn-preparo {
+  background-color: #d7a446;
+}
+
+.btn-entrega {
+  background-color: #8a6423;
+}
+
+.btn-entregue {
+  font-family: "Zeyada", cursive;
+  background-color: #28a745;
+}

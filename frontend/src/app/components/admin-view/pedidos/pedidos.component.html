@@ -1,0 +1,33 @@
+<div class="all-cards">
+  <mat-card class="pedido-card">
+    <mat-card-header>
+      <mat-card-title-group>
+        <mat-card-title>Pedido#ID</mat-card-title>
+      </mat-card-title-group>
+    </mat-card-header>
+    <div class="description-pedido">
+      <!--   Fazer um *ngFor pra mostrar o itens do pedido   -->
+      <mat-card-content class="itens-pedido">
+        <p>Quantidade - Nome</p>
+      </mat-card-content>
+      <mat-card-content class="endereco-pedido">
+        Rua 9 de Julho, Quadra 15, Lote 25 - Setor Bela Vista
+      </mat-card-content>
+    </div>
+    <mat-card-footer class="buttons-card">
+      <mat-button-toggle class="btn btn-cancelar">
+        Cancelar
+      </mat-button-toggle>
+      <mat-button-toggle class="btn btn-preparo">
+        Em preparo
+      </mat-button-toggle>
+      <mat-button-toggle class="btn btn-entrega">
+        Em entrega
+      </mat-button-toggle>
+      <mat-button-toggle class="btn-entregue">
+        Entregue
+      </mat-button-toggle>
+    </mat-card-footer>
+  </mat-card>
+</div>
+

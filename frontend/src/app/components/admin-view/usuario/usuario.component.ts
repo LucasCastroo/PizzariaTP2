@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {
   MatCell,
   MatCellDef,
@@ -47,16 +47,17 @@ export class UsuarioComponent implements OnInit{
   displayedColumns: string[] = ['id', 'nome', 'cpf', 'nascimento','email', 'acao'];
   usuarios: Usuario[] = [];
 
-  constructor(private suarioService: UsuarioService,
+  constructor(private usuarioService: UsuarioService,
               public dialog: MatDialog) {
   }
 
   ngOnInit() {
-    this.suarioService.findAll().subscribe(data => {
+    this.usuarioService.findAll().subscribe(data => {
       this.usuarios = data;
     })
   }
 
   protected readonly DialogUsuarioComponent = UsuarioDialogComponent;
   protected readonly DialogDeleteComponent = DialogDeleteComponent;
+
 }

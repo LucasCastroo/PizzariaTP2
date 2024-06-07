@@ -1,4 +1,4 @@
-import {Component, OnInit, signal} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
 import {MatButton} from "@angular/material/button";
 import {Pizza} from "../../../models/pizza";
