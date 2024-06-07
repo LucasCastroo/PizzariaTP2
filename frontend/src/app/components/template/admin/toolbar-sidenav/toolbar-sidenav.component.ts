@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {MatAnchor, MatFabButton, MatIconAnchor, MatIconButton} from "@angular/material/button";
 import {MatDrawer, MatDrawerContainer} from "@angular/material/sidenav";
 import {MatIcon} from "@angular/material/icon";
 import {MatToolbar} from "@angular/material/toolbar";
-import {NavigationEnd, Router, RouterOutlet} from "@angular/router";
+import {Router, RouterOutlet} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
 import {PizzaDialogComponent} from "../../../admin-view/pizza/pizza-dialog/pizza-dialog.component";
 import {UsuarioDialogComponent} from "../../../admin-view/usuario/usuario-dialog/usuario-dialog.component";
@@ -21,6 +21,7 @@ import {Usuario} from "../../../../models/usuario";
 import {MatCell, MatCellDef} from "@angular/material/table";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {NgIf} from "@angular/common";
+import {Funcionario} from "../../../../models/funcionario";
 
 @Component({
   selector: 'app-toolbar-sidenav',
@@ -45,6 +46,8 @@ import {NgIf} from "@angular/common";
 export class ToolbarSidenavComponent{
   isPedidosRoute: boolean = false;
   usuarioLogado: Usuario | undefined;
+  isGerenteOrAdmin: boolean = false;
+  isSupervisorOrAtendenteOrAdmin: boolean = false;
   currentURL = this.router.url.replace(/^\//, '');
   title = this.transformTitle();
 
@@ -65,24 +68,26 @@ export class ToolbarSidenavComponent{
     this.router.navigateByUrl('/login-admin').then();
   }
   transformTitle(): string {
-    if (this.currentURL == 'usuarios') {
-      this.title = 'Usuários';
-    } else if (this.currentURL == 'contas-cliente') {
-      this.title = 'Clientes';
-    } else if (this.currentURL == 'contas-funcionario') {
-      this.title = 'Colaboradores';
-    } else if (this.currentURL == 'cupons') {
-      this.title = 'Cupons';
-    } else if (this.currentURL == 'pizzas') {
-      this.title = 'Pizzas';
-    } else if (this.currentURL == 'bebidas') {
-      this.title = 'Bebidas';
-    } else if (this.currentURL == 'ingredientes') {
-      this.title = 'Ingredientes';
-    } else if (this.currentURL == 'pedidos') {
-      this.title = 'Pedidos';
+    switch (this.currentURL) {
+      case 'usuarios':
+        return 'Usuários';
+      case 'contas-cliente':
+        return 'Clientes';
+      case 'contas-funcionario':
+        return 'Colaboradores';
+      case 'cupons':
+        return 'Cupons';
+      case 'pizzas':
+        return 'Pizzas';
+      case 'bebidas':
+        return 'Bebidas';
+      case 'ingredientes':
+        return 'Ingredientes';
+      case 'pedidos':
+        return 'Pedidos';
+      default:
+        return '';
     }
-    return this.title;
   }
 
   openDialogCreate() {
