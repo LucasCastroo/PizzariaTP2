@@ -34,12 +34,15 @@
     <a href="http://localhost:4200/ingredientes" mat-button>
       <mat-icon>restaurant_menu</mat-icon>
       Ingredientes</a>
+    <a href="http://localhost:4200/pedidos" mat-button>
+      <mat-icon>description</mat-icon>
+      Pedidos</a>
 
-    <a mat-icon-button id="account" (click)="edit()">
+    <a mat-icon-button id="account">
       <mat-icon id="account-icon">account_circle</mat-icon>
       {{usuarioLogado?.nome}}</a>
 
-    <button (click)="logout()" class="btn" id="btn-logout" mat-fab>
+    <button *ngIf="!isPedidosRoute" (click)="logout()" class="btn" id="btn-logout" mat-fab>
       <mat-icon>logout</mat-icon>
     </button>
   </mat-drawer>

@@ -19,9 +19,7 @@ import {Funcionario} from "../../../../models/funcionario";
 import {FuncionarioService} from "../../../../services/funcionario.service";
 import {DialogDeleteComponent} from "../../../template/admin/template-admin/dialog-delete/dialog-delete.component";
 import {ActivatedRoute} from "@angular/router";
-import {forkJoin, merge, Subscription} from "rxjs";
 import {UsuarioService} from "../../../../services/usuario.service";
-import {NivelAcesso} from "../../../../models/nivel-acesso";
 
 @Component({
   selector: 'app-conta-funcionario',
@@ -58,19 +56,9 @@ export class FuncionarioContaComponent implements AfterViewInit{
   }
 
   ngAfterViewInit() {
-    if(this.route.snapshot.queryParamMap.get("me")){
-      this.usuarioService.getFuncionario().subscribe(funcionario =>{
-        this.dialog.open(FuncionarioDialogComponent, {
-          height: '380px',
-          width: '400px',
-          data: funcionario
-        });
-      });
-    }
     this.funcionarioService.findAll().subscribe(data => {
       this.funcionarios = data;
     });
-
   }
 
   protected readonly FuncionarioDialogComponent = FuncionarioDialogComponent;

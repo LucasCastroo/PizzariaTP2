@@ -1,9 +1,9 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatAnchor, MatFabButton, MatIconAnchor, MatIconButton} from "@angular/material/button";
 import {MatDrawer, MatDrawerContainer} from "@angular/material/sidenav";
 import {MatIcon} from "@angular/material/icon";
 import {MatToolbar} from "@angular/material/toolbar";
-import {Router, RouterOutlet} from "@angular/router";
+import {NavigationEnd, Router, RouterOutlet} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
 import {PizzaDialogComponent} from "../../../admin-view/pizza/pizza-dialog/pizza-dialog.component";
 import {UsuarioDialogComponent} from "../../../admin-view/usuario/usuario-dialog/usuario-dialog.component";
@@ -19,6 +19,8 @@ import {
 import {UsuarioService} from "../../../../services/usuario.service";
 import {Usuario} from "../../../../models/usuario";
 import {MatCell, MatCellDef} from "@angular/material/table";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {NgIf} from "@angular/common";
 
 @Component({
   selector: 'app-toolbar-sidenav',
@@ -34,17 +36,19 @@ import {MatCell, MatCellDef} from "@angular/material/table";
     RouterOutlet,
     MatIconAnchor,
     MatCell,
-    MatCellDef
+    MatCellDef,
+    NgIf
   ],
   templateUrl: './toolbar-sidenav.component.html',
   styleUrl: './toolbar-sidenav.component.css'
 })
 export class ToolbarSidenavComponent{
+  isPedidosRoute: boolean = false;
   usuarioLogado: Usuario | undefined;
   currentURL = this.router.url.replace(/^\//, '');
   title = this.transformTitle();
 
-  constructor(private router: Router, public dialog: MatDialog, private service: UsuarioService) {
+  constructor(private router: Router, public dialog: MatDialog, private service: UsuarioService, protected snackBar: MatSnackBar) {
     service.minhaConta().subscribe({
       next: usuario =>{
         this.usuarioLogado = usuario;
@@ -56,6 +60,8 @@ export class ToolbarSidenavComponent{
   }
 
   logout() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("expiry");
     this.router.navigateByUrl('/login-admin').then();
   }
   transformTitle(): string {
@@ -73,6 +79,8 @@ export class ToolbarSidenavComponent{
       this.title = 'Bebidas';
     } else if (this.currentURL == 'ingredientes') {
       this.title = 'Ingredientes';
+    } else if (this.currentURL == 'pedidos') {
+      this.title = 'Pedidos';
     }
     return this.title;
   }
@@ -107,12 +115,16 @@ export class ToolbarSidenavComponent{
     } else if (this.currentURL == 'ingredientes'){
       this.dialog.open(IngredienteDialogComponent, {
         width: '350px'})
+    } else if (this.currentURL == 'pedidos'){
+      this.showSnackBarBottomPosition('Ação indisponível!', '', 3000);
     }
   }
 
-  edit() {
-    this.router.navigateByUrl('/contas-funcionario?me=true').then(() => {
-      window.location.reload();
+  showSnackBarBottomPosition(content: any, action: any, duration: any) {
+    this.snackBar.open(content, action, {
+      duration: 3000,
+      verticalPosition: 'bottom',
+      horizontalPosition: 'center',
     });
   }
 }
