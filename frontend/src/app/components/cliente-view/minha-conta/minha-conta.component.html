@@ -1,6 +1,5 @@
-<app-header></app-header>
-<body>
-<main>
+<div id="background">
+  <app-header></app-header>
   <div class="container">
     <header>
       <div id="img-perfil">
@@ -11,49 +10,49 @@
       </div>
       <h1>Meus Dados</h1>
     </header>
-    <div class="form-section" >
+    <div class="form-section">
       <ng-container *ngIf="form | async as form; else loading">
-      <form class="profile-form" [formGroup]="form">
-        <table>
-          <tr>
-            <td>
-              <label>Nome</label>
-              <input matInput type="text" formControlName="nome">
-            </td>
-            <td>
-              <label>CPF</label>
-              <input matInput [disabled]="true" type="text" formControlName="cpf">
-            </td>
-          </tr>
-        </table>
-        <table>
-          <tr>
-            <td>
-              <label>Email</label>
-              <input type="email"  formControlName="email">
-            </td>
-            <td>
-              <label>Senha</label>
-              <div class="password-container">
-                <input matInput disabled type="password" id="senha" value="*********">
-                <mat-icon (click)="dialog.open(DialogChangePasswordComponent, {width: '350px'})" class="edit-icon">edit</mat-icon>
-              </div>
-            </td>
-          </tr>
-        </table>
-        <table>
-          <tr>
-            <td>
-              <label>Telefone</label>
-              <input type="tel" formControlName="telefone">
-            </td>
-            <td>
-              <label>Data de Nascimento</label>
-              <input type="date" formControlName="nascimento" placeholder="dd/MM/yyyy">
-            </td>
-          </tr>
-        </table>
-      </form>
+        <form class="profile-form" [formGroup]="form">
+          <table>
+            <tr>
+              <td>
+                <label>Nome</label>
+                <input matInput type="text" formControlName="nome">
+              </td>
+              <td>
+                <label>CPF</label>
+                <input matInput [disabled]="true" type="text" formControlName="cpf">
+              </td>
+            </tr>
+          </table>
+          <table>
+            <tr>
+              <td>
+                <label>Email</label>
+                <input type="email" formControlName="email">
+              </td>
+              <td>
+                <label>Senha</label>
+                <div class="password-container">
+                  <input matInput disabled type="password" id="senha" value="*********">
+                  <mat-icon (click)="dialog.open(DialogChangePasswordComponent, {width: '350px'})" class="edit-icon">edit</mat-icon>
+                </div>
+              </td>
+            </tr>
+          </table>
+          <table>
+            <tr>
+              <td>
+                <label>Telefone</label>
+                <input type="tel" formControlName="telefone">
+              </td>
+              <td>
+                <label>Data de Nascimento</label>
+                <input type="date" formControlName="nascimento" placeholder="dd/MM/yyyy">
+              </td>
+            </tr>
+          </table>
+        </form>
       </ng-container>
       <ng-template #loading>Carregando...</ng-template>
       <div class="addresses">
@@ -108,10 +107,9 @@
             </div>
           </mat-expansion-panel>
         </ng-container>
-        </div>
+      </div>
     </div>
 
     <button class="submit-btn">Alterar</button>
   </div>
-</main>
-</body>
+</div>
