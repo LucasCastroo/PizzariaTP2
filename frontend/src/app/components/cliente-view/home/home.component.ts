@@ -38,4 +38,8 @@ export class HomeComponent implements AfterViewInit{
     observer.observe(this.pizzaImage.nativeElement);
   }
 
+  scrollToSection(section: string) {
+    document.getElementById(section)?.scrollIntoView({ behavior: 'smooth' });
+  }
+
 }

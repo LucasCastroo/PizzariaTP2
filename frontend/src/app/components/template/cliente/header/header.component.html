@@ -1,9 +1,15 @@
 <div id="header">
   <a href="http://localhost:4200/home"><img src="assets/logo.png" id="logo" alt="Logo"></a>
   <div id="buttons">
-    <a href="http://localhost:4200/home">HOME</a>
-    <a href="#">CARDÁPIO</a>
-    <a href="#">SOBRE</a>
+    <a [href]="isHomePage() ? '#' : 'http://localhost:4200/home'">HOME</a>
+    <a *ngIf="isHomePage(); else scrollToCardapio" (click)="scrollToSection('cardapio')">CARDÁPIO</a>
+    <ng-template #scrollToCardapio>
+      <a (click)="navigateToHomePage()">CARDÁPIO</a>
+    </ng-template>
+    <a *ngIf="isHomePage(); else scrollToSobre" (click)="scrollToSection('sobre')">SOBRE</a>
+    <ng-template #scrollToSobre>
+      <a (click)="navigateToHomePage()">SOBRE</a>
+    </ng-template>
     <ng-container *ngIf="!usuarioLogado; else loggedInTemplate">
       <a (click)="router.navigateByUrl('/login')">
         <mat-icon>account_circle</mat-icon>Login/Cadastro

@@ -50,4 +50,16 @@ export class HeaderComponent{
     this.router.navigateByUrl('/login').then();
   }
 
+  isHomePage(): boolean {
+    return this.router.url === '/home';
+  }
+
+  navigateToHomePage(): void {
+    this.router.navigateByUrl('/home').then();
+  }
+
+  scrollToSection(section: string) {
+    document.getElementById(section)?.scrollIntoView({ behavior: 'smooth' });
+  }
+
 }
