@@ -92,3 +92,23 @@ body {
   margin-top: 10px;
   color: #888;
 }
+.mat-mdc-header-cell{
+  background-color: white !important;
+  color: black;
+  border-bottom: 1px solid black !important;
+  border-right: 1px solid black;
+  text-align: center;
+  font-weight: bold;
+}
+.mat-mdc-cell{
+  background-color: white !important;
+  color: black;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black !important;
+  text-align: center;
+}
+
+.mat-mdc-table {
+  border: 1px solid black !important;
+  border-bottom-width: 0 !important;
+}

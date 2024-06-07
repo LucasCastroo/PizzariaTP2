@@ -60,6 +60,18 @@ export class SacolaService {
     return sacola;
   }
 
+  increment(idx: number){
+    let sacola = this.getSacola();
+    if(sacola[idx]) sacola[idx].quantidade += 1;
+    localStorage.setItem("sacola", JSON.stringify(sacola));
+  }
+
+
+  decrement(idx: number){
+    let sacola = this.getSacola();
+    if(sacola[idx]) sacola[idx].quantidade -= 1;
+    localStorage.setItem("sacola", JSON.stringify(sacola));
+  }
   limparSacola(){
     localStorage.setItem("sacola", "[]")
   }

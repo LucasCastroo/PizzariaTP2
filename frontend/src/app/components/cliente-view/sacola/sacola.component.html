@@ -13,7 +13,14 @@
 
       <ng-container matColumnDef="quantidade">
         <th mat-header-cell *matHeaderCellDef> Quantidade </th>
-        <td mat-cell *matCellDef="let element"> {{ element.quantidade }} </td>
+        <td mat-cell *matCellDef="let element; let i = index">
+          <div class="quant">
+            <button mat-icon-button (click)="sacolaService.increment(i)"><mat-icon>keyboard_arrow_up</mat-icon></button>
+            <span>{{ element.quantidade }}</span>
+            <button mat-icon-button (click)="sacolaService.decrement(i)"><mat-icon>keyboard_arrow_down</mat-icon></button>
+          </div>
+
+        </td>
       </ng-container>
 
       <ng-container matColumnDef="precoUnit">
@@ -28,8 +35,8 @@
 
       <ng-container matColumnDef="acao">
         <th *matHeaderCellDef mat-header-cell></th>
-        <td *matCellDef="let element" mat-cell id="btn-delete">
-          <button color="warn" mat-icon-button>
+        <td *matCellDef="let element; let i = index" mat-cell id="btn-delete">
+          <button color="warn" mat-icon-button (click)="sacolaService.removeItem(i)">
             <mat-icon>delete</mat-icon>
           </button>
         </td>
@@ -41,29 +48,29 @@
   </div>
   <div class="form-container">
     <h1>Opções</h1>
-    <form [formGroup]="form">
-      <mat-form-field appearance="fill">
-        <mat-label>Cupom de Desconto</mat-label>
-        <input matInput formControlName="codigoCupom">
-      </mat-form-field>
-
-      <mat-form-field appearance="fill">
-        <mat-label>Forma de Pagamento</mat-label>
-        <mat-select formControlName="formaPagamento">
-          <mat-option [value]="FormaPagamento.PIX">Pix</mat-option>
-          <mat-option [value]="FormaPagamento.DINHEIRO">Dinheiro</mat-option>
-          <mat-option [value]="FormaPagamento.CARTAO">Cartão</mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <mat-form-field appearance="fill">
-        <mat-label>Endereço para Entrega</mat-label>
-        <mat-select formControlName="idEndereco">
-          <mat-option *ngFor="let endereco of enderecos" [value]="endereco.id">
-            {{ endereco.logradouro }}, {{ endereco.bairro }}, {{ endereco.cidade }}, {{ endereco.cep }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
+    <form [formGroup]="form" class="form">
+      <div class="form-field">
+        <label>Cupom de Desconto:</label>
+        <input formControlName="codigoCupom">
+      </div>
+      <div class="form-field">
+        <label>Forma de Pagamento:</label>
+        <select formControlName="formaPagamento">
+          <option selected [value]="FormaPagamento.PIX">Pix</option>
+          <option [value]="FormaPagamento.DINHEIRO">Dinheiro</option>
+          <option [value]="FormaPagamento.CARTAO">Cartão</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Endereço para Entrega:</label>
+        <select formControlName="idEndereco">
+          @for(endereco of enderecos; track endereco; let idx = $index){
+            <option [ngValue]="endereco.id" >
+              {{endereco.logradouro}}, {{endereco.bairro}}, {{endereco.cidade}}, {{endereco.cep}}
+            </option>
+          }
+        </select>
+      </div>
       <button mat-flat-button color="warn" (click)="fazerPedido()">
         Finalizar Pedido
       </button>
