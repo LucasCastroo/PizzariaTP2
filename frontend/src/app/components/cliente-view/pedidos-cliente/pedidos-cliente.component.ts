@@ -7,12 +7,16 @@ import {formatarMl} from "../../../utils/utils";
 import {Bebida} from "../../../models/bebida";
 import {MatButton} from "@angular/material/button";
 import {Router} from "@angular/router";
+import {HeaderComponent} from "../../template/cliente/header/header.component";
+import {FooterComponent} from "../../template/cliente/footer/footer.component";
 
 @Component({
   selector: 'app-pedidos',
   standalone: true,
   imports: [
-    MatButton
+    MatButton,
+    HeaderComponent,
+    FooterComponent
   ],
   templateUrl: './pedidos-cliente.component.html',
   styleUrl: './pedidos-cliente.component.css'

@@ -1,0 +1,55 @@
+app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: transparent;
+  z-index: 1000;
+}
+
+.conteudo {
+  margin-top: 100px;
+  padding: 20px;
+}
+
+.meus-pedidos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.pedido-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.itens-pedido {
+  margin-bottom: 10px;
+}
+
+.item {
+  margin-bottom: 5px;
+}
+
+.detalhes-produto {
+  color: #666;
+}
+
+.visualizar-pedido {
+  background-color: hsl(120, 72%, 39%);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.visualizar-pedido:hover {
+  background-color: hsl(120, 69%, 28%);
+}
+
