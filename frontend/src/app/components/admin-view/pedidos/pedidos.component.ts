@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {MatCardModule} from '@angular/material/card';
-import {NgForOf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import {Pedido} from "../../../models/pedido";
 import {MatButtonToggle} from "@angular/material/button-toggle";
-import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-pedidos',
@@ -11,7 +10,8 @@ import {MatSnackBar} from "@angular/material/snack-bar";
   imports: [
     MatCardModule,
     NgForOf,
-    MatButtonToggle
+    MatButtonToggle,
+    NgIf
   ],
   templateUrl: './pedidos.component.html',
   styleUrl: './pedidos.component.css'
@@ -19,9 +19,8 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 export class PedidosComponent implements OnInit{
   pedidos: Pedido[] = [];
 
-  // constructor(private pedidoService: PedidoService,
-  //             private snackBar: MatSnackBar) {
-  // }
+  constructor() {
+  }
 
   ngOnInit(): void {
     // this.pedidoService.find
