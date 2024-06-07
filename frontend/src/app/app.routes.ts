@@ -34,7 +34,7 @@ export const routes: Routes = [
   { path: 'minha-conta', component: MinhaContaComponent, title: 'Minha Conta' },
   { path: 'sacola', component: SacolaComponent, title: "Sacola"},
   { path: 'pedido/:id', component: PedidoComponent},
-  { path: 'pedidos', component: PedidosClienteComponent},
+  { path: 'meus-pedidos', component: PedidosClienteComponent},
 
   { path: 'login-admin', component: LoginAdminComponent, title: 'Login Admin' },
   { path: 'admin', component: LoginAdminComponent, title: 'Login Admin' },
