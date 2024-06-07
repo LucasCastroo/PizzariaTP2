@@ -10,7 +10,7 @@ import java.util.List;
 public record PedidoResponseDTO(
         Long id,
         ClienteResponseDTO cliente,
-        List<ProdutoPedido> items,
+        List<ProdutoPedidoResponseDTO> items,
         FormaPagamento formaPagamento,
         Cupom cupom,
         Double total,
@@ -22,10 +22,10 @@ public record PedidoResponseDTO(
         return new PedidoResponseDTO(
                 pedido.getId(),
                 ClienteResponseDTO.valueOf(pedido.getCliente()),
-                pedido.getItems(),
+                pedido.getItems().stream().map(item -> new ProdutoPedidoResponseDTO(item.getQuant(), ProdutoResponseDTO.valueOf(item.getItem()))).toList(),
                 pedido.getFormaPagamento(),
                 pedido.getCupom(),
-                pedido.getItems().stream().map(i-> i.getPreco() * i.getQuant()).reduce(0.0, Double::sum) - (pedido.getCupom() != null ? pedido.getCupom().getDesconto()  : 0),
+                pedido.getItems().stream().mapToDouble(i-> i.getItem().getPreco() * i.getQuant()).sum() - (pedido.getCupom() != null ? pedido.getCupom().getDesconto()  : 0),
                 pedido.getStatus().stream().map(StatusPedidoResponseDTO::from).toList(),
                 EnderecoResponseDTO.valueOf(pedido.getEndereco().getEndereco())
         );

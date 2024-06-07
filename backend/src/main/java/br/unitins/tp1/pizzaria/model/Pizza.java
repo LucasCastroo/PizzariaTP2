@@ -15,7 +15,7 @@ public class Pizza extends Produto {
 
     private Integer quantPorcoes;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<PorcaoPizza> porcoes = new HashSet<>();
 
     private Boolean pizzaPronta;

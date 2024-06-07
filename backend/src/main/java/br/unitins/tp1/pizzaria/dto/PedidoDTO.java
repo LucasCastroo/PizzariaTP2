@@ -7,6 +7,6 @@ import jakarta.validation.constraints.NotNull;
 
 import java.util.List;
 
-public record PedidoDTO(@NotNull List<ProdutoPedidoDTO> items, @NotBlank String cupom, @NotNull Long idEndereco,
+public record PedidoDTO(@NotNull List<ProdutoPedidoDTO> items, @NotBlank String codigoCupom, @NotNull Long idEndereco,
                         @NotNull FormaPagamento formaPagamento) {
 }

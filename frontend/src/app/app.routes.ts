@@ -13,6 +13,7 @@ import { HomeComponent } from "./components/cliente-view/home/home.component";
 import { ClienteTemplateComponent } from "./components/template/cliente/cliente-template/cliente-template.component";
 import { MinhaContaComponent } from "./components/cliente-view/minha-conta/minha-conta.component";
 import {SacolaComponent} from "./components/cliente-view/sacola/sacola.component";
+import {PedidoComponent} from "./components/cliente-view/pedido/pedido.component";
 
 export const routes: Routes = [
 
@@ -30,6 +31,7 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent, title: 'Login' },
   { path: 'minha-conta', component: MinhaContaComponent, title: 'Minha Conta' },
   { path: 'sacola', component: SacolaComponent, title: "Sacola"},
+  { path: 'pedido/:id', component: PedidoComponent},
 
   { path: 'login-admin', component: LoginAdminComponent, title: 'Login Admin' },
   { path: 'admin', component: LoginAdminComponent, title: 'Login Admin' },

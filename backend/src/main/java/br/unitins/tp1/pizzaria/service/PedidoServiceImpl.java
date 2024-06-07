@@ -31,12 +31,16 @@ public class PedidoServiceImpl implements PedidoService{
     public PedidoResponseDTO create(PedidoDTO dto, Long idCliente) {
         Pedido pedido = new Pedido();
         pedido.setCliente(clienteRepository.findById(idCliente));
+        StatusPedido sp = new StatusPedido();
+        sp.setHorario(LocalDateTime.now());
+        sp.setStatus(Status.AGUARDANDO_PAGAMENTO);
+        pedido.setStatus(List.of(sp));
         return setupPedido(dto, pedido);
     }
 
     private PedidoResponseDTO setupPedido(PedidoDTO dto, Pedido pedido) {
         try {
-            if (dto.cupom() != null) pedido.setCupom(cupomRepository.findByCodigo(dto.cupom()));
+            if (dto.codigoCupom() != null) pedido.setCupom(cupomRepository.findByCodigo(dto.codigoCupom()));
             if (dto.idEndereco() != null) {
                 EnderecoPedido ep = new EnderecoPedido();
                 Endereco endereco = enderecoRepository.findById(dto.idEndereco());

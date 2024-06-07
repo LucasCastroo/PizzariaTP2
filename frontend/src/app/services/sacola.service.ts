@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import {ProdutoPedido} from "../models/pedido";
 import {Produto} from "../models/produto";
-import {formatTamanhoPizza, Pizza} from "../models/pizza";
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +17,6 @@ export class SacolaService {
 
   getQuant(): number{
     let sacola = this.getSacola();
-    console.log(formatTamanhoPizza((sacola[0].produto as Pizza).tamanhoPizza))
     let num = 0;
     sacola.forEach(item => {
       num += item.quantidade;
@@ -60,5 +58,9 @@ export class SacolaService {
     if(sacola[idx]) sacola[idx].quantidade = qnt;
     localStorage.setItem("sacola", JSON.stringify(sacola));
     return sacola;
+  }
+
+  limparSacola(){
+    localStorage.setItem("sacola", "[]")
   }
 }

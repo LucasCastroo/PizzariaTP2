@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import {Usuario, UsuarioCreate} from '../models/usuario';
 import {Cliente} from "../models/cliente";
 import {Funcionario} from "../models/funcionario";
+import {Endereco} from "../models/endereco";
 
 @Injectable({
   providedIn: 'root'
@@ -51,5 +52,9 @@ export class UsuarioService {
   }
   getFuncionario(){
     return this.httpClient.get<Funcionario>(`${this.minhaContaUrl}/funcionario`)
+  }
+
+  getEnderecos(){
+    return this.httpClient.get<Endereco[]>(`${this.minhaContaUrl}/enderecos`)
   }
 }

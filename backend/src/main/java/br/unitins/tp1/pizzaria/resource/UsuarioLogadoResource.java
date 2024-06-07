@@ -75,6 +75,12 @@ public class UsuarioLogadoResource {
     }
 
     @GET
+    @Path("/enderecos")
+    public Response getEnderecos() {
+        return Response.ok(clienteService.findByUsuarioId(Long.valueOf(jwt.getSubject())).enderecos()).build();
+    }
+
+    @GET
     @Path("/cliente")
     public Response getCliente(){
         return Response.ok(clienteService.findByUsuarioId(Long.valueOf(jwt.getSubject()))).build();

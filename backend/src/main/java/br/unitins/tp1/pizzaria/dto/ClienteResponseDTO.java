@@ -8,7 +8,7 @@ import java.util.List;
 public record ClienteResponseDTO(
         Long id,
         String telefone,
-        List<EnderecoDTO> enderecos,
+        List<EnderecoResponseDTO> enderecos,
         UsuarioResponseDTO usuario
 ) {
     public static ClienteResponseDTO valueOf(Cliente cliente) {
@@ -16,7 +16,7 @@ public record ClienteResponseDTO(
             return new ClienteResponseDTO(
                     cliente.getId(),
                     cliente.getTelefone(),
-                    cliente.getEnderecos().stream().map(e -> new EnderecoDTO(e.getLogradouro(), e.getBairro(), e.getCidade(), e.getCep())).toList(),
+                    cliente.getEnderecos().stream().map(EnderecoResponseDTO::valueOf).toList(),
                     UsuarioResponseDTO.valueOf(cliente.getUsuario())
             );
         }catch (NullPointerException e){
