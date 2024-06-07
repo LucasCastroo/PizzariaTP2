@@ -1,6 +1,7 @@
 import {Produto} from "./produto";
 
 export interface Pedido{
+  id?: number;
   items: ProdutoPedido[];
   cupom: string,
   idEndereco: number,
@@ -13,7 +14,7 @@ export interface ProdutoPedido {
 }
 
 export enum FormaPagamento{
-  PIX,
-  DINHEIRO,
-  CARTAO
+  PIX = "PIX",
+  DINHEIRO = "DINHEIRO",
+  CARTAO = "CARTAO"
 }
