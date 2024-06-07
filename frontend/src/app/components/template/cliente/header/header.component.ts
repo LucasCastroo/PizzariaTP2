@@ -32,7 +32,7 @@ export class HeaderComponent{
   usuarioLogado: Usuario | undefined;
   qtdItensCarrinho: number = 0;
 
-  constructor(protected router: Router, private service: UsuarioService, private sacolaService: SacolaService) {
+  constructor(protected router: Router, private service: UsuarioService, protected sacolaService: SacolaService) {
     this.qtdItensCarrinho = sacolaService.getQuant()
     service.minhaConta().subscribe({
       next: usuario =>{
