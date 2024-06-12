@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
+import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {MatButton} from "@angular/material/button";
 import {MatCard, MatCardActions, MatCardContent} from "@angular/material/card";
 import {MatError, MatFormField, MatLabel} from "@angular/material/form-field";
@@ -31,8 +31,8 @@ import {UsuarioService} from "../../../../services/usuario.service";
 })
 export class ChangePasswordDialogComponent {
   form = this.fb.group({
-    antigaSenha: ["", [Validators.required], Validators.minLength(8)],
-    novaSenha: ["", [Validators.required], Validators.minLength(8)],
+    antigaSenha: ["", [Validators.required, Validators.minLength(8)]],
+    novaSenha: ["", [Validators.required, Validators.minLength(8)]],
   })
   constructor(protected dialogRef: MatDialogRef<ChangePasswordDialogComponent>, private service: UsuarioService, private fb: FormBuilder) {
 
@@ -41,10 +41,7 @@ export class ChangePasswordDialogComponent {
   save() {
     this.service.alterarSenha(this.form.value as {antigaSenha: string | null, novaSenha: string | null}).subscribe({
       next: result => {
-
-      },
-      error: err => {
-
+        this.dialogRef.close();
       }
     })
   }

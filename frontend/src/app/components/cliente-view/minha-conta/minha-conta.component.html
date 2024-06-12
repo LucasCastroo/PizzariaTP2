@@ -28,8 +28,7 @@
               <mat-form-field class="profile-input">
                 <mat-label>Senha</mat-label>
                 <div>
-                  <input matInput disabled type="password" id="senha" value="*********">
-                  <mat-icon (click)="dialog.open(DialogChangePasswordComponent, {width: '350px'})" class="edit-icon">edit</mat-icon>
+                  <input matInput type="password" id="senha" value="*********" (click)="dialog.open(DialogChangePasswordComponent, {width: '350px'})">
                 </div>
               </mat-form-field>
               <mat-form-field class="profile-input">
